@@ -11,11 +11,11 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
-        Image icon = new Image("file:///D:/downloads/alarm.png");
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
+        Image icon = new Image("file:///../../paktrace.png");
         stage.getIcons().add(icon);
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 1080, 620);
+        stage.setTitle("Packet Tracer");
         stage.setScene(scene);
         stage.show();
     }
