@@ -1,32 +1,24 @@
 package com.example.packet_tracer.admin;
 
-import com.example.packet_tracer.LoginController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-public class AccountController {
-
-    @FXML
-    private Button ButtonEnregister;
+public class PacketController {
     @FXML
     private Pane LabelExpediteur;
     @FXML
     private Pane LabelLivreur;
     @FXML
-    private Pane LabelPackets;
+    private Pane LabelAccount;
     @FXML
     private Pane LabelDeconnection;
 
@@ -95,10 +87,10 @@ public class AccountController {
         }
     }
     @FXML
-    private void switchToPackets(MouseEvent event) throws IOException {
+    private void switchToAccount(MouseEvent event) throws IOException {
         try {
             // Load login.fxml from the resources directory
-            URL url = getClass().getResource("/com/example/packet_tracer/admin/packets.fxml");
+            URL url = getClass().getResource("/com/example/packet_tracer/admin/account.fxml");
             if (url == null) {
                 throw new IOException("FXML file not found");
             }
@@ -113,7 +105,4 @@ public class AccountController {
             // Handle the IOException here (e.g., show an error message to the user)
         }
     }
-
-
 }
-

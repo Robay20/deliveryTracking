@@ -29,7 +29,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutY="224.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane fx:id="LabelLivreur" layoutY="224.0" onMouseClicked="#switchToLivreur" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,7 +43,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutY="158.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane fx:id="LabelExpediteur" layoutY="158.0" onMouseClicked="#switchToExpediteur" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Expediteur">
                      <font>
@@ -57,7 +57,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutY="290.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane fx:id="LabelPackets" layoutY="290.0" onMouseClicked="#switchToPackets" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Packets">
                      <font>
@@ -71,7 +71,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutY="356.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane fx:id="LabelDeconnection" layoutY="356.0" onMouseClicked="#switchToLogin" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Déconnection">
                      <font>
@@ -106,7 +106,7 @@
             <Font size="24.0" />
          </font>
       </PasswordField>
-      <Button layoutX="155.0" layoutY="398.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="290.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="enregistrer" textFill="WHITE">
+      <Button id="ButtonEnregistrer" fx:id="ButtonEnregister" layoutX="155.0" layoutY="398.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="290.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="enregistrer" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font></Button>

@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1080.0" style="-fx-background-color: #CFF6FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.packet_tracer.admin.AccountController">
+<AnchorPane prefHeight="620.0" prefWidth="1080.0" style="-fx-background-color: #CFF6FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.packet_tracer.expediteur.AccountController">
    <children>
       <Pane layoutX="755.0" prefHeight="620.0" prefWidth="325.0" style="-fx-background-color: #9EF2E4;">
          <children>
@@ -29,7 +29,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutY="290.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane layoutY="290.0" onMouseClicked="#switchToHistorique" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,7 +43,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutY="158.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane layoutY="158.0" onMouseClicked="#switchToNotification" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Notifications">
                      <font>
@@ -57,7 +57,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutY="224.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane layoutY="224.0" onMouseClicked="#switchToSuiver" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Packets">
                      <font>
@@ -71,7 +71,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutY="356.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane layoutY="356.0" onMouseClicked="#switchToLogin" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Déconnection">
                      <font>

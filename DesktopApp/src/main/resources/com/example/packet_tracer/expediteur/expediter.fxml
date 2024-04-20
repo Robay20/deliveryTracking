@@ -11,11 +11,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="620.0" prefWidth="1080.0" style="-fx-background-color: #CFF6FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.packet_tracer.admin.AccountController">
+<AnchorPane prefHeight="620.0" prefWidth="1080.0" style="-fx-background-color: #CFF6FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.packet_tracer.expediteur.ExpediterController">
    <children>
       <Pane layoutX="755.0" prefHeight="620.0" prefWidth="325.0" style="-fx-background-color: #9EF2E4;">
          <children>
-            <Pane layoutY="92.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane fx:id="LabelCompte" layoutY="92.0" onMouseClicked="#switchToAccount" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -29,7 +29,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutY="290.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane fx:id="LabelHistorique" layoutY="290.0" onMouseClicked="#switchToHistorique" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,7 +43,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutY="158.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane layoutY="158.0" onMouseClicked="#switchToNotification" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Notifications">
                      <font>
@@ -71,7 +71,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutY="356.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane fx:id="LabelDeconnection" layoutY="356.0" onMouseClicked="#switchToLogin" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Déconnection">
                      <font>
@@ -96,11 +96,11 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="86.0" layoutY="397.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="confirmer" textFill="WHITE">
+      <Button fx:id="ButtonConfirmer" layoutX="86.0" layoutY="397.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="confirmer" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font></Button>
-      <Pane layoutX="375.0" layoutY="17.0" prefHeight="59.0" prefWidth="380.0">
+      <Pane layoutX="375.0" layoutY="17.0" onMouseClicked="#switchToSuiver" prefHeight="59.0" prefWidth="380.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="4.0" prefHeight="51.0" prefWidth="252.0" text="Suiver" textAlignment="CENTER" textFill="#888888">
                <font>
@@ -115,7 +115,7 @@
             <Font size="22.0" />
          </font>
       </TextField>
-      <Button layoutX="411.0" layoutY="397.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #BDBDBD;" stylesheets="@../stylesheet.css" text="annuler">
+      <Button fx:id="ButtonAnnuler" layoutX="411.0" layoutY="397.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #BDBDBD;" stylesheets="@../stylesheet.css" text="annuler">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>

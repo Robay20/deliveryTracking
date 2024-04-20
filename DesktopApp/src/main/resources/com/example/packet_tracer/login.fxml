@@ -25,7 +25,7 @@
                <font>
                   <Font size="24.0" />
                </font></PasswordField>
-            <Button id="loginButton" fx:id="loginButton" layoutX="42.0" layoutY="288.0" mnemonicParsing="false" onAction="#login" prefHeight="65.0" prefWidth="198.0" style="-fx-background-color: #008897;" stylesheets="@stylesheet.css" text="Login" textFill="WHITE">
+            <Button id="loginButton" fx:id="loginButton" layoutX="42.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToScene" prefHeight="65.0" prefWidth="198.0" style="-fx-background-color: #008897;" stylesheets="@stylesheet.css" text="Login" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
