@@ -15,7 +15,7 @@
    <children>
       <Pane layoutX="755.0" prefHeight="620.0" prefWidth="325.0" style="-fx-background-color: #9EF2E4;">
          <children>
-            <Pane layoutY="92.0" prefHeight="66.0" prefWidth="326.0" style="-fx-background-color: #86D2C5;">
+            <Pane layoutY="92.0" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -43,7 +43,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutY="158.0" prefHeight="66.0" prefWidth="326.0">
+            <Pane layoutY="158.0" prefHeight="66.0" prefWidth="326.0" style="-fx-background-color: #86D2C5;">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Expediteur">
                      <font>
@@ -89,26 +89,40 @@
       <Line endX="655.0" endY="-7.62939453125E-6" layoutX="100.0" layoutY="79.0" startX="-100.0" stroke="#00a2dd" strokeWidth="5.0" />
       <Pane layoutX="71.0" layoutY="17.0" prefHeight="59.0" prefWidth="370.0" style="-fx-background-color: #9ED6E3;">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="4.0" prefHeight="51.0" prefWidth="252.0" text="Compte" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="4.0" prefHeight="51.0" prefWidth="252.0" text="Expediteur" textAlignment="CENTER">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <TextField layoutX="155.0" layoutY="156.0" prefHeight="66.0" prefWidth="290.0" promptText="new username">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
-      <PasswordField layoutX="155.0" layoutY="260.0" prefHeight="66.0" prefWidth="290.0" promptText="new password">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </PasswordField>
-      <Button layoutX="155.0" layoutY="398.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="290.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="enregistrer" textFill="WHITE">
+      <Button layoutX="58.0" layoutY="226.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="ajouter" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font></Button>
+      <Button layoutX="58.0" layoutY="333.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="modifier" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Button>
+      <Button layoutX="58.0" layoutY="437.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="supprimer" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Button>
+      <Pane layoutX="248.0" layoutY="146.0" prefHeight="384.0" prefWidth="425.0" style="-fx-background-color: #9ED6E3;">
+         <children>
+            <TextField layoutX="68.0" layoutY="59.0" prefHeight="66.0" prefWidth="290.0" promptText="username" style="-fx-background-color: white;" stylesheets="@../stylesheet.css">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <PasswordField layoutX="68.0" layoutY="172.0" prefHeight="66.0" prefWidth="290.0" promptText="password" style="-fx-background-color: white;" stylesheets="@../stylesheet.css">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </PasswordField>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="620.0" prefWidth="1080.0" style="-fx-background-color: #CFF6FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.packet_tracer.MainController">
    <children>
-      <Pane layoutX="102.0" layoutY="91.0" prefHeight="438.0" prefWidth="281.0" style="-fx-background-color: #9EF2E4;">
+      <Pane layoutX="102.0" layoutY="91.0" prefHeight="438.0" prefWidth="281.0" style="-fx-background-color: #9EF2E4;" stylesheets="@stylesheet.css">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -25,7 +25,11 @@
                <font>
                   <Font size="24.0" />
                </font></PasswordField>
-            <Button layoutX="42.0" layoutY="288.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="198.0" text="Button" />
+            <Button layoutX="42.0" layoutY="288.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="198.0" style="-fx-background-color: #008897;" stylesheets="@stylesheet.css" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
       <Pane layoutX="464.0" layoutY="91.0" prefHeight="438.0" prefWidth="526.0" style="-fx-background-color: #9EF2E4;">
@@ -35,7 +39,7 @@
          <children>
             <ImageView fitHeight="411.0" fitWidth="526.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../../downloads/Capture%20d'écran%202024-04-13%20125445.png" />
+                  <Image url="@../../../../../../Capture%20d'écran%202024-04-13%20125445.png" />
                </image>
             </ImageView>
          </children>

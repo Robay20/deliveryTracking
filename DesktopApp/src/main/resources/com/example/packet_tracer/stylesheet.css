@@ -1,0 +1,7 @@
+.button {
+    -fx-shape: "M 10 0 Q 0 0 0 10 L 0 40 Q 0 50 10 50 L 190 50 Q 200 50 200 40 L 200 10 Q 200 0 190 0 Z";
+    -fx-font-size: 26px;
+}
+.text-field {
+    -fx-font-size: 25px;
+}
