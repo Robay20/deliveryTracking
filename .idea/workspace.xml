@@ -4,71 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0612df40-be4d-40d9-8f7a-9ae6b4d55225" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/.idea/deliveryTracking.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DesktopApp/src/main/java/com/example/packet_tracer/admin/AutocompleteTextField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DesktopApp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/DesktopApp/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DesktopApp/src/main/java/com/example/packet_tracer/admin/LivreurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DesktopApp/src/main/java/com/example/packet_tracer/admin/LivreurController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DesktopApp/src/main/resources/com/example/packet_tracer/admin/expediteur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/DesktopApp/src/main/resources/com/example/packet_tracer/admin/expediteur.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DesktopApp/src/main/resources/com/example/packet_tracer/admin/livreur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/DesktopApp/src/main/resources/com/example/packet_tracer/admin/livreur.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DesktopApp/src/main/resources/com/example/packet_tracer/admin/packets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/DesktopApp/src/main/resources/com/example/packet_tracer/admin/packets.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PacketTracer/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PacketTracer/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PacketTracer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PacketTracer/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PacketTracer/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/PacketTracer/.idea/vcs.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a386af8a-ca74-44db-a633-eb7f69898a23" name="Changes" comment="all project in one, second push" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <excluded-from-favorite>
-      <branch-storage>
-        <map>
-          <entry type="REMOTE">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="origin/main" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </excluded-from-favorite>
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="REMOTE">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="origin/all-project" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="SOFT" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Robay20&quot;
+    &quot;assignee&quot;: &quot;YASSINEKOO&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="b309c6a4-8a65-43c3-b358-49b58f185b91" />
+        <option name="accountId" value="ffaa5539-b22f-4df9-af42-3267aa9073b3" />
         <option name="url" value="https://github.com/Robay20/deliveryTracking" />
       </UrlAndAccount>
     </option>
@@ -77,79 +38,75 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
+  &quot;associatedIndex&quot;: 8
 }</component>
-  <component name="ProjectId" id="2fEclZ7i0NuzIRW53IF14UhpopM" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectId" id="2fPJsgFxNhQ3xxw1IhBR208oeMX" />
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "all-project",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/myProject/deliveryTracking",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;all-project&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/growu/IdeaProjects/deliveryTracking&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\myProject\deliveryTracking" />
+      <recent name="C:\Users\growu\IdeaProjects\deliveryTracking" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="deliveryTracking" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="deliveryTracking" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0612df40-be4d-40d9-8f7a-9ae6b4d55225" name="Changes" comment="" />
-      <created>1713369828387</created>
+      <changelist id="a386af8a-ca74-44db-a633-eb7f69898a23" name="Changes" comment="" />
+      <created>1713696988762</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1713369828387</updated>
-      <workItem from="1713369829408" duration="665000" />
-      <workItem from="1713597112203" duration="36000" />
-      <workItem from="1713597924180" duration="191000" />
-      <workItem from="1713704662919" duration="727000" />
-      <workItem from="1713705414351" duration="820000" />
-      <workItem from="1713706612691" duration="617000" />
-      <workItem from="1713707234619" duration="648000" />
+      <updated>1713696988762</updated>
+      <workItem from="1713696990312" duration="53000" />
+      <workItem from="1713703453959" duration="2832000" />
+      <workItem from="1713707963468" duration="24000" />
+      <workItem from="1713707988618" duration="170000" />
     </task>
-    <task id="LOCAL-00001" summary="first commit">
+    <task id="LOCAL-00001" summary="all project in one respo">
       <option name="closed" value="true" />
-      <created>1713369895566</created>
+      <created>1713703721766</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1713369895566</updated>
+      <updated>1713703721766</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="all project in one, second push">
+      <option name="closed" value="true" />
+      <created>1713703929115</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713703929115</updated>
+    </task>
+    <task id="LOCAL-00003" summary="all project in one, second push">
+      <option name="closed" value="true" />
+      <created>1713705682353</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713705682353</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +125,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="all project in one respo" />
+    <MESSAGE value="all project in one, second push" />
+    <option name="LAST_COMMIT_MESSAGE" value="all project in one, second push" />
   </component>
 </project>
