@@ -1,3 +1,75 @@
+POST http://localhost:8080/api/senders
+Content-Type: application/json
+Content-Length: 208
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "s3",
+  "password": "sa",
+  "cinSender": "Us4",
+  "dateOfBirth": "2024-04-19",
+  "email": "s2",
+  "firstName": "s2",
+  "lastName": "s2",
+  "packets": [],
+  "role": "Sender",
+  "active": true
+}
+
+<> 2024-04-21T214101.201.json
+
+###
+
+POST http://localhost:8080/api/senders
+Content-Type: application/json
+Content-Length: 208
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "s3",
+  "password": "sa",
+  "cinSender": "Us1",
+  "dateOfBirth": "2024-04-19",
+  "email": "s2",
+  "firstName": "s2",
+  "lastName": "s2",
+  "packets": [],
+  "role": "Sender",
+  "active": true
+}
+
+<> 2024-04-21T214029.201.json
+
+###
+
+POST http://localhost:8080/api/senders
+Content-Type: application/json
+Content-Length: 208
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "s3",
+  "password": "sa",
+  "cinSender": "Us2",
+  "dateOfBirth": "2024-04-19",
+  "email": "s2",
+  "firstName": "s2",
+  "lastName": "s2",
+  "packets": [],
+  "role": "Sender",
+  "active": true
+}
+
+<> 2024-04-21T213909.201.json
+
+###
+
 POST http://localhost:8080/api/admins
 Content-Type: application/json
 Content-Length: 236
