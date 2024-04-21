@@ -31,6 +31,13 @@ public class LivreurController {
     private Stage stage;
     private Parent root;
     private Scene scene;
+
+
+    @FXML
+    private AutocompleteTextField autocompleteTextField;
+
+    private final ObservableList<String> suggestions = FXCollections.observableArrayList("Apple", "Banana", "Cherry", "Date", "yassine");
+    private final Popup popup = new Popup();
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -116,11 +123,6 @@ public class LivreurController {
     //--------------------------------------------------                                                 -------------------------------------------------------
     //-----------------------------------------                                                                    ---------------------------------------------
     //----------------------------------------------------------------------------------------------------------------------------------------------------------
-    @FXML
-    private AutocompleteTextField autocompleteTextField;
-
-    private final ObservableList<String> suggestions = FXCollections.observableArrayList("Apple", "Banana", "Cherry", "Date");
-    private final Popup popup = new Popup();
 
     @FXML
     public void initialize() {
@@ -130,7 +132,15 @@ public class LivreurController {
     }
 
     private void showSuggestions() {
-        ListView<String> listView = new ListView<>(suggestions);
+        String input = autocompleteTextField.getText().toLowerCase();
+        ObservableList<String> filteredSuggestions = suggestions.filtered(s -> s.toLowerCase().contains(input));
+
+        if (input.isEmpty() || filteredSuggestions.isEmpty()) {
+            popup.hide();
+            return;
+        }
+
+        ListView<String> listView = new ListView<>(filteredSuggestions);
         listView.setOnMouseClicked(event -> {
             autocompleteTextField.setText(listView.getSelectionModel().getSelectedItem());
             popup.hide();
@@ -138,8 +148,9 @@ public class LivreurController {
 
         popup.getContent().clear();
         popup.getContent().add(listView);
-        popup.show(autocompleteTextField, autocompleteTextField.getScene().getWindow().getX() + autocompleteTextField.getLayoutX(), autocompleteTextField.getScene().getWindow().getY() + autocompleteTextField.getLayoutY() + autocompleteTextField.getHeight());
+        popup.show(autocompleteTextField, autocompleteTextField.localToScreen(0, autocompleteTextField.getHeight()).getX(), autocompleteTextField.localToScreen(0, autocompleteTextField.getHeight()).getY());
     }
+
 
     private void handleKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.DOWN && !popup.isShowing()) {

@@ -17,7 +17,7 @@ public class AutocompleteTextField extends TextField {
         popup = new Popup();
 
         setOnKeyPressed(this::handleKeyPressed);
-        textProperty().addListener((observable, oldValue, newValue) -> showSuggestions());
+        //textProperty().addListener((observable, oldValue, newValue) -> showSuggestions());
     }
 
     public void setSuggestions(ObservableList<String> suggestions) {
