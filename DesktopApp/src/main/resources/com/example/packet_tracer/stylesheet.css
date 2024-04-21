@@ -5,3 +5,6 @@
 .text-field {
     -fx-font-size: 25px;
 }
+.customButton {
+    -fx-shape: "M 10 0 Q 0 0 0 10 L 0 40 L 0 50 L 190 50 L 200 50 L 200 10 Q 200 0 190 0 Z";
+}

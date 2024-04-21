@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -12,27 +13,38 @@
 
 <AnchorPane maxHeight="620.0" maxWidth="1080.0" minHeight="620.0" minWidth="1080.0" prefHeight="620.0" prefWidth="1080.0" style="-fx-background-color: #CFF6FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.packet_tracer.LoginController">
    <children>
-      <Pane layoutX="102.0" layoutY="91.0" prefHeight="438.0" prefWidth="281.0" style="-fx-background-color: #9EF2E4;" stylesheets="@stylesheet.css">
+      <Pane layoutX="53.0" layoutY="91.0" prefHeight="438.0" prefWidth="396.0" style="-fx-background-color: #9EF2E4;" stylesheets="@stylesheet.css">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <children>
-            <TextField id="usernameTxt" fx:id="usernameTxt" layoutX="42.0" layoutY="64.0" prefHeight="65.0" prefWidth="198.0" promptText="username">
+            <TextField id="usernameTxt" fx:id="usernameTxt" layoutX="101.0" layoutY="89.0" prefHeight="65.0" prefWidth="198.0" promptText="username">
                <font>
                   <Font size="24.0" />
                </font></TextField>
-            <PasswordField id="passwordTxt" fx:id="passwordTxt" layoutX="42.0" layoutY="154.0" prefHeight="65.0" prefWidth="198.0" promptText="password">
+            <PasswordField id="passwordTxt" fx:id="passwordTxt" layoutX="101.0" layoutY="179.0" prefHeight="65.0" prefWidth="198.0" promptText="password">
                <font>
                   <Font size="24.0" />
                </font></PasswordField>
-            <Button id="loginButton" fx:id="loginButton" layoutX="42.0" layoutY="288.0" mnemonicParsing="false" onAction="#switchToScene" prefHeight="65.0" prefWidth="198.0" style="-fx-background-color: #008897;" stylesheets="@stylesheet.css" text="Login" textFill="WHITE">
+            <Button id="loginButton" fx:id="loginButton" layoutX="98.0" layoutY="336.0" mnemonicParsing="false" onAction="#switchToScene" prefHeight="65.0" prefWidth="198.0" style="-fx-background-color: #008897;" stylesheets="@stylesheet.css" text="Login" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Button>
+            <Button id="loginButton" fx:id="toggleButton" layoutX="-1.0" layoutY="-9.0" mnemonicParsing="false" onAction="#handleToggle" prefHeight="50.0" prefWidth="198.0" style="-fx-background-color: #008897;" styleClass="customButton" stylesheets="@stylesheet.css" text="admin" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Button>
+            <Button id="loginButton" fx:id="toggleButton1" layoutX="197.0" layoutY="-9.0" mnemonicParsing="false" onAction="#handleToggle1" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #008897;" styleClass="customButton" stylesheets="@stylesheet.css" text="sender" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Button>
+            <Label fx:id="loginErreur" layoutX="101.0" layoutY="257.0" prefHeight="36.0" prefWidth="198.0"  />
          </children>
       </Pane>
-      <Pane layoutX="464.0" layoutY="91.0" prefHeight="438.0" prefWidth="526.0" style="-fx-background-color: #9EF2E4;">
+      <Pane layoutX="505.0" layoutY="91.0" prefHeight="438.0" prefWidth="526.0" style="-fx-background-color: #9EF2E4;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
