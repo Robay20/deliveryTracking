@@ -1,0 +1,541 @@
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+Content-Length: 236
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "cinAdmin": "U200000",
+  "role": "Admin",
+  "active": true
+}
+
+<> 2024-04-20T223241.201.json
+
+###
+
+POST http://localhost:8080/api/admins/login
+Content-Type: application/json
+Content-Length: 53
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "password": "yass",
+  "username": "yassinesama"
+}
+
+<> 2024-04-20T221539.200.txt
+
+###
+
+POST http://localhost:8080/api/admins/login
+Content-Type: application/json
+Content-Length: 53
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "password": "yassinesama",
+  "username": "yass"
+}
+
+<> 2024-04-20T221111.401.txt
+
+###
+
+POST http://localhost:8080/api/admins/login
+Content-Type: application/json
+Content-Length: 53
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "password": "yassinesama",
+  "username": "yass"
+}
+
+<> 2024-04-20T221024.401.txt
+
+###
+
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+Content-Length: 236
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "cinAdmin": "U200000",
+  "role": "Admin",
+  "active": true
+}
+
+<> 2024-04-20T212820.201.json
+
+###
+
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+Content-Length: 236
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "cinAdmin": "U200000",
+  "role": "Admin",
+  "active": true
+}
+
+<> 2024-04-20T181608.201.json
+
+###
+
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+Content-Length: 236
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "cinAdmin": "U200000",
+  "role": "Admin",
+  "active": true
+}
+
+<> 2024-04-20T112306.201.json
+
+###
+
+PUT http://localhost:8080/api/admins/U200001
+Content-Type: application/json
+Content-Length: 217
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "cinAdmin": "U200000",
+  "active": true
+}
+
+<> 2024-04-20T014400.200.json
+
+###
+
+PUT http://localhost:8080/api/admins/U200001
+Content-Type: application/json
+Content-Length: 217
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinAdmin": "U200000",
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "active": true
+}
+
+<> 2024-04-20T014338.200.json
+
+###
+
+GET http://localhost:8080/api/admins/U200001
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T014310.200.json
+
+###
+
+GET http://localhost:8080/api/admins/U200000
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T014302.500.json
+
+###
+
+PUT http://localhost:8080/api/admins/U200001
+Content-Type: application/json
+Content-Length: 217
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinAdmin": "U200000",
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "active": true
+}
+
+<> 2024-04-20T014243.200.json
+
+###
+
+PUT http://localhost:8080/api/admins/U200001
+Content-Type: application/json
+Content-Length: 217
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinAdmin": "U200001",
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "active": true
+}
+
+<> 2024-04-20T014235.200.json
+
+###
+
+PUT http://localhost:8080/api/admins/U200001
+Content-Type: application/json
+{:
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "active": true,
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T014132.400.html
+
+###
+
+PUT http://localhost:8080/api/admins/U200001
+Content-Type: application/json
+{:
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "active": true
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T014107.400.html
+
+###
+
+GET http://localhost:8080/api/admins/U200001
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T013939.200.json
+
+###
+
+GET http://localhost:8080/api/admins
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T013901.200.json
+
+###
+
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+Content-Length: 217
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinAdmin": "U200001",
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "active": true
+}
+
+<> 2024-04-20T013821.201.json
+
+###
+
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+Content-Length: 220
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinAdmin": "U200001",
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "isActive": true,
+}
+
+<> 2024-04-20T013745.400.json
+
+###
+
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+Content-Length: 220
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinAdmin": "U200000",
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "isActive": true,
+}
+
+<> 2024-04-20T013726.400.json
+
+###
+
+GET http://localhost:8080/api/admins
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T013557.500.json
+
+###
+
+GET http://localhost:8080/api/admins
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T013524.500.json
+
+###
+
+PUT http://localhost:8080/api/admins/U200000
+Content-Type: application/json
+{:
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "active": true,
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T013452.400.html
+
+###
+
+PUT http://localhost:8080/api/admins/U200000
+Content-Type: application/json
+{:
+  "cinAdmin": "U200000",
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "active": true,
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T013427.400.html
+
+###
+
+PUT http://localhost:8080/api/admins/0
+Content-Type: application/json
+{:
+  "cinAdmin": "U200000",
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "active": true,
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T012449.400.html
+
+###
+
+PUT http://localhost:8080/api/admins/0
+Content-Type: application/json
+{:
+  "cinAdmin": "U200000",
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "active": true,
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T012417.400.html
+
+###
+
+PUT http://localhost:8080/api/admins/0
+Content-Type: application/json
+{:
+  "cinAdmin": "U200000",
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "isActive": true,
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-04-20T012340.400.html
+
+###
+
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+Content-Length: 199
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinAdmin": "U200000",
+  "username": "yassinesama",
+  "password": "yass",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19"
+}
+
+<> 2024-04-20T012159.201.json
+
+###
+
+DELETE http://localhost:8080/api/admins/0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+###
+
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+Content-Length: 183
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinAdmin": 0,
+  "username": "Yassine",
+  "password": "",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gamil.com",
+  "dateOfBirth": "2024-04-19"
+}
+
+<> 2024-04-20T011736.201.json
+
+###
+

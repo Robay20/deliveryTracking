@@ -1,0 +1,6 @@
+{
+  "timestamp": "2024-04-20T00:35:24.674+00:00",
+  "status": 500,
+  "error": "Internal Server Error",
+  "path": "/api/admins"
+}
