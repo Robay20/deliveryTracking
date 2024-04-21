@@ -1,10 +1,12 @@
 package com.example.packet_tracer.admin;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -13,6 +15,21 @@ import java.io.IOException;
 import java.net.URL;
 
 public class ExpediteurController {
+
+    @FXML
+    private TextField txtCin;
+
+    @FXML
+    private TextField txtFirstname;
+
+    @FXML
+    private TextField txtLastName;
+
+    @FXML
+    private TextField txtNaissance;
+
+    @FXML
+    private TextField txtPassword;
     @FXML
     private Pane LabelAccount;
     @FXML
@@ -104,5 +121,33 @@ public class ExpediteurController {
             e.printStackTrace();
             // Handle the IOException here (e.g., show an error message to the user)
         }
+    }
+
+    @FXML
+    void Onajoute(ActionEvent event) {
+        try {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void Onmodifier(ActionEvent event) {
+        try {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void Onsupprimer(ActionEvent event) {
+        try {
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

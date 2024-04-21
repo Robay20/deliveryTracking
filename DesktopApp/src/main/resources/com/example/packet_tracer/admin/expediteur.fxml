@@ -96,32 +96,52 @@
             </Label>
          </children>
       </Pane>
-      <Button layoutX="58.0" layoutY="226.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="ajouter" textFill="WHITE">
+      <Button layoutX="58.0" layoutY="226.0" mnemonicParsing="false" onAction="#Onajoute" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="ajouter" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font></Button>
-      <Button layoutX="58.0" layoutY="333.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="modifier" textFill="WHITE">
+      <Button layoutX="58.0" layoutY="333.0" mnemonicParsing="false" onAction="#Onmodifier" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="modifier" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Button>
-      <Button layoutX="58.0" layoutY="437.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="supprimer" textFill="WHITE">
+      <Button layoutX="58.0" layoutY="437.0" mnemonicParsing="false" onAction="#Onsupprimer" prefHeight="66.0" prefWidth="197.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="supprimer" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Button>
       <Pane layoutX="248.0" layoutY="146.0" prefHeight="384.0" prefWidth="425.0" style="-fx-background-color: #9ED6E3;">
          <children>
-            <TextField layoutX="68.0" layoutY="59.0" prefHeight="66.0" prefWidth="290.0" promptText="username" style="-fx-background-color: white;" stylesheets="@../stylesheet.css">
+            <TextField fx:id="txtCin" layoutX="67.0" layoutY="14.0" prefHeight="33.0" prefWidth="290.0" promptText="CIN" style="-fx-background-color: white;" stylesheets="@../stylesheet.css">
                <font>
                   <Font size="24.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="68.0" layoutY="172.0" prefHeight="66.0" prefWidth="290.0" promptText="password" style="-fx-background-color: white;" stylesheets="@../stylesheet.css">
+            <PasswordField fx:id="txtUsername" layoutX="68.0" layoutY="75.0" prefHeight="33.0" prefWidth="290.0" promptText="Username" style="-fx-background-color: white;" stylesheets="@../stylesheet.css">
                <font>
                   <Font size="24.0" />
                </font>
             </PasswordField>
+            <TextField fx:id="txtPassword" layoutX="67.0" layoutY="134.0" prefHeight="33.0" prefWidth="290.0" promptText="Password" style="-fx-background-color: white;" stylesheets="@../stylesheet.css">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtFirstname" layoutX="67.0" layoutY="192.0" prefHeight="33.0" prefWidth="290.0" promptText="First name" style="-fx-background-color: white;" stylesheets="@../stylesheet.css">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtLastName" layoutX="68.0" layoutY="251.0" prefHeight="33.0" prefWidth="290.0" promptText="Last name" style="-fx-background-color: white;" stylesheets="@../stylesheet.css">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtNaissance" layoutX="68.0" layoutY="310.0" prefHeight="33.0" prefWidth="290.0" promptText="Naissance" style="-fx-background-color: white;" stylesheets="@../stylesheet.css">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </TextField>
          </children>
       </Pane>
    </children>
