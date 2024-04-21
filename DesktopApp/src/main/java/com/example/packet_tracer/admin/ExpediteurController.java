@@ -1,49 +1,58 @@
 package com.example.packet_tracer.admin;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.time.Duration;
+import java.util.List;
 
 public class ExpediteurController {
-
-    @FXML
-    private TextField txtCin;
-
-    @FXML
-    private TextField txtFirstname;
-
-    @FXML
-    private TextField txtLastName;
-
-    @FXML
-    private TextField txtNaissance;
-
-    @FXML
-    private TextField txtPassword;
-    @FXML
-    private Pane LabelAccount;
-    @FXML
-    private Pane LabelLivreur;
-    @FXML
-    private Pane LabelPackets;
-    @FXML
-    private Pane LabelDeconnection;
-
     private Stage stage;
     private Parent root;
-    private Scene scene;
-    public void setStage(Stage stage) {
-        this.stage = stage;
+
+    @FXML
+    private TableView<Sender> tableView;
+    @FXML
+    private TableColumn<Sender, String> colCin;
+    @FXML
+    private TableColumn<Sender, String> colFirstName;
+    @FXML
+    private TableColumn<Sender, String> colLastName;
+    @FXML
+    private TableColumn<Sender, String> colDateOfBirth;
+
+    private ObservableList<Sender> senderList = FXCollections.observableArrayList();
+
+    @FXML
+    public void initialize() {
+        colCin.setCellValueFactory(new PropertyValueFactory<>("cinSender"));
+        colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        colLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        colDateOfBirth.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
+
+        tableView.setItems(senderList);
+        getallsender(null); // Trigger data loading automatically on initialize
+
     }
 
     @FXML
@@ -123,31 +132,82 @@ public class ExpediteurController {
         }
     }
 
-    @FXML
-    void Onajoute(ActionEvent event) {
-        try {
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @FXML
+    void getallsender(ActionEvent event) {
+        String endpointUrl = "http://localhost:8080/api/senders";
+        HttpClient client = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .followRedirects(HttpClient.Redirect.NORMAL)
+                .connectTimeout(Duration.ofSeconds(20))
+                .build();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpointUrl))
+                .timeout(Duration.ofMinutes(1))
+                .header("Content-Type", "application/json")
+                .GET()
+                .build();
+
+        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .thenApply(HttpResponse::body)
+                .thenAccept(jsonBody -> {
+                    try {
+                        ObjectMapper mapper = new ObjectMapper();
+                        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                        List<Sender> senders = mapper.readValue(jsonBody, new TypeReference<List<Sender>>(){});
+                        senderList.clear();
+                        senderList.addAll(senders);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
     }
 
-    @FXML
-    void Onmodifier(ActionEvent event) {
-        try {
+    public static class Sender {
+        private String username;
+        private String password;
+        private String firstName;
+        private String lastName;
+        private String email;
+        private String role;
+        private String dateOfBirth;
+        private String cinSender;
+        private List<Object> packets;  // Change `Object` to a more specific class if you know the structure of `packets`
+        private boolean active;
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+        // No-args constructor
+        public Sender() {}
 
-    @FXML
-    void Onsupprimer(ActionEvent event) {
-        try {
+        // Getters and setters for all fields
+        public String getUsername() { return username; }
+        public void setUsername(String username) { this.username = username; }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        public String getPassword() { return password; }
+        public void setPassword(String password) { this.password = password; }
 
+        public String getFirstName() { return firstName; }
+        public void setFirstName(String firstName) { this.firstName = firstName; }
+
+        public String getLastName() { return lastName; }
+        public void setLastName(String lastName) { this.lastName = lastName; }
+
+        public String getEmail() { return email; }
+        public void setEmail(String email) { this.email = email; }
+
+        public String getRole() { return role; }
+        public void setRole(String role) { this.role = role; }
+
+        public String getDateOfBirth() { return dateOfBirth; }
+        public void setDateOfBirth(String dateOfBirth) { this.dateOfBirth = dateOfBirth; }
+
+        public String getCinSender() { return cinSender; }
+        public void setCinSender(String cinSender) { this.cinSender = cinSender; }
+
+        public List<Object> getPackets() { return packets; }
+        public void setPackets(List<Object> packets) { this.packets = packets; }
+
+        public boolean isActive() { return active; }
+        public void setActive(boolean active) { this.active = active; }
     }
 }

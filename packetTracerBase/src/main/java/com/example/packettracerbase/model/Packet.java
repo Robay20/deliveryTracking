@@ -4,6 +4,8 @@ import lombok.*;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Set;
 
@@ -31,7 +33,7 @@ public class Packet {
     @ManyToMany(mappedBy = "packets")
     private Set<Driver> drivers;
 
-    private LocalTime sentTime;
+    private LocalDateTime sentTime;
 
     // Use @ElementCollection to store the collection of strings
     @ElementCollection
