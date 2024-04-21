@@ -1,12 +1,18 @@
 package com.example.packet_tracer.admin;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -103,6 +109,41 @@ public class LivreurController {
         } catch (IOException e) {
             e.printStackTrace();
             // Handle the IOException here (e.g., show an error message to the user)
+        }
+    }
+
+    //-------------------------------------------------------just a test of an idea that might works -----------------------------------------------------------
+    //--------------------------------------------------                                                 -------------------------------------------------------
+    //-----------------------------------------                                                                    ---------------------------------------------
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------
+    @FXML
+    private AutocompleteTextField autocompleteTextField;
+
+    private final ObservableList<String> suggestions = FXCollections.observableArrayList("Apple", "Banana", "Cherry", "Date");
+    private final Popup popup = new Popup();
+
+    @FXML
+    public void initialize() {
+        autocompleteTextField.setSuggestions(suggestions);
+        autocompleteTextField.setOnKeyPressed(this::handleKeyPressed);
+        autocompleteTextField.textProperty().addListener((observable, oldValue, newValue) -> showSuggestions());
+    }
+
+    private void showSuggestions() {
+        ListView<String> listView = new ListView<>(suggestions);
+        listView.setOnMouseClicked(event -> {
+            autocompleteTextField.setText(listView.getSelectionModel().getSelectedItem());
+            popup.hide();
+        });
+
+        popup.getContent().clear();
+        popup.getContent().add(listView);
+        popup.show(autocompleteTextField, autocompleteTextField.getScene().getWindow().getX() + autocompleteTextField.getLayoutX(), autocompleteTextField.getScene().getWindow().getY() + autocompleteTextField.getLayoutY() + autocompleteTextField.getHeight());
+    }
+
+    private void handleKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.DOWN && !popup.isShowing()) {
+            showSuggestions();
         }
     }
 }
