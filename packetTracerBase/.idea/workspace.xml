@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="new challange" />
+    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="new challange">
+      <change beforePath="$PROJECT_DIR$/../DesktopApp/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DesktopApp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/.idea/misc.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
