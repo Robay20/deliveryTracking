@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,16 +7,16 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center"
-    android:background="#FFFFFF"
+    android:background="@drawable/gradiantbackground"
     tools:context=".MainActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F2FCFE"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="16dp"
+
         tools:layout_editor_absoluteY="16dp">
 
         <ImageView
@@ -35,40 +35,55 @@
             android:id="@+id/txtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="400dp"
-            android:textColor="@color/black"
-            android:padding="20dp"
+            android:layout_marginTop="375dp"
+            android:autofillHints="Your username"
+            android:background="@drawable/txtfieldstyle"
+            android:ems="10"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+
             android:hint="Username"
             android:inputType="textPersonName"
-            android:ems="10"
-            android:backgroundTint="#008AD5"
-            android:autofillHints="Your username" />
+            android:padding="20dp"
+            android:textColor="#001D2F"
+            android:textColorHint="#001D2F" />
 
         <!-- EditText for Password -->
         <EditText
             android:id="@+id/txtPassword"
-            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:padding="20dp"
-            android:hint="@string/password"
-            android:inputType="textPassword"
+            android:layout_marginTop="20dp"
+            android:autofillHints="Your password"
+            android:background="@drawable/txtfieldstyle"
             android:ems="10"
-            android:backgroundTint="#038AD5"
-            android:autofillHints="Your password" />
+            android:hint="Password"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:inputType="textPassword"
+            android:padding="20dp"
+            android:textColor="#001D2F"
+            android:textColorHint="#001D2F" />
 
         <!-- Submit Button -->
         <Button
             android:id="@+id/buttonSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="@string/log_in"
+            android:shadowColor="#001D2F"
+            android:shadowDx="12.0"
+            android:shadowDy="12.0"
+            android:shadowRadius="12.0"
+            android:layout_marginTop="38dp"
+            android:background="@drawable/buttonlogin"
             android:onClick="attemptLogin"
-            android:background="#003366"
-        android:textColor="#FFFFFF"/>
+            android:padding="16dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+
+            android:text="@string/log_in"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

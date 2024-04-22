@@ -1,5 +1,6 @@
 package com.example.packettracer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         String requestBody = String.format("{\"username\":\"%s\",\"password\":\"%s\"}", username, password);
         RequestBody body = RequestBody.create(mediaType, requestBody);
         Request request = new Request.Builder()
-                .url("http://192.168.43.207:8080/api/admins/login")
+                .url("http://192.168.43.207:8080/api/drivers/login")
                 .post(body)
                 .build();
 
@@ -65,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(() -> {
                         Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                         Log.d("LoginStatus", "Login successful: " + responseBody);
+
+                        Intent intent = new Intent(MainActivity.this,Dashboard.class);
+                        startActivity(intent);
                     });
                 } else {
                     runOnUiThread(() -> {
