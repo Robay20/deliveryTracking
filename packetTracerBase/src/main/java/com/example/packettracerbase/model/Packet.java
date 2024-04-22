@@ -33,7 +33,11 @@ public class Packet {
     @ManyToMany(mappedBy = "packets")
     private Set<Driver> drivers;
 
-    private LocalDateTime sentTime;
+    @ElementCollection
+    @CollectionTable(name = "packet_time_changes", joinColumns = @JoinColumn(name = "cinPacket"))
+    @Column(name = "time_change")
+    private Set<LocalDateTime> timeChanges; // Corrected collection of LocalDateTime
+
 
     // Use @ElementCollection to store the collection of strings
     @ElementCollection
@@ -46,4 +50,8 @@ public class Packet {
     private String status;
 
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "idRouter")
+    private Route route;
 }

@@ -43,11 +43,12 @@ public class PacketServiceImpl implements PacketService {
         packet.setSender(packetDetails.getSender());
         packet.setClient(packetDetails.getClient());
         packet.setDrivers(packetDetails.getDrivers());
-        packet.setSentTime(packetDetails.getSentTime());
+        packet.setTimeChanges(packetDetails.getTimeChanges());
         packet.setMedicalPieces(packetDetails.getMedicalPieces());
         packet.setCity(packetDetails.getCity());
         packet.setStatus(packetDetails.getStatus());
         packet.setDescription(packetDetails.getDescription());
+        packet.setRoute(packetDetails.getRoute());
         // Set other fields as needed
 
         return packetRepository.save(packet);

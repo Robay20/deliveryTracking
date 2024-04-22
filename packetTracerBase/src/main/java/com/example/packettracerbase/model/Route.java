@@ -33,4 +33,7 @@ public class Route{
     private Float distance;
 
     private Float duration;
+
+    @OneToMany(mappedBy = "route")
+    private Set<Packet> packets;
 }

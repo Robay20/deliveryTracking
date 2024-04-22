@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="new challange">
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="login and packet done successfully">
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/drawable/logo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_dashboard.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +142,7 @@
       <workItem from="1713473843059" duration="24124000" />
       <workItem from="1713629342473" duration="1165000" />
       <workItem from="1713633273241" duration="15192000" />
-      <workItem from="1713803659982" duration="1870000" />
+      <workItem from="1713803659982" duration="6291000" />
     </task>
     <task id="LOCAL-00001" summary="push it">
       <option name="closed" value="true" />
@@ -161,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713701573966</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="login and packet done successfully">
+      <option name="closed" value="true" />
+      <created>1713813961665</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713813961665</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +189,7 @@
     <MESSAGE value="push it" />
     <MESSAGE value="login  access" />
     <MESSAGE value="new challange" />
-    <option name="LAST_COMMIT_MESSAGE" value="new challange" />
+    <MESSAGE value="login and packet done successfully" />
+    <option name="LAST_COMMIT_MESSAGE" value="login and packet done successfully" />
   </component>
 </project>

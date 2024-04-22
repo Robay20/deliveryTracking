@@ -47,6 +47,7 @@ public class SenderServiceImpl implements SenderService {
         sender.setLastName(senderDetails.getLastName());
         sender.setEmail(senderDetails.getEmail());
         sender.setDateOfBirth(senderDetails.getDateOfBirth());
+        sender.setPackets(senderDetails.getPackets());
         // Set other fields as needed
 
         return senderRepository.save(sender);
