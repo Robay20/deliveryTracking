@@ -1,13 +1,20 @@
 package com.example.packettracer;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.journeyapps.barcodescanner.ScanContract;
+import com.journeyapps.barcodescanner.ScanOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,6 +28,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class Dashboard extends AppCompatActivity {
+    Button btn_scan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +37,42 @@ public class Dashboard extends AppCompatActivity {
         listView = findViewById(R.id.list_packet);
         fetchJsonData();
 
+        btn_scan =findViewById(R.id.btn_qr_code);
+        btn_scan.setOnClickListener(v->
+        {
+            scanCode(null);
+        });
+
 
     }
+
+    public void scanCode(View view)
+    {
+        ScanOptions options = new ScanOptions();
+        options.setPrompt("Volume up to flash on");
+        options.setBeepEnabled(true);
+        options.setOrientationLocked(true);
+        options.setCaptureActivity(CaptureAct.class);
+        barLaucher.launch(options);
+    }
+
+    ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result->
+    {
+        if(result.getContents() !=null)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(Dashboard.this);
+            builder.setTitle("Result");
+            builder.setMessage(result.getContents());
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener()
+            {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i)
+                {
+                    dialogInterface.dismiss();
+                }
+            }).show();
+        }
+    });
 
     public class Packet {
         private int cinPacket;
