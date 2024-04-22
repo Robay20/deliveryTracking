@@ -53,4 +53,5 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         Optional<Driver> clientOptional = driverRepository.findByUsernameAndPassword(username, password);
         return clientOptional.isPresent();
     }
+
 }

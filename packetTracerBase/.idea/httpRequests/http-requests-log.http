@@ -1,3 +1,99 @@
+POST http://localhost:8080/api/drivers/login
+Content-Type: application/json
+Content-Length: 42
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "d1",
+  "password": "d1"
+}
+
+<> 2024-04-22T172958.405.json
+
+###
+
+POST http://localhost:8080/api/admins/login
+Content-Type: application/json
+Content-Length: 53
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "password": "yass",
+  "username": "yassinesama"
+}
+
+<> 2024-04-22T172621.200.txt
+
+###
+
+POST http://localhost:8080/api/drivers/login
+Content-Type: application/json
+Content-Length: 42
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "d1",
+  "password": "d1"
+}
+
+<> 2024-04-22T172559.405.json
+
+###
+
+POST http://localhost:8080/api/drivers/login
+Content-Type: application/json
+Content-Length: 42
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "password": "d1",
+  "username": "d1"
+}
+
+<> 2024-04-22T172426.405.json
+
+###
+
+POST http://localhost:8080/api/drivers/login
+Content-Type: application/json
+Content-Length: 42
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "password": "d1",
+  "username": "d1"
+}
+
+<> 2024-04-22T172419.405.json
+
+###
+
+POST http://192.168.43.207:8080/api/drivers/login
+Content-Type: application/json
+Content-Length: 42
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "password": "d1",
+  "username": "d1"
+}
+
+<> 2024-04-22T172347.405.json
+
+###
+
 POST http://localhost:8080/api/senders
 Content-Type: application/json
 Content-Length: 208

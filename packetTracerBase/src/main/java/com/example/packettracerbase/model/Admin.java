@@ -15,5 +15,6 @@ public class Admin extends Person{
     @Id
     private String cinAdmin;
 
+    @Builder.Default
     private Role role = Role.Admin;
 }

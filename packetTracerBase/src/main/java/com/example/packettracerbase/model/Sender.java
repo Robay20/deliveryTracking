@@ -17,6 +17,7 @@ public class Sender extends Person{
     @Id
     private String cinSender;
 
+    @Builder.Default
     private Role role = Role.Sender;
 
     // Define the one-to-many relationship with Packet entities

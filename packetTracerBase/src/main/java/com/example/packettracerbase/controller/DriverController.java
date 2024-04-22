@@ -1,6 +1,6 @@
 package com.example.packettracerbase.controller;
 
-import com.example.packettracerbase.controller.model.AuthenticationRequest;
+import com.example.packettracerbase.model.AuthenticationRequest;
 import com.example.packettracerbase.model.Driver;
 import com.example.packettracerbase.service.AuthenticationService;
 import com.example.packettracerbase.service.DriverService;
@@ -20,10 +20,9 @@ public class DriverController {
 
 
     @Autowired
-    public DriverController(DriverService driverService,AuthenticationService authenticationService) {
+    public DriverController(DriverService driverService, AuthenticationService authenticationService) {
         this.driverService = driverService;
         this.authenticationService = authenticationService;
-
     }
 
     @GetMapping
@@ -56,6 +55,7 @@ public class DriverController {
         driverService.deleteDriver(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody AuthenticationRequest request) {
         boolean isAuthenticated = authenticationService.authenticateDriver(request.getUsername(), request.getPassword());

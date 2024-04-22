@@ -1,6 +1,6 @@
 package com.example.packettracerbase.controller;
 
-import com.example.packettracerbase.controller.model.AuthenticationRequest;
+import com.example.packettracerbase.model.AuthenticationRequest;
 import com.example.packettracerbase.model.Admin;
 import com.example.packettracerbase.service.AdminService;
 import com.example.packettracerbase.service.AuthenticationService;
@@ -21,7 +21,6 @@ public class AdminController {
 
     @Autowired
     public AdminController(AdminService adminService,AuthenticationService authenticationService) {
-
         this.adminService = adminService;
         this.authenticationService = authenticationService;
     }

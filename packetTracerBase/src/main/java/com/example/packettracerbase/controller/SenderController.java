@@ -1,6 +1,6 @@
 package com.example.packettracerbase.controller;
 
-import com.example.packettracerbase.controller.model.AuthenticationRequest;
+import com.example.packettracerbase.model.AuthenticationRequest;
 import com.example.packettracerbase.model.Sender;
 import com.example.packettracerbase.service.AuthenticationService;
 import com.example.packettracerbase.service.SenderService;

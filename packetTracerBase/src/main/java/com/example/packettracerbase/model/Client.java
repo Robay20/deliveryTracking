@@ -17,6 +17,7 @@ public class Client extends Person{
     @Id
     private String cinClient;
 
+    @Builder.Default
     private Role role = Role.Client;
 
     @Embedded

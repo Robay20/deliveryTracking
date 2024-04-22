@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="new challange">
       <change beforePath="$PROJECT_DIR$/../PacketTracer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/drawable/logo.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_login.xml" afterDir="false" />
@@ -142,7 +143,7 @@
       <workItem from="1713473843059" duration="24124000" />
       <workItem from="1713629342473" duration="1165000" />
       <workItem from="1713633273241" duration="15192000" />
-      <workItem from="1713803659982" duration="970000" />
+      <workItem from="1713803659982" duration="1870000" />
     </task>
     <task id="LOCAL-00001" summary="push it">
       <option name="closed" value="true" />
