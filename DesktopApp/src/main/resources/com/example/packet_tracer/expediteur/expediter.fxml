@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -15,7 +15,7 @@
    <children>
       <Pane layoutX="755.0" prefHeight="620.0" prefWidth="325.0" style="-fx-background-color: #9EF2E4;">
          <children>
-            <Pane fx:id="LabelCompte" layoutY="92.0" onMouseClicked="#switchToAccount" prefHeight="66.0" prefWidth="326.0">
+            <Pane layoutY="92.0" onMouseClicked="#switchToAccount" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -29,7 +29,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="LabelHistorique" layoutY="290.0" onMouseClicked="#switchToHistorique" prefHeight="66.0" prefWidth="326.0">
+            <Pane layoutY="356.0" onMouseClicked="#switchToHistorique" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -57,7 +57,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutY="224.0" prefHeight="66.0" prefWidth="326.0" style="-fx-background-color: #86D2C5;">
+            <Pane layoutY="224.0" onMouseClicked="#switchToSuiver" prefHeight="66.0" prefWidth="326.0" style="-fx-background-color: #86D2C5;">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Packets">
                      <font>
@@ -71,7 +71,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane fx:id="LabelDeconnection" layoutY="356.0" onMouseClicked="#switchToLogin" prefHeight="66.0" prefWidth="326.0">
+            <Pane layoutY="422.0" onMouseClicked="#switchToLogin" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Déconnection">
                      <font>
@@ -83,6 +83,20 @@
                         <Image url="@../image/icons8-logout-96.png" />
                      </image>
                   </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutY="290.0" onMouseClicked="#switchToLivreur" prefHeight="66.0" prefWidth="326.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8-deliveryman-96.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Livreurs">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children></Pane>
@@ -109,13 +123,18 @@
             </Label>
          </children>
       </Pane>
-      <ChoiceBox layoutX="176.0" layoutY="158.0" prefHeight="59.0" prefWidth="402.0" />
+      <ComboBox fx:id="driverComboBox" layoutX="176.0" layoutY="158.0" prefHeight="59.0" prefWidth="402.0" promptText="select a livreur" stylesheets="@../stylesheet.css" />
       <TextField layoutX="174.0" layoutY="268.0" prefHeight="59.0" prefWidth="402.0" promptText="Packet serial number">
          <font>
             <Font size="22.0" />
          </font>
       </TextField>
       <Button fx:id="ButtonAnnuler" layoutX="411.0" layoutY="397.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #BDBDBD;" stylesheets="@../stylesheet.css" text="annuler">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="refreshButton" layoutX="578.0" layoutY="158.0" mnemonicParsing="false" onAction="#handleRefreshButton" prefHeight="59.0" prefWidth="73.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="🔍" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>

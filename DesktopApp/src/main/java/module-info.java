@@ -11,15 +11,16 @@ module com.example.packet_tracer {
     // Package exports
     exports com.example.packet_tracer;
     exports com.example.packet_tracer.admin to javafx.fxml, com.fasterxml.jackson.databind;
-    exports com.example.packet_tracer.expediteur to javafx.fxml;
+    exports com.example.packet_tracer.expediteur to javafx.fxml, com.fasterxml.jackson.databind;
 
     // Package opens
     // Open 'com.example.packet_tracer.admin' to both javafx.fxml, javafx.base, and com.fasterxml.jackson.databind
     opens com.example.packet_tracer.admin to javafx.fxml, javafx.base, com.fasterxml.jackson.databind;
+    opens com.example.packet_tracer.expediteur to javafx.fxml, javafx.base, com.fasterxml.jackson.databind;
 
     // Open 'com.example.packet_tracer' only to javafx.fxml
     opens com.example.packet_tracer to javafx.fxml;
 
     // Open 'com.example.packet_tracer.expediteur' only to javafx.fxml
-    opens com.example.packet_tracer.expediteur to javafx.fxml;
+
 }

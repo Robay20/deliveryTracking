@@ -1,6 +1,6 @@
 package com.example.packet_tracer.expediteur;
 
-import com.example.packet_tracer.LoginController;
+import com.example.packet_tracer.admin.AutocompleteTextField;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,10 +13,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,30 +33,29 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.List;
-import java.util.ResourceBundle;
 
-public class ExpediterController {
-
+public class LivreurController {
     @FXML
     private Button ButtonConfirmer;
     @FXML
-    private Button refreshButton;
-    @FXML
     private Button ButtonAnnuler;
     @FXML
-    private Pane LabelCompte;
+    private Pane LabelPackets;
     @FXML
     private Pane LabelDeconnection;
     @FXML
-    private Pane LabelHistorique;
+    private Pane LabelAccount;
     @FXML
     private Pane LabelNotification;
-    @FXML
-    private Pane LabelSuiver;
 
     private Stage stage;
     private Parent root;
     private Scene scene;
+    @FXML
+    private AutocompleteTextField autocompleteTextField;
+
+    private final ObservableList<String> suggestions = FXCollections.observableArrayList("all");
+    private final Popup popup = new Popup();
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -74,25 +79,8 @@ public class ExpediterController {
             // Handle the IOException here (e.g., show an error message to the user)
         }
     }
-    @FXML
-    private void switchToAccount(MouseEvent event) throws IOException {
-        try {
-            // Load login.fxml from the resources directory
-            URL url = getClass().getResource("/com/example/packet_tracer/expediteur/account.fxml");
-            if (url == null) {
-                throw new IOException("FXML file not found");
-            }
 
-            root = FXMLLoader.load(url);
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle the IOException here (e.g., show an error message to the user)
-        }
-    }
+
     @FXML
     private void switchToNotification(MouseEvent event) throws IOException {
         try {
@@ -132,6 +120,25 @@ public class ExpediterController {
         }
     }
     @FXML
+    private void switchToAccount(MouseEvent event) throws IOException {
+        try {
+            // Load login.fxml from the resources directory
+            URL url = getClass().getResource("/com/example/packet_tracer/expediteur/account.fxml");
+            if (url == null) {
+                throw new IOException("FXML file not found");
+            }
+
+            root = FXMLLoader.load(url);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the IOException here (e.g., show an error message to the user)
+        }
+    }
+    @FXML
     private void switchToHistorique(MouseEvent event) throws IOException {
         try {
             // Load login.fxml from the resources directory
@@ -150,59 +157,92 @@ public class ExpediterController {
             // Handle the IOException here (e.g., show an error message to the user)
         }
     }
-    @FXML
-    private void switchToLivreur(MouseEvent event) throws IOException {
-        try {
-            // Load login.fxml from the resources directory
-            URL url = getClass().getResource("/com/example/packet_tracer/expediteur/livreur.fxml");
-            if (url == null) {
-                throw new IOException("FXML file not found");
-            }
 
-            root = FXMLLoader.load(url);
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Handle the IOException here (e.g., show an error message to the user)
-        }
-    }
+    //----------------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------------
+    //----------------------------------fetching data into table view -----------------------------------
+    //------------------------                                              ------------------------------
 
-    //------------------------------------------------------------------------------------------------
-    //------------------------choice box--------------------------------------------------------------
 
-    @FXML
-    private ComboBox<String> driverComboBox;
 
-    private ObservableList<ExpediterController.Driver1> driverList = FXCollections.observableArrayList(); // Initialize driverList;
     @FXML
     public void initialize() {
-        getalldriver();
-        populateDriverComboBox();
-    }
-    @FXML
-    private void handleRefreshButton(ActionEvent event) {
-        // Call the method to fetch all drivers from the database again
-        driverComboBox.getItems().clear();
-        driverComboBox.setPromptText("Select a Livreur");
-        getalldriver();
-        populateDriverComboBox();
+        autocompleteTextField.setSuggestions(suggestions);
+        autocompleteTextField.setOnKeyPressed(this::handleKeyPressed);
+        autocompleteTextField.textProperty().addListener((observable, oldValue, newValue) -> showSuggestions());
+        colCin.setCellValueFactory(new PropertyValueFactory<>("cinDriver"));
+        colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        colLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        colDateOfBirth.setCellValueFactory(new PropertyValueFactory<>("dateOfBirth"));
+
+        tableView.setItems(driverList);
+        getalldriver(null); // Trigger data loading automatically on initialize
+
     }
 
-    private void populateDriverComboBox() {
-        // Check if driverList is not null before populating the ComboBox
-        if (driverList != null) {
-            // Loop through the driverList and add cinDriver values to the ComboBox
-            for (Driver1 driver : driverList) {
-                String cinDriverString = String.valueOf(driver.getCinDriver());
-                driverComboBox.getItems().add(cinDriverString);
-            }
+    private void showSuggestions() {
+        String input = autocompleteTextField.getText().toLowerCase();
+        ObservableList<String> filteredSuggestions = suggestions.filtered(s -> s.toLowerCase().contains(input));
+
+        if (input.isEmpty() || filteredSuggestions.isEmpty()) {
+            popup.hide();
+            return;
+        }
+
+        ListView<String> listView = new ListView<>(filteredSuggestions);
+        listView.setOnMouseClicked(event -> {
+            String selectedItem = listView.getSelectionModel().getSelectedItem();
+            autocompleteTextField.setText(selectedItem);
+            popup.hide();
+            updateTableView(selectedItem);
+        });
+
+        popup.getContent().clear();
+        popup.getContent().add(listView);
+        popup.show(autocompleteTextField, autocompleteTextField.localToScreen(0, autocompleteTextField.getHeight()).getX(), autocompleteTextField.localToScreen(0, autocompleteTextField.getHeight()).getY());
+    }
+    private void updateTableView(String selectedItem) {
+        if ("all".equalsIgnoreCase(selectedItem)) {
+            tableView.setItems(driverList);
+            getalldriver(null);
+        } else {
+            // Filter the driverList based on the selected item
+            ObservableList<Driver1> filteredDrivers = driverList.filtered(driver ->
+                    driver.getCinDriver().equalsIgnoreCase(selectedItem));
+
+            // Set the updated filteredDrivers to the TableView
+            tableView.setItems(filteredDrivers);
+
         }
     }
+
+
+
+    private void handleKeyPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.DOWN && !popup.isShowing()) {
+            showSuggestions();
+        }
+    }
+
+    //--------------------------------------------------------------------------------------------------------------------------------
+    //----------------------------------------data base fetch part -------------------------------------------------------------
+    //----------------------------------------                          ------------------------------------------
+    //---------------------------------                                      --------------------------------------
     @FXML
-    void getalldriver() {
+    private TableView<Driver1> tableView;
+    @FXML
+    private TableColumn<LivreurController.Driver1, String> colCin;
+    @FXML
+    private TableColumn<LivreurController.Driver1, String> colFirstName;
+    @FXML
+    private TableColumn<LivreurController.Driver1, String> colLastName;
+    @FXML
+    private TableColumn<LivreurController.Driver1, String> colDateOfBirth;
+
+    private ObservableList<LivreurController.Driver1> driverList = FXCollections.observableArrayList();
+
+    @FXML
+    void getalldriver(ActionEvent event) {
         String endpointUrl = "http://localhost:8080/api/drivers";
         HttpClient client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
@@ -223,7 +263,13 @@ public class ExpediterController {
                     try {
                         ObjectMapper mapper = new ObjectMapper();
                         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-                        List<ExpediterController.Driver1> drivers = mapper.readValue(jsonBody, new TypeReference<List<ExpediterController.Driver1>>(){});
+                        List<LivreurController.Driver1> drivers = mapper.readValue(jsonBody, new TypeReference<List<LivreurController.Driver1>>(){});
+                        //------------filling the suggestions----------------------
+                        for (Driver1 driver: drivers) {
+                            suggestions.add(driver.cinDriver);
+
+                        }
+
 
                         driverList.clear();
                         driverList.addAll(drivers);
@@ -231,7 +277,6 @@ public class ExpediterController {
                         e.printStackTrace();
                     }
                 });
-
     }
 
 
