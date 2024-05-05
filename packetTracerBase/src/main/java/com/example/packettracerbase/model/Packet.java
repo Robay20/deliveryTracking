@@ -1,5 +1,6 @@
 package com.example.packettracerbase.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import jakarta.persistence.*;
@@ -29,7 +30,8 @@ public class Packet {
     @JoinColumn(name = "cinClient")
     private Client client;
 
-
+    //@JsonIgnore
+    //@JsonBackReference
     @ManyToMany(mappedBy = "packets")
     private Set<Driver> drivers;
 

@@ -50,6 +50,8 @@ public class DriverServiceImpl implements DriverService {
         driver.setLicenseNumber(driverDetails.getLicenseNumber());
         driver.setLicensePlate(driverDetails.getLicensePlate());
         driver.setBrand(driverDetails.getBrand());
+        driver.setRoutes(driverDetails.getRoutes());
+        driver.setPackets(driverDetails.getPackets());
         // Set other fields as needed
 
         return driverRepository.save(driver);

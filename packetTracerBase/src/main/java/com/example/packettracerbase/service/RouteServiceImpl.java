@@ -45,6 +45,7 @@ public class RouteServiceImpl implements RouteService {
         route.setEndTimeEstimated(routeDetails.getEndTimeEstimated());
         route.setDistance(routeDetails.getDistance());
         route.setDuration(routeDetails.getDuration());
+        route.setPackets(route.getPackets());
         // Set other fields as needed
 
         return routeRepository.save(route);

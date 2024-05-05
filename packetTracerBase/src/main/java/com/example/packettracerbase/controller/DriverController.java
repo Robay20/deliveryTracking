@@ -60,7 +60,7 @@ public class DriverController {
     public ResponseEntity<String> login(@RequestBody AuthenticationRequest request) {
         boolean isAuthenticated = authenticationService.authenticateDriver(request.getUsername(), request.getPassword());
         if (isAuthenticated) {
-            return new ResponseEntity<>("Driver login successful", HttpStatus.OK);
+                return new ResponseEntity<>("Driver login successful", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Driver login failed", HttpStatus.UNAUTHORIZED);
         }

@@ -1,6 +1,7 @@
 package com.example.packettracerbase.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,18 +22,22 @@ public class Route{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRouter;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime startTime;
 
     @ElementCollection
     private Set<Location> waypoints;
 
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime  endTimeEstimated;
 
     private Float distance;
 
     private Float duration;
+
+    //@JsonIgnore
+    //@JsonBackReference
+    @ManyToMany(mappedBy = "routes")
+    private Set<Driver> drivers;
+
 
     @OneToMany(mappedBy = "route")
     private Set<Packet> packets;

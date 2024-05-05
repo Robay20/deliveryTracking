@@ -6,6 +6,6 @@
     @Embeddable
     @Data
     public class Location {
-        protected Float latitude;
-        protected Float longitude;
+        protected Double latitude;
+        protected Double longitude;
     }

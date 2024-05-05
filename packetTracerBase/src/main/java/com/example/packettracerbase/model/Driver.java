@@ -1,5 +1,6 @@
 package com.example.packettracerbase.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,7 +19,7 @@ public class Driver extends Person{
     private String cinDriver;
 
     @Builder.Default
-    private Role role = Role.Driver;
+    private final Role role = Role.Driver;
 
     @Column(unique = true)
     private String licenseNumber;
@@ -27,12 +28,26 @@ public class Driver extends Person{
 
     private String brand;
 
-    @ManyToMany
+    //@JsonIgnore
+    //@JsonManagedReference
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "driver_packet",
             joinColumns = @JoinColumn(name = "driver_id"),
             inverseJoinColumns = @JoinColumn(name = "packet_id")
     )
+    @EqualsAndHashCode.Exclude
     private Set<Packet> packets;
+
+    //@JsonIgnore
+    //@JsonManagedReference
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "driver_route",
+            joinColumns = @JoinColumn(name = "driver_id"),
+            inverseJoinColumns = @JoinColumn(name = "route_id")
+    )
+    @EqualsAndHashCode.Exclude
+    private Set<Route> routes;
 
 }
