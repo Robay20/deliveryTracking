@@ -28,9 +28,6 @@ public class Driver extends Person{
 
     private String brand;
 
-    @OneToMany(mappedBy = "driver")
-    private Set<Packet> packetsDriver;
-
     @OneToMany(mappedBy = "livreur")
     private Set<Bordoreau> bordoreausDriver;
 }

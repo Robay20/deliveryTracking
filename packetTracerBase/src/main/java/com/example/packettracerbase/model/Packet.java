@@ -29,11 +29,8 @@ public class Packet {
 
     private int sachets;
 
-    private String status;
-
-    @ManyToOne
-    @JoinColumn(name = "cinDriver")
-    private Driver driver;
+    @Enumerated(EnumType.STRING)
+    private PacketStatus status;
 
     @ManyToOne
     @JoinColumn(name = "bordoreau")
@@ -41,4 +38,5 @@ public class Packet {
 
     @OneToMany(mappedBy = "packetTransfert")
     private Set<Transfert> transferts;
+
 }

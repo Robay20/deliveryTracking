@@ -54,7 +54,6 @@ public class DriverServiceImpl implements DriverService {
 
         // Assuming you handle these collections outside of this update logic,
         // or you ensure these are managed within the same transactional context.
-        existingDriver.setPacketsDriver(driverDetails.getPacketsDriver());
         existingDriver.setBordoreausDriver(driverDetails.getBordoreausDriver());
 
         return driverRepository.save(existingDriver);

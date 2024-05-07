@@ -43,7 +43,6 @@ public class PacketServiceImpl implements PacketService {
         existingPacket.setColis(packetDetails.getColis());         // Update the number of colis
         existingPacket.setSachets(packetDetails.getSachets());     // Update the number of sachets
         existingPacket.setStatus(packetDetails.getStatus());       // Update the status
-        existingPacket.setDriver(packetDetails.getDriver());       // Update the driver
         existingPacket.setBordoreau(packetDetails.getBordoreau()); // Update the bordoreau
 
         // Assuming transferts are to be handled separately or are updated through a different mechanism,

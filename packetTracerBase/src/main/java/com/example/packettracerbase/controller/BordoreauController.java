@@ -1,5 +1,6 @@
 package com.example.packettracerbase.controller;
 
+import com.example.packettracerbase.dto.BordoreauQRDTO;
 import com.example.packettracerbase.model.Bordoreau;
 import com.example.packettracerbase.service.BordoreauService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,11 @@ public class BordoreauController {
     public ResponseEntity<Void> deleteBordoreau(@PathVariable Long id) {
         bordoreauService.deleteBordoreau(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/{id}/qr")
+    public ResponseEntity<BordoreauQRDTO> getBordoreauQR(@PathVariable Long id) {
+        BordoreauQRDTO bordoreauQRDTO = bordoreauService.getBordoreauForQR(id);
+        return ResponseEntity.ok(bordoreauQRDTO);
     }
 }
