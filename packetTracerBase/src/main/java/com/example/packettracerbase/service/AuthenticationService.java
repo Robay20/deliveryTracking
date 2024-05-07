@@ -1,9 +1,10 @@
 package com.example.packettracerbase.service;
 
-public interface AuthenticationService {
-    boolean authenticateAdmin(String username, String password);
-    boolean authenticateSender(String username, String password);
-    boolean authenticateClient(String username, String password);
+import java.util.Optional;
 
-    boolean authenticateDriver(String username, String password);
+public interface AuthenticationService {
+    Optional<String> authenticateAdmin(String username, String password);
+    Optional<String> authenticateSender(String username, String password);
+    Optional<String> authenticateClient(String username, String password);
+    Optional<String> authenticateDriver(String username, String password);
 }

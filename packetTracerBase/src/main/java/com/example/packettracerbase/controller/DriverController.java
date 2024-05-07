@@ -9,7 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/drivers")
@@ -57,10 +60,13 @@ public class DriverController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody AuthenticationRequest request) {
-        boolean isAuthenticated = authenticationService.authenticateDriver(request.getUsername(), request.getPassword());
-        if (isAuthenticated) {
-                return new ResponseEntity<>("Driver login successful", HttpStatus.OK);
+    public ResponseEntity<?> loginDriver(@RequestBody AuthenticationRequest request) {
+        Optional<String> cinDriver = authenticationService.authenticateDriver(request.getUsername(), request.getPassword());
+        if (cinDriver.isPresent()) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Driver login successful");
+            response.put("cinDriver", cinDriver.get());
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Driver login failed", HttpStatus.UNAUTHORIZED);
         }

@@ -9,7 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/senders")
@@ -59,12 +62,16 @@ public class SenderController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody AuthenticationRequest request) {
-        boolean isAuthenticated = authenticationService.authenticateSender(request.getUsername(), request.getPassword());
-        if (isAuthenticated) {
-            return new ResponseEntity<>("Sender login successful", HttpStatus.OK);
+    public ResponseEntity<?> loginSender(@RequestBody AuthenticationRequest request) {
+        Optional<String> cinSender = authenticationService.authenticateSender(request.getUsername(), request.getPassword());
+        if (cinSender.isPresent()) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Sender login successful");
+            response.put("cinSender", cinSender.get());
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Sender login failed", HttpStatus.UNAUTHORIZED);
         }
     }
+
 }

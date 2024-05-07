@@ -9,7 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/admins")
@@ -57,12 +60,16 @@ public class AdminController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody AuthenticationRequest request) {
-        boolean isAuthenticated = authenticationService.authenticateAdmin(request.getUsername(), request.getPassword());
-        if (isAuthenticated) {
-            return new ResponseEntity<>("Admin login successful", HttpStatus.OK);
+    public ResponseEntity<?> loginAdmin(@RequestBody AuthenticationRequest request) {
+        Optional<String> cinAdmin = authenticationService.authenticateAdmin(request.getUsername(), request.getPassword());
+        if (cinAdmin.isPresent()) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Admin login successful");
+            response.put("cinAdmin", cinAdmin.get());
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Admin login failed", HttpStatus.UNAUTHORIZED);
         }
     }
+
 }

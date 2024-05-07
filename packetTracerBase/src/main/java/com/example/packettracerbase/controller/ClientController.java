@@ -9,7 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clients")
@@ -58,10 +61,13 @@ public class ClientController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody AuthenticationRequest request) {
-        boolean isAuthenticated = authenticationService.authenticateClient(request.getUsername(), request.getPassword());
-        if (isAuthenticated) {
-            return new ResponseEntity<>("Client login successful", HttpStatus.OK);
+    public ResponseEntity<?> loginClient(@RequestBody AuthenticationRequest request) {
+        Optional<String> cinClient = authenticationService.authenticateClient(request.getUsername(), request.getPassword());
+        if (cinClient.isPresent()) {
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Client login successful");
+            response.put("cinClient", cinClient.get());
+            return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Client login failed", HttpStatus.UNAUTHORIZED);
         }

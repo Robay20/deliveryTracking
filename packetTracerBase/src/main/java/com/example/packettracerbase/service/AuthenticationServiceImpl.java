@@ -1,13 +1,7 @@
 package com.example.packettracerbase.service;
 
-import com.example.packettracerbase.model.Admin;
-import com.example.packettracerbase.model.Client;
-import com.example.packettracerbase.model.Driver;
-import com.example.packettracerbase.model.Sender;
-import com.example.packettracerbase.repository.AdminRepository;
-import com.example.packettracerbase.repository.ClientRepository;
-import com.example.packettracerbase.repository.DriverRepository;
-import com.example.packettracerbase.repository.SenderRepository;
+import com.example.packettracerbase.model.*;
+import com.example.packettracerbase.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +13,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final AdminRepository adminRepository;
     private final SenderRepository senderRepository;
     private final ClientRepository clientRepository;
-
     private final DriverRepository driverRepository;
 
     @Autowired
@@ -31,27 +24,26 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public boolean authenticateAdmin(String username, String password) {
-        Optional<Admin> adminOptional = adminRepository.findByUsernameAndPassword(username, password);
-        return adminOptional.isPresent();
+    public Optional<String> authenticateAdmin(String username, String password) {
+        Optional<Admin> admin = adminRepository.findByUsernameAndPassword(username, password);
+        return admin.map(Admin::getCinAdmin);
     }
 
     @Override
-    public boolean authenticateSender(String username, String password) {
-        Optional<Sender> senderOptional = senderRepository.findByUsernameAndPassword(username, password);
-        return senderOptional.isPresent();
+    public Optional<String> authenticateSender(String username, String password) {
+        Optional<Sender> sender = senderRepository.findByUsernameAndPassword(username, password);
+        return sender.map(Sender::getCinSender);
     }
 
     @Override
-    public boolean authenticateClient(String username, String password) {
-        Optional<Client> clientOptional = clientRepository.findByUsernameAndPassword(username, password);
-        return clientOptional.isPresent();
+    public Optional<String> authenticateClient(String username, String password) {
+        Optional<Client> client = clientRepository.findByUsernameAndPassword(username, password);
+        return client.map(Client::getCinClient);
     }
 
     @Override
-    public boolean authenticateDriver(String username, String password) {
-        Optional<Driver> clientOptional = driverRepository.findByUsernameAndPassword(username, password);
-        return clientOptional.isPresent();
+    public Optional<String> authenticateDriver(String username, String password) {
+        Optional<Driver> driver = driverRepository.findByUsernameAndPassword(username, password);
+        return driver.map(Driver::getCinDriver);
     }
-
 }
