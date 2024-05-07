@@ -26,4 +26,5 @@ public class Client extends Person{
     // Define the one-to-many relationship with Packet entities
     @OneToMany(mappedBy = "client")
     private Set<Packet> packets;
+
 }

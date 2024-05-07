@@ -91,6 +91,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.packettracerbase.model" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\growu\IdeaProjects\packetTracerBase\src\main\java\com\example\packettracerbase\model" />
       <recent name="C:\Users\growu\IdeaProjects\packetTracerBase\src\main\java\com\example\packettracerbase\service" />
@@ -145,6 +148,7 @@
       <workItem from="1713803659982" duration="6527000" />
       <workItem from="1713873863872" duration="16046000" />
       <workItem from="1714019082102" duration="3576000" />
+      <workItem from="1714911114081" duration="20515000" />
     </task>
     <task id="LOCAL-00001" summary="push it">
       <option name="closed" value="true" />
@@ -205,7 +209,15 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="93" />
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="98" />
+                  <entry key="Table.Space.CommitStatus.ColumnIdWidth" value="69" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>

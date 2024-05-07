@@ -22,5 +22,8 @@ public class Sender extends Person{
 
     // Define the one-to-many relationship with Packet entities
     @OneToMany(mappedBy = "sender")
-    private Set<Packet> packets;
+    private Set<Bordoreau> bordoreausSender;
+
+    @OneToOne(mappedBy = "idSender")
+    private Secteur secteur;
 }

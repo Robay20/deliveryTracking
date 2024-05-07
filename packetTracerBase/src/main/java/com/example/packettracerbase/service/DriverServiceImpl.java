@@ -33,28 +33,31 @@ public class DriverServiceImpl implements DriverService {
     public Driver createDriver(Driver driver) {
         return driverRepository.save(driver);
     }
-
     @Override
     public Driver updateDriver(String id, Driver driverDetails) {
-        Driver driver = driverRepository.findById(id)
+        Driver existingDriver = driverRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Driver not found with id: " + id));
 
-        // Update driver details here
-        driver.setUsername(driverDetails.getUsername());
-        driver.setPassword(driverDetails.getPassword());
-        driver.setActive(driverDetails.isActive());
-        driver.setFirstName(driverDetails.getFirstName());
-        driver.setLastName(driverDetails.getLastName());
-        driver.setEmail(driverDetails.getEmail());
-        driver.setDateOfBirth(driverDetails.getDateOfBirth());
-        driver.setLicenseNumber(driverDetails.getLicenseNumber());
-        driver.setLicensePlate(driverDetails.getLicensePlate());
-        driver.setBrand(driverDetails.getBrand());
-        driver.setRoutes(driverDetails.getRoutes());
-        driver.setPackets(driverDetails.getPackets());
-        // Set other fields as needed
+        // Update inherited fields from Person
+        existingDriver.setUsername(driverDetails.getUsername());
+        existingDriver.setPassword(driverDetails.getPassword());
+        existingDriver.setActive(driverDetails.isActive());
+        existingDriver.setFirstName(driverDetails.getFirstName());
+        existingDriver.setLastName(driverDetails.getLastName());
+        existingDriver.setEmail(driverDetails.getEmail());
+        existingDriver.setDateOfBirth(driverDetails.getDateOfBirth());
 
-        return driverRepository.save(driver);
+        // Update fields specific to Driver
+        existingDriver.setLicenseNumber(driverDetails.getLicenseNumber());
+        existingDriver.setLicensePlate(driverDetails.getLicensePlate());
+        existingDriver.setBrand(driverDetails.getBrand());
+
+        // Assuming you handle these collections outside of this update logic,
+        // or you ensure these are managed within the same transactional context.
+        existingDriver.setPacketsDriver(driverDetails.getPacketsDriver());
+        existingDriver.setBordoreausDriver(driverDetails.getBordoreausDriver());
+
+        return driverRepository.save(existingDriver);
     }
 
     @Override

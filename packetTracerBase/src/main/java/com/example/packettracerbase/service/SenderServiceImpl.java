@@ -33,24 +33,28 @@ public class SenderServiceImpl implements SenderService {
     public Sender createSender(Sender sender) {
         return senderRepository.save(sender);
     }
-
     @Override
     public Sender updateSender(String id, Sender senderDetails) {
-        Sender sender = senderRepository.findById(id)
+        Sender existingSender = senderRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Sender not found with id: " + id));
 
-        // Update sender details here
-        sender.setUsername(senderDetails.getUsername());
-        sender.setPassword(senderDetails.getPassword());
-        sender.setActive(senderDetails.isActive());
-        sender.setFirstName(senderDetails.getFirstName());
-        sender.setLastName(senderDetails.getLastName());
-        sender.setEmail(senderDetails.getEmail());
-        sender.setDateOfBirth(senderDetails.getDateOfBirth());
-        sender.setPackets(senderDetails.getPackets());
-        // Set other fields as needed
+        // Update inherited fields from Person
+        existingSender.setUsername(senderDetails.getUsername());
+        existingSender.setPassword(senderDetails.getPassword());
+        existingSender.setActive(senderDetails.isActive());
+        existingSender.setFirstName(senderDetails.getFirstName());
+        existingSender.setLastName(senderDetails.getLastName());
+        existingSender.setEmail(senderDetails.getEmail());
+        existingSender.setDateOfBirth(senderDetails.getDateOfBirth());
 
-        return senderRepository.save(sender);
+        // Relationships - we handle relationships carefully
+        // The relationship with Bordoreau might need to be managed differently if it involves changing the collection
+        existingSender.setBordoreausSender(senderDetails.getBordoreausSender());
+
+        // Since idSecteur is a one-to-one relationship and might not often change, we update it directly if needed
+        existingSender.setSecteur(senderDetails.getSecteur());
+
+        return senderRepository.save(existingSender);
     }
 
     @Override

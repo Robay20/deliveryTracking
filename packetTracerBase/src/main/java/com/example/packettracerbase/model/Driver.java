@@ -28,26 +28,9 @@ public class Driver extends Person{
 
     private String brand;
 
-    //@JsonIgnore
-    //@JsonManagedReference
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "driver_packet",
-            joinColumns = @JoinColumn(name = "driver_id"),
-            inverseJoinColumns = @JoinColumn(name = "packet_id")
-    )
-    @EqualsAndHashCode.Exclude
-    private Set<Packet> packets;
+    @OneToMany(mappedBy = "driver")
+    private Set<Packet> packetsDriver;
 
-    //@JsonIgnore
-    //@JsonManagedReference
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "driver_route",
-            joinColumns = @JoinColumn(name = "driver_id"),
-            inverseJoinColumns = @JoinColumn(name = "route_id")
-    )
-    @EqualsAndHashCode.Exclude
-    private Set<Route> routes;
-
+    @OneToMany(mappedBy = "livreur")
+    private Set<Bordoreau> bordoreausDriver;
 }

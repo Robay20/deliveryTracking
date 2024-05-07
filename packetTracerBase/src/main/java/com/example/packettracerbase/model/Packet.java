@@ -19,41 +19,26 @@ import java.util.Set;
 @Getter
 public class Packet {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cinPacket;
-
-    @ManyToOne
-    @JoinColumn(name = "cinSender")
-    private Sender sender;
+    private Long bL;
 
     @ManyToOne
     @JoinColumn(name = "cinClient")
     private Client client;
 
-    //@JsonIgnore
-    //@JsonBackReference
-    @ManyToMany(mappedBy = "packets")
-    private Set<Driver> drivers;
+    private int colis;
 
-    @ElementCollection
-    @CollectionTable(name = "packet_time_changes", joinColumns = @JoinColumn(name = "cinPacket"))
-    @Column(name = "time_change")
-    private Set<LocalDateTime> timeChanges; // Corrected collection of LocalDateTime
-
-
-    // Use @ElementCollection to store the collection of strings
-    @ElementCollection
-    @CollectionTable(name = "medical_pieces", joinColumns = @JoinColumn(name = "cinPacket"))
-    @Column(name = "medical_piece")
-    private Set<String> medicalPieces;
-
-    private String city;
+    private int sachets;
 
     private String status;
 
-    private String description;
+    @ManyToOne
+    @JoinColumn(name = "cinDriver")
+    private Driver driver;
 
     @ManyToOne
-    @JoinColumn(name = "idRouter")
-    private Route route;
+    @JoinColumn(name = "bordoreau")
+    private Bordoreau bordoreau;
+
+    @OneToMany(mappedBy = "packetTransfert")
+    private Set<Transfert> transferts;
 }

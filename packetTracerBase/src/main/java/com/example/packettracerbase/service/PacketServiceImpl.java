@@ -33,25 +33,24 @@ public class PacketServiceImpl implements PacketService {
     public Packet createPacket(Packet packet) {
         return packetRepository.save(packet);
     }
-
     @Override
     public Packet updatePacket(Long id, Packet packetDetails) {
-        Packet packet = packetRepository.findById(id)
+        Packet existingPacket = packetRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Packet not found with id: " + id));
 
-        // Update packet details here
-        packet.setSender(packetDetails.getSender());
-        packet.setClient(packetDetails.getClient());
-        packet.setDrivers(packetDetails.getDrivers());
-        packet.setTimeChanges(packetDetails.getTimeChanges());
-        packet.setMedicalPieces(packetDetails.getMedicalPieces());
-        packet.setCity(packetDetails.getCity());
-        packet.setStatus(packetDetails.getStatus());
-        packet.setDescription(packetDetails.getDescription());
-        packet.setRoute(packetDetails.getRoute());
-        // Set other fields as needed
+        // Update packet details here based on the attributes in the Packet model
+        existingPacket.setClient(packetDetails.getClient());       // Update the client
+        existingPacket.setColis(packetDetails.getColis());         // Update the number of colis
+        existingPacket.setSachets(packetDetails.getSachets());     // Update the number of sachets
+        existingPacket.setStatus(packetDetails.getStatus());       // Update the status
+        existingPacket.setDriver(packetDetails.getDriver());       // Update the driver
+        existingPacket.setBordoreau(packetDetails.getBordoreau()); // Update the bordoreau
 
-        return packetRepository.save(packet);
+        // Assuming transferts are to be handled separately or are updated through a different mechanism,
+        // as directly setting a complex relationship collection can be problematic.
+        existingPacket.setTransferts(packetDetails.getTransferts());
+
+        return packetRepository.save(existingPacket);
     }
 
     @Override

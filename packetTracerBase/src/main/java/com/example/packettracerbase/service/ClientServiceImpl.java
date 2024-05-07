@@ -36,21 +36,25 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client updateClient(String id, Client clientDetails) {
-        Client client = clientRepository.findById(id)
+        Client existingClient = clientRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Client not found with id: " + id));
 
-        // Update client details here
-        client.setUsername(clientDetails.getUsername());
-        client.setPassword(clientDetails.getPassword());
-        client.setActive(clientDetails.isActive());
-        client.setFirstName(clientDetails.getFirstName());
-        client.setLastName(clientDetails.getLastName());
-        client.setEmail(clientDetails.getEmail());
-        client.setDateOfBirth(clientDetails.getDateOfBirth());
-        client.setLocation_Client(clientDetails.getLocation_Client());
-        // Set other fields as needed
+        // Update inherited fields from Person
+        existingClient.setUsername(clientDetails.getUsername());
+        existingClient.setPassword(clientDetails.getPassword());
+        existingClient.setActive(clientDetails.isActive());
+        existingClient.setFirstName(clientDetails.getFirstName());
+        existingClient.setLastName(clientDetails.getLastName());
+        existingClient.setEmail(clientDetails.getEmail());
+        existingClient.setDateOfBirth(clientDetails.getDateOfBirth());
 
-        return clientRepository.save(client);
+        // Update fields specific to Client
+        existingClient.setLocation_Client(clientDetails.getLocation_Client());
+
+        // Update the packets directly, assuming all necessary checks and balances are handled elsewhere
+        existingClient.setPackets(clientDetails.getPackets());
+
+        return clientRepository.save(existingClient);
     }
 
     @Override
