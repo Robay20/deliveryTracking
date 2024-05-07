@@ -10,6 +10,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -64,11 +67,20 @@ public class MainActivity extends AppCompatActivity {
                 final String responseBody = response.body().string(); // Read the response body
                 if (response.isSuccessful()) {
                     runOnUiThread(() -> {
-                        Toast.makeText(MainActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                        Log.d("LoginStatus", "Login successful: " + responseBody);
+                        try {
+                            JSONObject jsonObject = new JSONObject(responseBody);
+                            String message = jsonObject.getString("message");
+                            String cinDriver = jsonObject.getString("cinDriver");
+                            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+                            Log.d("LoginStatus", message);
 
-                        Intent intent = new Intent(MainActivity.this,Dashboard.class);
-                        startActivity(intent);
+                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                            intent.putExtra("cinDriver", cinDriver); // Pass cinDriver to the next activity
+                            startActivity(intent);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(MainActivity.this, "Failed to parse response", Toast.LENGTH_LONG).show();
+                        }
                     });
                 } else {
                     runOnUiThread(() -> {
