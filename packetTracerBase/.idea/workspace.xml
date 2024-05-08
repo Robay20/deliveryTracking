@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="mobile&#10;upgrade&#10;and&#10;also&#10;database">
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/BordoreauQRDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/BordoreauQRDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/PacketDetailDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/PacketDetailDTO.java" afterDir="false" />
@@ -159,7 +160,7 @@
       <workItem from="1713803659982" duration="6527000" />
       <workItem from="1713873863872" duration="16046000" />
       <workItem from="1714019082102" duration="3576000" />
-      <workItem from="1714911114081" duration="59473000" />
+      <workItem from="1714911114081" duration="60208000" />
     </task>
     <task id="LOCAL-00001" summary="push it">
       <option name="closed" value="true" />
