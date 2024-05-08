@@ -1,5 +1,6 @@
 package com.example.packettracerbase.dto;
 
+import com.example.packettracerbase.model.PacketStatus;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -16,5 +17,5 @@ public class BordoreauQRDTO {
     private String stringLivreur;
     private Long codeSecteur;
     private List<PacketDetailDTO> packets;
-
+    private PacketStatus status;
 }

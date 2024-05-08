@@ -1,28 +1,31 @@
 package com.example.packettracerbase.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
+@Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idPacket")
 public class Packet {
     @Id
-    private Long bL;
+    private Long idPacket;
 
     @ManyToOne
     @JoinColumn(name = "cinClient")
+    //@JsonBackReference
     private Client client;
 
     private int colis;
@@ -33,10 +36,15 @@ public class Packet {
     private PacketStatus status;
 
     @ManyToOne
-    @JoinColumn(name = "bordoreau")
+    //@JoinColumn(name = "bordoreau")
     private Bordoreau bordoreau;
 
     @OneToMany(mappedBy = "packetTransfert")
+    //@JsonManagedReference
     private Set<Transfert> transferts;
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(idPacket);  // assuming 'id' is a unique identifier for Packet
+    }
 }

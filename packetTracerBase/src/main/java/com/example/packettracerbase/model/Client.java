@@ -1,18 +1,23 @@
 package com.example.packettracerbase.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
+@Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "cinClient")
 public class Client extends Person{
     @Id
     private String cinClient;
@@ -25,6 +30,11 @@ public class Client extends Person{
 
     // Define the one-to-many relationship with Packet entities
     @OneToMany(mappedBy = "client")
+    //@JsonManagedReference
     private Set<Packet> packets;
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(cinClient);  // assuming 'id' is a unique identifier for Packet
+    }
 }

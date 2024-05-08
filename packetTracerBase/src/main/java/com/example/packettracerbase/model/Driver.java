@@ -1,19 +1,23 @@
 package com.example.packettracerbase.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
+@Data
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "cinDriver")
 public class Driver extends Person{
     @Id
     private String cinDriver;
@@ -29,5 +33,11 @@ public class Driver extends Person{
     private String brand;
 
     @OneToMany(mappedBy = "livreur")
+    //@JsonManagedReference
     private Set<Bordoreau> bordoreausDriver;
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cinDriver);  // assuming 'id' is a unique identifier for Packet
+    }
 }

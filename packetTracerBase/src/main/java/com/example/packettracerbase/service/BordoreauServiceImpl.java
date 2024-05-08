@@ -70,10 +70,11 @@ public class BordoreauServiceImpl implements BordoreauService {
         qrDTO.setDate(bordoreau.getDate().format(DateTimeFormatter.ofPattern("yyMMdd")));
         qrDTO.setStringLivreur(bordoreau.getLivreur().getCinDriver());
         qrDTO.setCodeSecteur(bordoreau.getSecteur().getIdSecteur());
+        qrDTO.setStatus(bordoreau.getStatus());
 
         qrDTO.setPackets(bordoreau.getPacketsBordoreau().stream().map(packet -> {
             PacketDetailDTO detail = new PacketDetailDTO();
-            detail.setNumeroBL(packet.getBL());
+            detail.setNumeroBL(packet.getIdPacket());
             detail.setCodeClient(packet.getClient().getCinClient());
             detail.setNbrColis(packet.getColis());
             detail.setNbrSachets(packet.getSachets());
