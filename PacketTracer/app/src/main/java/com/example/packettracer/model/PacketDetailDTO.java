@@ -1,5 +1,7 @@
 package com.example.packettracer.model;
 
+import androidx.annotation.NonNull;
+
 import java.util.Objects;
 
 public class PacketDetailDTO {
@@ -7,27 +9,25 @@ public class PacketDetailDTO {
     private String codeClient;
     private int nbrColis;
     private int nbrSachets;
-    private PacketStatus status;  // Add status field to hold the packet status
-
-    public PacketDetailDTO(Long numeroBL, String codeClient, int nbrColis, int nbrSachets, PacketStatus status) {
-        this.numeroBL = numeroBL;
-        this.codeClient = codeClient;
-        this.nbrColis = nbrColis;
-        this.nbrSachets = nbrSachets;
-        this.status = status;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof PacketDetailDTO)) return false;
         PacketDetailDTO that = (PacketDetailDTO) o;
-        return getNbrColis() == that.getNbrColis() && getNbrSachets() == that.getNbrSachets() && Objects.equals(getNumeroBL(), that.getNumeroBL()) && Objects.equals(getCodeClient(), that.getCodeClient()) && getStatus() == that.getStatus();
+        return getNbrColis() == that.getNbrColis() && getNbrSachets() == that.getNbrSachets() && Objects.equals(getNumeroBL(), that.getNumeroBL()) && Objects.equals(getCodeClient(), that.getCodeClient());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNumeroBL(), getCodeClient(), getNbrColis(), getNbrSachets(), getStatus());
+        return Objects.hash(getNumeroBL(), getCodeClient(), getNbrColis(), getNbrSachets());
+    }
+
+    public PacketDetailDTO(Long numeroBL, String codeClient, int nbrColis, int nbrSachets) {
+        this.numeroBL = numeroBL;
+        this.codeClient = codeClient;
+        this.nbrColis = nbrColis;
+        this.nbrSachets = nbrSachets;
     }
 
     public Long getNumeroBL() {
@@ -62,11 +62,14 @@ public class PacketDetailDTO {
         this.nbrSachets = nbrSachets;
     }
 
-    public PacketStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(PacketStatus status) {
-        this.status = status;
+    @NonNull
+    @Override
+    public String toString() {
+        return "PacketDetailDTO{" +
+                "numeroBL=" + numeroBL +
+                ", codeClient='" + codeClient + '\'' +
+                ", nbrColis=" + nbrColis +
+                ", nbrSachets=" + nbrSachets +
+                '}';
     }
 }

@@ -32,6 +32,10 @@ android {
 }
 
 dependencies {
+    implementation("androidx.room:room-runtime:2.4.3")
+    annotationProcessor("androidx.room:room-compiler:2.4.3")
+    implementation("com.google.code.gson:gson:2.8.9")
+
 
     implementation(libs.appcompat)
     implementation(libs.material)

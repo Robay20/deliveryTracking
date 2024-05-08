@@ -23,14 +23,13 @@
             android:scaleType="centerCrop"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:layout_width="120dp"
             android:layout_height="30dp"
-            android:id="@+id/listName"
-            android:text="Name"
+            android:id="@+id/listId"
+            android:text="Id"
             android:textColor="@color/lavender"
             android:textSize="20sp"
             android:layout_marginTop="10dp"
@@ -40,10 +39,10 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="30dp"
-            android:id="@+id/listDescription"
-            android:text="Description"
+            android:id="@+id/listDate"
+            android:text="Date"
             android:textColor="@color/lavender"
-            android:textSize="10sp"
+            android:textSize="15sp"
             android:layout_marginTop="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="8dp"
@@ -56,9 +55,9 @@
             android:id="@+id/listTime"
             android:text="status"
             android:textSize="16sp"
-            android:layout_toEndOf="@id/listName"
+            android:layout_toEndOf="@id/listId"
             android:layout_marginTop="25dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="70dp"
             android:textColor="@color/lavender"/>
 
     </RelativeLayout>
