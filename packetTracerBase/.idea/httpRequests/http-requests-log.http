@@ -1,3 +1,2165 @@
+PUT http://localhost:8080/api/bordoreaux/500001
+Content-Type: application/json
+Content-Length: 1890
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:00",
+  "status": "INITIALIZED",
+  "livreur": {
+    "cinDriver": "100001",
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [500001],
+    "active": true
+  },
+  "secteur": {
+    "idSecteur": 200001,
+    "city": "AGADIR",
+    "idSender": {
+      "cinSender": "200001",
+      "username": "hm",
+      "password": "hm",
+      "firstName": "hm",
+      "lastName": "hm",
+      "email": "hm@.com",
+      "role": "Sender",
+      "dateOfBirth": "2024-01-01",
+      "bordoreausSender": [500001],
+      "secteur": 200001,
+      "active": false
+    }
+  },
+  "packetsBordoreau": [
+    {
+      "idPacket": 300001,
+      "client": {
+        "cinClient": "400001",
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": 500001,
+      "transferts": []
+    },
+    {
+      "idPacket": 300002,
+      "client": {
+        "cinClient": "400002",
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": 500001,
+      "transferts": []
+    }
+  ],
+  "sender": "200001"
+}
+
+<> 2024-05-08T154721.500.json
+
+###
+
+PUT http://localhost:8080/api/bordoreaux/500001
+Content-Type: application/json
+Content-Length: 3082
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:00",
+  "status": "INITIALIZED",
+  "livreur": {
+    "cinDriver": "100001",
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [
+      500001
+    ],
+    "active": true
+  },
+  "secteur": {
+    "idSecteur": 200001,
+    "city": "AGADIR",
+    "idSender": {
+      "cinSender": "200001",
+      "username": "hm",
+      "password": "hm",
+      "firstName": "hm",
+      "lastName": "hm",
+      "email": "hm@.com",
+      "role": "Sender",
+      "dateOfBirth": "2024-01-01",
+      "bordoreausSender": [
+        500001
+      ],
+      "secteur": 200001,
+      "active": false
+    }
+  },
+  "packetsBordoreau": [
+    {
+      "idPacket": 300001,
+      "client": {
+        "cinClient": "400001",
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": {
+        "bordoreau": 500001,
+        "date": "2024-08-22T00:00:00",
+        "status": "INITIALIZED",
+        "livreur": {
+          "cinDriver": "100001",
+          "username": "ye",
+          "password": "y",
+          "firstName": "Ye",
+          "lastName": "West",
+          "email": "ye@example.com",
+          "role": "Driver",
+          "dateOfBirth": "1985-07-20",
+          "licenseNumber": "DL-2024-XYZ-1234",
+          "licensePlate": "XYZ-1234",
+          "brand": "Toyota",
+          "bordoreausDriver": [
+            500001
+          ],
+          "active": true
+        },
+        "secteur": {
+          "idSecteur": 200001,
+          "city": "AGADIR",
+          "idSender": {
+            "cinSender": "200001",
+            "username": "hm",
+            "password": "hm",
+            "firstName": "hm",
+            "lastName": "hm",
+            "email": "hm@.com",
+            "role": "Sender",
+            "dateOfBirth": "2024-01-01",
+            "bordoreausSender": [
+              500001
+            ],
+            "secteur": 200001,
+            "active": false
+          }
+        },
+        "packetsBordoreau": [],
+        "sender": "200001"
+      },
+      "transferts": []
+    },
+    {
+      "idPacket": 300002,
+      "client": {
+        "cinClient": "400002",
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": 500001,
+      "transferts": []
+    }
+  ],
+  "sender": "200001"
+}
+
+<> 2024-05-08T154030.400.json
+
+###
+
+PUT http://localhost:8080/api/bordoreaux/500001
+Content-Type: application/json
+Content-Length: 918
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:00",
+  "status": "INITIALIZED",
+  "livreur": {
+    "cinDriver": "100001",
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [
+      500001
+    ],
+    "active": true
+  },
+  "secteur": {
+    "idSecteur": 200001,
+    "city": "AGADIR",
+    "idSender": {
+      "cinSender": "200001",
+      "username": "hm",
+      "password": "hm",
+      "firstName": "hm",
+      "lastName": "hm",
+      "email": "hm@.com",
+      "role": "Sender",
+      "dateOfBirth": "2024-01-01",
+      "bordoreausSender": [
+        500001
+      ],
+      "secteur": 200001,
+      "active": false
+    }
+  },
+  "packetsBordoreau": [],
+  "sender": "200001"
+}
+
+<> 2024-05-08T154003.200.json
+
+###
+
+PUT http://localhost:8080/api/bordoreaux/500001
+Content-Type: application/json
+Content-Length: 918
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:00",
+  "status": "INITIALIZED",
+  "livreur": {
+    "cinDriver": "100001",
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [
+      500001
+    ],
+    "active": true
+  },
+  "secteur": {
+    "idSecteur": 200001,
+    "city": "AGADIR",
+    "idSender": {
+      "cinSender": "200001",
+      "username": "hm",
+      "password": "hm",
+      "firstName": "hm",
+      "lastName": "hm",
+      "email": "hm@.com",
+      "role": "Sender",
+      "dateOfBirth": "2024-01-01",
+      "bordoreausSender": [
+        500001
+      ],
+      "secteur": 200001,
+      "active": false
+    }
+  },
+  "packetsBordoreau": [],
+  "sender": "200001"
+}
+
+<> 2024-05-08T153859.200.json
+
+###
+
+PUT http://localhost:8080/api/bordoreaux/500001
+Content-Type: application/json
+Content-Length: 1766
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:00",
+  "status": "INITIALIZED",
+  "livreur": {
+    "cinDriver": "100001",
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "active": true
+  },
+  "secteur": {
+    "idSecteur": 200001,
+    "city": "AGADIR",
+    "idSender": {
+      "cinSender": "200001",
+      "username": "hm",
+      "password": "hm",
+      "firstName": "hm",
+      "lastName": "hm",
+      "email": "hm@.com",
+      "role": "Sender",
+      "dateOfBirth": "2024-01-01",
+      "secteur": 200001,
+      "active": false
+    }
+  },
+  "packetsBordoreau": [
+    {
+      "idPacket": 300001,
+      "client": {
+        "cinClient": "400001",
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "transferts": []
+    },
+    {
+      "idPacket": 300002,
+      "client": {
+        "cinClient": "400002",
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "transferts": []
+    }
+  ],
+  "sender": "200001"
+}
+
+<> 2024-05-08T153750.500.json
+
+###
+
+PUT http://localhost:8080/api/bordoreaux/500001
+Content-Type: application/json
+Content-Length: 4246
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:00",
+  "status": "INITIALIZED",
+  "livreur": {
+    "cinDriver": "100001",
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [
+      500001
+    ],
+    "active": true
+  },
+  "secteur": {
+    "idSecteur": 200001,
+    "city": "AGADIR",
+    "idSender": {
+      "cinSender": "200001",
+      "username": "hm",
+      "password": "hm",
+      "firstName": "hm",
+      "lastName": "hm",
+      "email": "hm@.com",
+      "role": "Sender",
+      "dateOfBirth": "2024-01-01",
+      "bordoreausSender": [
+        500001
+      ],
+      "secteur": 200001,
+      "active": false
+    }
+  },
+  "packetsBordoreau": [
+    {
+      "idPacket": 300001,
+      "client": {
+        "cinClient": "400001",
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": {
+        "bordoreau": 500001,
+        "date": "2024-08-22T00:00:00",
+        "status": "INITIALIZED",
+        "livreur": {
+          "cinDriver": "100001",
+          "username": "ye",
+          "password": "y",
+          "firstName": "Ye",
+          "lastName": "West",
+          "email": "ye@example.com",
+          "role": "Driver",
+          "dateOfBirth": "1985-07-20",
+          "licenseNumber": "DL-2024-XYZ-1234",
+          "licensePlate": "XYZ-1234",
+          "brand": "Toyota",
+          "bordoreausDriver": [
+            500001
+          ],
+          "active": true
+        },
+        "secteur": {
+          "idSecteur": 200001,
+          "city": "AGADIR",
+          "idSender": {
+            "cinSender": "200001",
+            "username": "hm",
+            "password": "hm",
+            "firstName": "hm",
+            "lastName": "hm",
+            "email": "hm@.com",
+            "role": "Sender",
+            "dateOfBirth": "2024-01-01",
+            "bordoreausSender": [
+              500001
+            ],
+            "secteur": 200001,
+            "active": false
+          }
+        },
+        "packetsBordoreau": [],
+        "sender": "200001"
+      },
+      "transferts": []
+    },
+    {
+      "idPacket": 300002,
+      "client": {
+        "cinClient": "400002",
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": {
+        "bordoreau": 500001,
+        "date": "2024-08-22T00:00:00",
+        "status": "INITIALIZED",
+        "livreur": {
+          "cinDriver": "100001",
+          "username": "ye",
+          "password": "y",
+          "firstName": "Ye",
+          "lastName": "West",
+          "email": "ye@example.com",
+          "role": "Driver",
+          "dateOfBirth": "1985-07-20",
+          "licenseNumber": "DL-2024-XYZ-1234",
+          "licensePlate": "XYZ-1234",
+          "brand": "Toyota",
+          "bordoreausDriver": [
+            500001
+          ],
+          "active": true
+        },
+        "secteur": {
+          "idSecteur": 200001,
+          "city": "AGADIR",
+          "idSender": {
+            "cinSender": "200001",
+            "username": "hm",
+            "password": "hm",
+            "firstName": "hm",
+            "lastName": "hm",
+            "email": "hm@.com",
+            "role": "Sender",
+            "dateOfBirth": "2024-01-01",
+            "bordoreausSender": [
+              500001
+            ],
+            "secteur": 200001,
+            "active": false
+          }
+        },
+        "packetsBordoreau": [],
+        "sender": "200001"
+      },
+      "transferts": []
+    }
+  ],
+  "sender": "200001"
+}
+
+<> 2024-05-08T153615.400.json
+
+###
+
+PUT http://localhost:8080/api/bordoreaux/500001
+Content-Type: application/json
+Content-Length: 3082
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:00",
+  "status": "INITIALIZED",
+  "livreur": {
+    "cinDriver": "100001",
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [
+      500001
+    ],
+    "active": true
+  },
+  "secteur": {
+    "idSecteur": 200001,
+    "city": "AGADIR",
+    "idSender": {
+      "cinSender": "200001",
+      "username": "hm",
+      "password": "hm",
+      "firstName": "hm",
+      "lastName": "hm",
+      "email": "hm@.com",
+      "role": "Sender",
+      "dateOfBirth": "2024-01-01",
+      "bordoreausSender": [
+        500001
+      ],
+      "secteur": 200001,
+      "active": false
+    }
+  },
+  "packetsBordoreau": [
+    {
+      "idPacket": 300001,
+      "client": {
+        "cinClient": "400001",
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": {
+        "bordoreau": 500001,
+        "date": "2024-08-22T00:00:00",
+        "status": "INITIALIZED",
+        "livreur": {
+          "cinDriver": "100001",
+          "username": "ye",
+          "password": "y",
+          "firstName": "Ye",
+          "lastName": "West",
+          "email": "ye@example.com",
+          "role": "Driver",
+          "dateOfBirth": "1985-07-20",
+          "licenseNumber": "DL-2024-XYZ-1234",
+          "licensePlate": "XYZ-1234",
+          "brand": "Toyota",
+          "bordoreausDriver": [
+            500001
+          ],
+          "active": true
+        },
+        "secteur": {
+          "idSecteur": 200001,
+          "city": "AGADIR",
+          "idSender": {
+            "cinSender": "200001",
+            "username": "hm",
+            "password": "hm",
+            "firstName": "hm",
+            "lastName": "hm",
+            "email": "hm@.com",
+            "role": "Sender",
+            "dateOfBirth": "2024-01-01",
+            "bordoreausSender": [
+              500001
+            ],
+            "secteur": 200001,
+            "active": false
+          }
+        },
+        "packetsBordoreau": [],
+        "sender": "200001"
+      },
+      "transferts": []
+    },
+    {
+      "idPacket": 300002,
+      "client": {
+        "cinClient": "400002",
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": 500001,
+      "transferts": []
+    }
+  ],
+  "sender": "200001"
+}
+
+<> 2024-05-08T153451.400.json
+
+###
+
+PUT http://localhost:8080/api/bordoreaux/500001
+Content-Type: application/json
+Content-Length: 918
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:00",
+  "status": "INITIALIZED",
+  "livreur": {
+    "cinDriver": "100001",
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [
+      500001
+    ],
+    "active": true
+  },
+  "secteur": {
+    "idSecteur": 200001,
+    "city": "AGADIR",
+    "idSender": {
+      "cinSender": "200001",
+      "username": "hm",
+      "password": "hm",
+      "firstName": "hm",
+      "lastName": "hm",
+      "email": "hm@.com",
+      "role": "Sender",
+      "dateOfBirth": "2024-01-01",
+      "bordoreausSender": [
+        500001
+      ],
+      "secteur": 200001,
+      "active": false
+    }
+  },
+  "packetsBordoreau": [],
+  "sender": "200001"
+}
+
+<> 2024-05-08T152658.200.json
+
+###
+
+PUT http://localhost:8080/api/packets/300001
+Content-Type: application/json
+Content-Length: 122
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "idPacket": 300001,
+  "colis": 2,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "bordoreau": null,
+  "transferts": []
+}
+
+<> 2024-05-08T033035.415.json
+
+###
+
+PUT http://localhost:8080/api/packets/300001
+Content-Type: application/json
+Content-Length: 122
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "idPacket": 300001,
+  "colis": 2,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "bordoreau": null,
+  "transferts": []
+}
+
+<> 2024-05-08T032955.415.json
+
+###
+
+PUT http://localhost:8080/api/packets/300001
+Content-Type: application/json
+Content-Length: 321
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "idPacket": 300001,
+  "colis": 2,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "bordoreau": {
+    "bordoreau": 500001,
+    "date": "2024-08-22T00:00:00",
+    "status": "INITIALIZED",
+    "packetsBordoreau": [],
+    "livreur": null,
+    "secteur": null,
+    "sender": null
+  },
+  "client": null,
+  "transferts": null
+}
+
+<> 2024-05-08T032828.415.json
+
+###
+
+PUT http://localhost:8080/api/packets/300001
+Content-Type: application/json
+Content-Length: 219
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "idPacket": 300001,
+  "colis": 2,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "bordoreau": {
+    "bordoreau": 500001,
+    "date": "2024-08-22T00:00:00",
+    "status": "INITIALIZED",
+    "packetsBordoreau": []
+  }
+}
+
+<> 2024-05-08T031601.415.json
+
+###
+
+GET http://localhost:8080/api/bordoreaux/500001
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-05-07T234548.500.json
+
+###
+
+GET http://localhost:8080/api/bordoreaux/500001/
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-05-07T234527.404.json
+
+###
+
+GET http://localhost:8080/api/bordoreaux/500001
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-05-07T234454.500.json
+
+###
+
+PUT http://localhost:8080/api/bordoreaux/500001
+Content-Type: application/json
+Content-Length: 1808
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:00",
+  "status": "INITIALIZED",
+  "livreur": {
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "cinDriver": "100001",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [],
+    "active": true
+  },
+  "secteur": {
+    "city": "AGADIR",
+    "idSecteur": 200001,
+    "idSender": {
+      "role": "Sender",
+      "lastName": "hm",
+      "firstName": "hm",
+      "email": "hm@.com",
+      "dateOfBirth": "2024-01-01",
+      "password": "hm",
+      "username": "hm",
+      "cinSender": "200001",
+      "bordoreausSender": []
+    }
+  },
+  "packetsBordoreau": [
+    {
+      "idPacket": 300001,
+      "client": {
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "cinClient": "400001",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": null,
+      "transferts": null
+    },
+    {
+      "idPacket": 300002,
+      "client": {
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "cinClient": "400002",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": null,
+      "transferts": null
+    }
+  ]
+}
+
+<> 2024-05-07T234256.200.json
+
+###
+
+PUT http://localhost:8080/api/bordoreaux/500001
+Content-Type: application/json
+Content-Length: 131
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:01",
+  "status": "INITIALIZED",
+  "livreur": {
+    "cinDriver": "100001"
+  }
+}
+
+<> 2024-05-07T234117.200.json
+
+###
+
+POST http://localhost:8080/api/bordoreaux
+Content-Type: application/json
+Content-Length: 85
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:01",
+  "status": "INITIALIZED"
+}
+
+<> 2024-05-07T233820.201.json
+
+###
+
+POST http://localhost:8080/api/bordoreaux
+Content-Type: application/json
+Content-Length: 265
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:01",
+  "status": "INITIALIZED",
+  "livreur": {
+    "cinDriver": "100001"
+  },
+  "secteur": {
+    "idSecteur": 200001
+  },
+  "packetsBordoreau": [
+  {
+    "idPacket": 300001
+  },
+  {
+    "idPacket": 300002
+  }
+]
+}
+
+<> 2024-05-07T233411.500.json
+
+###
+
+POST http://localhost:8080/api/bordoreaux
+Content-Type: application/json
+Content-Length: 1664
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:01",
+  "status": "INITIALIZED",
+  "livreur": {
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "cinDriver": "100001",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "active": true
+  },
+  "secteur": {
+    "city": "AGADIR",
+    "idSecteur": 200001,
+    "idSender": {
+      "role": "Sender",
+      "lastName": "hm",
+      "firstName": "hm",
+      "email": "hm@.com",
+      "dateOfBirth": "2024-01-01",
+      "password": "hm",
+      "username": "hm",
+      "cinSender": "200001"
+    }
+  },
+  "packetsBordoreau": [
+  {
+    "idPacket": 300001,
+    "client": {
+      "username": "ya",
+      "password": "ya",
+      "firstName": "PH ",
+      "lastName": "TEST 1",
+      "email": "ya@ya.com",
+      "role": "Client",
+      "dateOfBirth": "2012-02-02",
+      "cinClient": "400001",
+      "packets": [],
+      "location_Client": null,
+      "active": false
+    },
+    "colis": 2,
+    "sachets": 1,
+    "status": "INITIALIZED",
+    "bordoreau": null,
+    "transferts": null
+  },
+  {
+    "idPacket": 300002,
+    "client": {
+      "username": "ya",
+      "password": "ya",
+      "firstName": "PH ",
+      "lastName": "TEST 1",
+      "email": "ya@ya.com",
+      "role": "Client",
+      "dateOfBirth": "2012-02-02",
+      "cinClient": "400002",
+      "packets": [],
+      "location_Client": null,
+      "active": false
+    },
+    "colis": 2,
+    "sachets": 1,
+    "status": "INITIALIZED",
+    "bordoreau": null,
+    "transferts": null
+  }
+]
+}
+
+<> 2024-05-07T233121.500.json
+
+###
+
+POST http://localhost:8080/api/bordoreaux
+Content-Type: application/json
+Content-Length: 782
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:01",
+  "status": "INITIALIZED",
+  "livreur": {
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "cinDriver": "100001",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [],
+    "active": true
+  },
+  "secteur": {
+    "city": "AGADIR",
+    "idSecteur": 200001,
+    "idSender": {
+      "role": "Sender",
+      "lastName": "hm",
+      "firstName": "hm",
+      "email": "hm@.com",
+      "dateOfBirth": "2024-01-01",
+      "password": "hm",
+      "username": "hm",
+      "cinSender": "200001",
+      "bordoreausSender": []
+    }
+  }
+}
+
+<> 2024-05-07T233022.500.json
+
+###
+
+POST http://localhost:8080/api/bordoreaux
+Content-Type: application/json
+Content-Length: 1808
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:01",
+  "status": "INITIALIZED",
+  "livreur": {
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "cinDriver": "100001",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [],
+    "active": true
+  },
+  "secteur": {
+    "city": "AGADIR",
+    "idSecteur": 200001,
+    "idSender": {
+      "role": "Sender",
+      "lastName": "hm",
+      "firstName": "hm",
+      "email": "hm@.com",
+      "dateOfBirth": "2024-01-01",
+      "password": "hm",
+      "username": "hm",
+      "cinSender": "200001",
+      "bordoreausSender": []
+    }
+  },
+  "packetsBordoreau": [
+    {
+      "idPacket": 300001,
+      "client": {
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "cinClient": "400001",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": null,
+      "transferts": null
+    },
+    {
+      "idPacket": 300002,
+      "client": {
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "cinClient": "400002",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": null,
+      "transferts": null
+    }
+  ]
+}
+
+<> 2024-05-07T232749.500.json
+
+###
+
+POST http://localhost:8080/api/bordoreaux
+Content-Type: application/json
+Content-Length: 1808
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22T00:00:00",
+  "status": "INITIALIZED",
+  "livreur": {
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "cinDriver": "100001",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [],
+    "active": true
+  },
+  "secteur": {
+    "city": "AGADIR",
+    "idSecteur": 200001,
+    "idSender": {
+      "role": "Sender",
+      "lastName": "hm",
+      "firstName": "hm",
+      "email": "hm@.com",
+      "dateOfBirth": "2024-01-01",
+      "password": "hm",
+      "username": "hm",
+      "cinSender": "200001",
+      "bordoreausSender": []
+    }
+  },
+  "packetsBordoreau": [
+    {
+      "idPacket": 300001,
+      "client": {
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "cinClient": "400001",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": null,
+      "transferts": null
+    },
+    {
+      "idPacket": 300002,
+      "client": {
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "cinClient": "400002",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": null,
+      "transferts": null
+    }
+  ]
+}
+
+<> 2024-05-07T232725.500.json
+
+###
+
+POST http://localhost:8080/api/bordoreaux
+Content-Type: application/json
+Content-Length: 1799
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "2024-08-22",
+  "status": "INITIALIZED",
+  "livreur": {
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "cinDriver": "100001",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [],
+    "active": true
+  },
+  "secteur": {
+    "city": "AGADIR",
+    "idSecteur": 200001,
+    "idSender": {
+      "role": "Sender",
+      "lastName": "hm",
+      "firstName": "hm",
+      "email": "hm@.com",
+      "dateOfBirth": "2024-01-01",
+      "password": "hm",
+      "username": "hm",
+      "cinSender": "200001",
+      "bordoreausSender": []
+    }
+  },
+  "packetsBordoreau": [
+    {
+      "idPacket": 300001,
+      "client": {
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "cinClient": "400001",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": null,
+      "transferts": null
+    },
+    {
+      "idPacket": 300002,
+      "client": {
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "cinClient": "400002",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": null,
+      "transferts": null
+    }
+  ]
+}
+
+<> 2024-05-07T232547.400.json
+
+###
+
+POST http://localhost:8080/api/bordoreaux
+Content-Type: application/json
+Content-Length: 1795
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bordoreau": 500001,
+  "date": "220824",
+  "status": "INITIALIZED",
+  "livreur": {
+    "username": "ye",
+    "password": "y",
+    "firstName": "Ye",
+    "lastName": "West",
+    "email": "ye@example.com",
+    "role": "Driver",
+    "dateOfBirth": "1985-07-20",
+    "cinDriver": "100001",
+    "licenseNumber": "DL-2024-XYZ-1234",
+    "licensePlate": "XYZ-1234",
+    "brand": "Toyota",
+    "bordoreausDriver": [],
+    "active": true
+  },
+  "secteur": {
+    "city": "AGADIR",
+    "idSecteur": 200001,
+    "idSender": {
+      "role": "Sender",
+      "lastName": "hm",
+      "firstName": "hm",
+      "email": "hm@.com",
+      "dateOfBirth": "2024-01-01",
+      "password": "hm",
+      "username": "hm",
+      "cinSender": "200001",
+      "bordoreausSender": []
+    }
+  },
+  "packetsBordoreau": [
+    {
+      "idPacket": 300001,
+      "client": {
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "cinClient": "400001",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": null,
+      "transferts": null
+    },
+    {
+      "idPacket": 300002,
+      "client": {
+        "username": "ya",
+        "password": "ya",
+        "firstName": "PH ",
+        "lastName": "TEST 1",
+        "email": "ya@ya.com",
+        "role": "Client",
+        "dateOfBirth": "2012-02-02",
+        "cinClient": "400002",
+        "packets": [],
+        "location_Client": null,
+        "active": false
+      },
+      "colis": 2,
+      "sachets": 1,
+      "status": "INITIALIZED",
+      "bordoreau": null,
+      "transferts": null
+    }
+  ]
+}
+
+<> 2024-05-07T232503.400.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 372
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "idPacket": 300002,
+  "colis":2 ,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "client": {
+    "username": "ya",
+    "password": "ya",
+    "firstName": "PH ",
+    "lastName": "TEST 1",
+    "email": "ya@ya.com",
+    "role": "Client",
+    "dateOfBirth": "2012-02-02",
+    "cinClient": "400002",
+    "packets": null,
+    "location_Client": null,
+    "active": false
+  }
+}
+
+<> 2024-05-07T232344.201.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 372
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "idPacket": 300001,
+  "colis":2 ,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "client": {
+    "username": "ya",
+    "password": "ya",
+    "firstName": "PH ",
+    "lastName": "TEST 1",
+    "email": "ya@ya.com",
+    "role": "Client",
+    "dateOfBirth": "2012-02-02",
+    "cinClient": "400001",
+    "packets": null,
+    "location_Client": null,
+    "active": false
+  }
+}
+
+<> 2024-05-07T232244.201.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 366
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bL": 300001,
+  "colis":2 ,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "client": {
+    "username": "ya",
+    "password": "ya",
+    "firstName": "PH ",
+    "lastName": "TEST 1",
+    "email": "ya@ya.com",
+    "role": "Client",
+    "dateOfBirth": "2012-02-02",
+    "cinClient": "400001",
+    "packets": null,
+    "location_Client": null,
+    "active": false
+  }
+}
+
+<> 2024-05-07T231622.500.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 366
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bL": 300001,
+  "colis":2 ,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "client": {
+    "username": "ya",
+    "password": "ya",
+    "firstName": "PH ",
+    "lastName": "TEST 1",
+    "email": "ya@ya.com",
+    "role": "Client",
+    "dateOfBirth": "2012-02-02",
+    "cinClient": "400001",
+    "packets": null,
+    "location_Client": null,
+    "active": false
+  }
+}
+
+<> 2024-05-07T231431.500.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 366
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bL": 300001,
+  "colis":2 ,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "client": {
+    "username": "ya",
+    "password": "ya",
+    "firstName": "PH ",
+    "lastName": "TEST 1",
+    "email": "ya@ya.com",
+    "role": "Client",
+    "dateOfBirth": "2012-02-02",
+    "cinClient": "400001",
+    "packets": null,
+    "location_Client": null,
+    "active": false
+  }
+}
+
+<> 2024-05-07T230859.500.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 366
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bL": 300001,
+  "colis":2 ,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "client": {
+    "username": "ya",
+    "password": "ya",
+    "firstName": "PH ",
+    "lastName": "TEST 1",
+    "email": "ya@ya.com",
+    "role": "Client",
+    "dateOfBirth": "2012-02-02",
+    "cinClient": "400001",
+    "packets": null,
+    "location_Client": null,
+    "active": false
+  }
+}
+
+<> 2024-05-07T230743.500.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bL": 300001,
+  "colis":2 ,
+  "sachets": 1,
+  "status": "INITIALIZED"
+}
+
+<> 2024-05-07T225953.500.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 75
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bL": 300001,
+  "colis":2 ,
+  "sachets": 1,
+  "status": "INITIALIZED"
+}
+
+<> 2024-05-07T225926.500.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 366
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bL": 300001,
+  "colis":2 ,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "client": {
+    "username": "ya",
+    "password": "ya",
+    "firstName": "PH ",
+    "lastName": "TEST 1",
+    "email": "ya@ya.com",
+    "role": "Client",
+    "dateOfBirth": "2012-02-02",
+    "cinClient": "400001",
+    "packets": null,
+    "location_Client": null,
+    "active": false
+  }
+}
+
+<> 2024-05-07T225905.500.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 366
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "bL": 300001,
+  "colis":2 ,
+  "sachets": 1,
+  "status": "INITIALIZED",
+  "client": {
+    "username": "ya",
+    "password": "ya",
+    "firstName": "PH ",
+    "lastName": "TEST 1",
+    "email": "ya@ya.com",
+    "role": "Client",
+    "dateOfBirth": "2012-02-02",
+    "cinClient": "400001",
+    "packets": null,
+    "location_Client": null,
+    "active": false
+  }
+}
+
+<> 2024-05-07T225646.500.json
+
+###
+
+POST http://localhost:8080/api/clients
+Content-Type: application/json
+Content-Length: 188
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinClient": "400003",
+  "role": "Client",
+  "username": "ya",
+  "password": "ya",
+  "firstName": "PH ",
+  "lastName": "TEST 1",
+  "email": "ya@ya.com",
+  "dateOfBirth": "2012-02-02"
+}
+
+<> 2024-05-07T225457.201.json
+
+###
+
+POST http://localhost:8080/api/clients
+Content-Type: application/json
+Content-Length: 188
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinClient": "400002",
+  "role": "Client",
+  "username": "ya",
+  "password": "ya",
+  "firstName": "PH ",
+  "lastName": "TEST 1",
+  "email": "ya@ya.com",
+  "dateOfBirth": "2012-02-02"
+}
+
+<> 2024-05-07T225445.201.json
+
+###
+
+POST http://localhost:8080/api/clients
+Content-Type: application/json
+Content-Length: 188
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinClient": "400001",
+  "role": "Client",
+  "username": "ya",
+  "password": "ya",
+  "firstName": "PH ",
+  "lastName": "TEST 1",
+  "email": "ya@ya.com",
+  "dateOfBirth": "2012-02-02"
+}
+
+<> 2024-05-07T225429.201.json
+
+###
+
+PUT http://localhost:8080/api/secteurs/200001
+Content-Type: application/json
+Content-Length: 288
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "city": "AGADIR",
+  "idSecteur": 200001,
+  "idSender": {
+    "role": "Sender",
+    "lastName": "hm",
+    "firstName": "hm",
+    "email": "hm@.com",
+    "dateOfBirth": "2024-01-01",
+    "password": "hm",
+    "username": "hm",
+    "cinSender": "200001",
+    "bordoreausSender": []
+  }
+}
+
+<> 2024-05-07T224712.200.json
+
+###
+
+POST http://localhost:8080/api/secteurs
+Content-Type: application/json
+Content-Length: 45
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "city": "AGADIR",
+  "idSecteur": 200001
+}
+
+<> 2024-05-07T224635.201.json
+
+###
+
+POST http://localhost:8080/api/senders
+Content-Type: application/json
+Content-Length: 207
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "role": "Sender",
+  "lastName": "hm",
+  "firstName": "hm",
+  "email": "hm@.com",
+  "dateOfBirth": "2024-01-01",
+  "password": "hm",
+  "username": "hm",
+  "cinSender": "200001",
+  "bordoreausSender": []
+}
+
+<> 2024-05-07T224610.201.json
+
+###
+
+POST http://localhost:8080/api/senders
+Content-Type: application/json
+Content-Length: 227
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "role": "Sender",
+  "lastName": "hm",
+  "firstName": "hm",
+  "email": "hm@.com",
+  "dateOfBirth": "2024-01-01",
+  "password": "hm",
+  "username": "hm",
+  "cinSender": "200001",
+  "bordoreausSender": [],
+  "secteur": {
+  }
+}
+
+<> 2024-05-07T224539.500.json
+
+###
+
+POST http://localhost:8080/api/senders
+Content-Type: application/json
+Content-Length: 223
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "role": "Sender",
+  "lastName": "hm",
+  "firstName": "hm",
+  "email": "hm@.com",
+  "dateOfBirth": "220824",
+  "password": "hm",
+  "username": "hm",
+  "cinSender": "200001",
+  "bordoreausSender": [],
+  "secteur": {
+  }
+}
+
+<> 2024-05-07T224344.400.json
+
+###
+
+POST http://localhost:8080/api/secteurs
+Content-Type: application/json
+Content-Length: 63
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "city": "AGADIR",
+  "idSecteur": 200001,
+  "idSender": {}
+}
+
+<> 2024-05-07T223635.500.json
+
+###
+
+GET http://localhost:8080/api/drivers/100001
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-05-07T222829.200.json
+
+###
+
+PUT http://localhost:8080/api/drivers/100001
+Content-Type: application/json
+Content-Length: 323
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "ye",
+  "password": "y",
+  "cinDriver": "100001",
+  "brand": "Toyota",
+  "licenseNumber": "DL-2024-XYZ-1234",
+  "licensePlate": "XYZ-1234",
+  "dateOfBirth": "1985-07-20",
+  "email": "ye@example.com",
+  "firstName": "Ye",
+  "lastName": "West",
+  "role": "Driver",
+  "active": true,
+  "bordoreausDriver": []
+}
+
+<> 2024-05-07T222752.200.json
+
+###
+
+PUT http://localhost:8080/api/drivers
+Content-Type: application/json
+Content-Length: 323
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "ye",
+  "password": "y",
+  "cinDriver": "100001",
+  "brand": "Toyota",
+  "licenseNumber": "DL-2024-XYZ-1234",
+  "licensePlate": "XYZ-1234",
+  "dateOfBirth": "1985-07-20",
+  "email": "ye@example.com",
+  "firstName": "Ye",
+  "lastName": "West",
+  "role": "Driver",
+  "bordoreausDriver": [],
+  "active": true
+}
+
+<> 2024-05-07T222400.405.json
+
+###
+
+POST http://localhost:8080/api/drivers
+Content-Type: application/json
+Content-Length: 305
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "ye",
+  "password": "y",
+  "cinDriver": "100001",
+  "brand": "Toyota",
+  "licenseNumber": "DL-2024-XYZ-1234",
+  "licensePlate": "XYZ-1234",
+  "dateOfBirth": "1985-07-20",
+  "email": "ye@example.com",
+  "firstName": "Ye",
+  "lastName": "West",
+  "role": "Driver",
+  "bordoreausDriver": []
+}
+
+<> 2024-05-07T222327.201.json
+
+###
+
 PUT http://localhost:8080/api/drivers/D123456789
 Content-Type: application/json
 Content-Length: 2249
@@ -207,2529 +2369,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 }
 
 <> 2024-04-25T060612.200.json
-
-###
-
-POST http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2249
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassino",
-  "password": "y",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3,
-      "sender": {
-        "username": "sender",
-        "password": "sender",
-        "firstName": "Alice",
-        "lastName": "Smith",
-        "email": "alice.smith@example.com",
-        "role": "Sender",
-        "dateOfBirth": "1980-06-15",
-        "cinSender": "SND0001",
-        "packets": [],
-        "active": false
-      },
-      "client": {
-        "username": "client",
-        "password": "client",
-        "firstName": "Bob",
-        "lastName": "Smith",
-        "email": "bob.smith@example.com",
-        "role": "Client",
-        "dateOfBirth": "1985-08-10",
-        "cinClient": "CLT200",
-        "packets": [],
-        "location_Client": {
-          "latitude": 36.7783,
-          "longitude": 36.7783
-        },
-        "active": false
-      },
-      "timeChanges": [],
-      "medicalPieces": [
-        "EKG machine",
-        "Blood pressure monitor",
-        "Diabetes test strips"
-      ],
-      "city": "New Gotham",
-      "status": "In Transit",
-      "description": "Urgent delivery of critical medical equipment and supplies.",
-      "route": {
-        "idRouter": 1,
-        "startTime": "2024-04-23T08:00:00",
-        "waypoints": [
-          {
-            "latitude": 34.0522,
-            "longitude": -118.244
-          },
-          {
-            "latitude": 36.7783,
-            "longitude": -119.418
-          }
-        ],
-        "endTimeEstimated": "2024-04-23T18:00:00",
-        "distance": 450.5,
-        "duration": 10,
-        "packets": []
-      }
-    }
-  ],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        },
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-25T060423.405.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2249
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassino",
-  "password": "y",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3,
-      "sender": {
-        "username": "sender",
-        "password": "sender",
-        "firstName": "Alice",
-        "lastName": "Smith",
-        "email": "alice.smith@example.com",
-        "role": "Sender",
-        "dateOfBirth": "1980-06-15",
-        "cinSender": "SND0001",
-        "packets": [],
-        "active": false
-      },
-      "client": {
-        "username": "client",
-        "password": "client",
-        "firstName": "Bob",
-        "lastName": "Smith",
-        "email": "bob.smith@example.com",
-        "role": "Client",
-        "dateOfBirth": "1985-08-10",
-        "cinClient": "CLT200",
-        "packets": [],
-        "location_Client": {
-          "latitude": 36.7783,
-          "longitude": 36.7783
-        },
-        "active": false
-      },
-      "timeChanges": [],
-      "medicalPieces": [
-        "EKG machine",
-        "Blood pressure monitor",
-        "Diabetes test strips"
-      ],
-      "city": "New Gotham",
-      "status": "In Transit",
-      "description": "Urgent delivery of critical medical equipment and supplies.",
-      "route": {
-        "idRouter": 1,
-        "startTime": "2024-04-23T08:00:00",
-        "waypoints": [
-          {
-            "latitude": 34.0522,
-            "longitude": -118.244
-          },
-          {
-            "latitude": 36.7783,
-            "longitude": -119.418
-          }
-        ],
-        "endTimeEstimated": "2024-04-23T18:00:00",
-        "distance": 450.5,
-        "duration": 10,
-        "packets": []
-      }
-    }
-  ],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        },
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-25T060411.415.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2249
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassino",
-  "password": "y",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3,
-      "sender": {
-        "username": "sender",
-        "password": "sender",
-        "firstName": "Alice",
-        "lastName": "Smith",
-        "email": "alice.smith@example.com",
-        "role": "Sender",
-        "dateOfBirth": "1980-06-15",
-        "cinSender": "SND0001",
-        "packets": [],
-        "active": false
-      },
-      "client": {
-        "username": "client",
-        "password": "client",
-        "firstName": "Bob",
-        "lastName": "Smith",
-        "email": "bob.smith@example.com",
-        "role": "Client",
-        "dateOfBirth": "1985-08-10",
-        "cinClient": "CLT200",
-        "packets": [],
-        "location_Client": {
-          "latitude": 36.7783,
-          "longitude": 36.7783
-        },
-        "active": false
-      },
-      "timeChanges": [],
-      "medicalPieces": [
-        "EKG machine",
-        "Blood pressure monitor",
-        "Diabetes test strips"
-      ],
-      "city": "New Gotham",
-      "status": "In Transit",
-      "description": "Urgent delivery of critical medical equipment and supplies.",
-      "route": {
-        "idRouter": 1,
-        "startTime": "2024-04-23T08:00:00",
-        "waypoints": [
-          {
-            "latitude": 34.0522,
-            "longitude": -118.244
-          },
-          {
-            "latitude": 36.7783,
-            "longitude": -119.418
-          }
-        ],
-        "endTimeEstimated": "2024-04-23T18:00:00",
-        "distance": 450.5,
-        "duration": 10,
-        "packets": []
-      }
-    }
-  ],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        },
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-25T060132.415.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 409
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassino",
-  "password": "y",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3
-    }
-  ],
-  "routes": [
-    {
-      "idRouter": 1
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-25T060110.415.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 409
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassino",
-  "password": "y",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3
-    }
-  ],
-  "routes": [
-    {
-      "idRouter": 1
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-25T054446.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 409
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassino",
-  "password": "y",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3
-    }
-  ],
-  "routes": [
-    {
-      "idRouter": 1
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-25T053437.415.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2220
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassino",
-  "password": "y",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3,
-      "sender": {
-        "username": "sender",
-        "password": "sender",
-        "firstName": "Alice",
-        "lastName": "Smith",
-        "email": "alice.smith@example.com",
-        "role": "Sender",
-        "dateOfBirth": "1980-06-15",
-        "cinSender": "SND0001",
-        "packets": [],
-        "active": false
-      },
-      "client": {
-        "username": "client",
-        "password": "client",
-        "firstName": "Bob",
-        "lastName": "Smith",
-        "email": "bob.smith@example.com",
-        "role": "Client",
-        "dateOfBirth": "1985-08-10",
-        "cinClient": "CLT200",
-        "packets": [],
-        "location_Client": {
-          "latitude": 36.7783,
-          "longitude": 36.7783
-        },
-        "active": false
-      },
-      "timeChanges": [],
-      "medicalPieces": [
-        "EKG machine",
-        "Blood pressure monitor",
-        "Diabetes test strips"
-      ],
-      "city": "New Gotham",
-      "status": "In Transit",
-      "description": "Urgent delivery of critical medical equipment and supplies.",
-      "route": {
-        "idRouter": 1,
-        "startTime": "2024-04-23T08:00:00",
-        "waypoints": [
-          {
-            "latitude": 34.0522,
-            "longitude": -118.244
-          },
-          {
-            "latitude": 36.7783,
-            "longitude": -119.418
-          }
-        ],
-        "endTimeEstimated": "2024-04-23T18:00:00",
-        "distance": 450.5,
-        "duration": 10,
-        "packets": []
-      }
-    }
-  ],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        },
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-25T053042.415.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2249
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassino",
-  "password": "y",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3,
-      "sender": {
-        "username": "sender",
-        "password": "sender",
-        "firstName": "Alice",
-        "lastName": "Smith",
-        "email": "alice.smith@example.com",
-        "role": "Sender",
-        "dateOfBirth": "1980-06-15",
-        "cinSender": "SND0001",
-        "packets": [],
-        "active": false
-      },
-      "client": {
-        "username": "client",
-        "password": "client",
-        "firstName": "Bob",
-        "lastName": "Smith",
-        "email": "bob.smith@example.com",
-        "role": "Client",
-        "dateOfBirth": "1985-08-10",
-        "cinClient": "CLT200",
-        "packets": [],
-        "location_Client": {
-          "latitude": 36.7783,
-          "longitude": 36.7783
-        },
-        "active": false
-      },
-      "timeChanges": [],
-      "medicalPieces": [
-        "EKG machine",
-        "Blood pressure monitor",
-        "Diabetes test strips"
-      ],
-      "city": "New Gotham",
-      "status": "In Transit",
-      "description": "Urgent delivery of critical medical equipment and supplies.",
-      "route": {
-        "idRouter": 1,
-        "startTime": "2024-04-23T08:00:00",
-        "waypoints": [
-          {
-            "latitude": 34.0522,
-            "longitude": -118.244
-          },
-          {
-            "latitude": 36.7783,
-            "longitude": -119.418
-          }
-        ],
-        "endTimeEstimated": "2024-04-23T18:00:00",
-        "distance": 450.5,
-        "duration": 10,
-        "packets": []
-      }
-    }
-  ],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        },
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-25T052958.415.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2125
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassino",
-  "password": "y",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [{
-    "cinPacket": 3,
-    "sender": {
-      "username": "sender",
-      "password": "sender",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "email": "alice.smith@example.com",
-      "role": "Sender",
-      "dateOfBirth": "1980-06-15",
-      "cinSender": "SND0001",
-      "packets": [],
-      "active": false
-    },
-    "client": {
-      "username": "client",
-      "password": "client",
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "role": "Client",
-      "dateOfBirth": "1985-08-10",
-      "cinClient": "CLT200",
-      "packets": [],
-      "location_Client": null,
-      "active": false
-    },
-    "drivers": [],
-    "timeChanges": [],
-    "medicalPieces": [
-      "EKG machine",
-      "Blood pressure monitor",
-      "Diabetes test strips"
-    ],
-    "city": "New Gotham",
-    "status": "In Transit",
-    "description": "Urgent delivery of critical medical equipment and supplies.",
-    "route": {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  }],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-25T052819.415.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2125
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [{
-    "cinPacket": 3,
-    "sender": {
-      "username": "sender",
-      "password": "sender",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "email": "alice.smith@example.com",
-      "role": "Sender",
-      "dateOfBirth": "1980-06-15",
-      "cinSender": "SND0001",
-      "packets": [],
-      "active": false
-    },
-    "client": {
-      "username": "client",
-      "password": "client",
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "role": "Client",
-      "dateOfBirth": "1985-08-10",
-      "cinClient": "CLT200",
-      "packets": [],
-      "location_Client": null,
-      "active": false
-    },
-    "drivers": [],
-    "timeChanges": [],
-    "medicalPieces": [
-      "EKG machine",
-      "Blood pressure monitor",
-      "Diabetes test strips"
-    ],
-    "city": "New Gotham",
-    "status": "In Transit",
-    "description": "Urgent delivery of critical medical equipment and supplies.",
-    "route": {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  }],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-23T220239.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 338
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [],
-  "routes": [],
-  "active": true
-}
-
-<> 2024-04-23T220205.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 1713
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [{
-    "cinPacket": 3,
-    "sender": {
-      "username": "sender",
-      "password": "sender",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "email": "alice.smith@example.com",
-      "role": "Sender",
-      "dateOfBirth": "1980-06-15",
-      "cinSender": "SND0001",
-      "packets": [],
-      "active": false
-    },
-    "client": {
-      "username": "client",
-      "password": "client",
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "role": "Client",
-      "dateOfBirth": "1985-08-10",
-      "cinClient": "CLT200",
-      "packets": [],
-      "location_Client": null,
-      "active": false
-    },
-    "drivers": [],
-    "timeChanges": [],
-    "medicalPieces": [
-      "EKG machine",
-      "Blood pressure monitor",
-      "Diabetes test strips"
-    ],
-    "city": "New Gotham",
-    "status": "In Transit",
-    "description": "Urgent delivery of critical medical equipment and supplies.",
-    "route": {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  }],
-  "routes": [],
-  "active": true
-}
-
-<> 2024-04-23T220034.500.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2125
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [{
-    "cinPacket": 3,
-    "sender": {
-      "username": "sender",
-      "password": "sender",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "email": "alice.smith@example.com",
-      "role": "Sender",
-      "dateOfBirth": "1980-06-15",
-      "cinSender": "SND0001",
-      "packets": [],
-      "active": false
-    },
-    "client": {
-      "username": "client",
-      "password": "client",
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "role": "Client",
-      "dateOfBirth": "1985-08-10",
-      "cinClient": "CLT200",
-      "packets": [],
-      "location_Client": null,
-      "active": false
-    },
-    "drivers": [],
-    "timeChanges": [],
-    "medicalPieces": [
-      "EKG machine",
-      "Blood pressure monitor",
-      "Diabetes test strips"
-    ],
-    "city": "New Gotham",
-    "status": "In Transit",
-    "description": "Urgent delivery of critical medical equipment and supplies.",
-    "route": {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  }],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-23T215220.500.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2125
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [{
-    "cinPacket": 3,
-    "sender": {
-      "username": "sender",
-      "password": "sender",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "email": "alice.smith@example.com",
-      "role": "Sender",
-      "dateOfBirth": "1980-06-15",
-      "cinSender": "SND0001",
-      "packets": [],
-      "active": false
-    },
-    "client": {
-      "username": "client",
-      "password": "client",
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "role": "Client",
-      "dateOfBirth": "1985-08-10",
-      "cinClient": "CLT200",
-      "packets": [],
-      "location_Client": null,
-      "active": false
-    },
-    "drivers": [],
-    "timeChanges": [],
-    "medicalPieces": [
-      "EKG machine",
-      "Blood pressure monitor",
-      "Diabetes test strips"
-    ],
-    "city": "New Gotham",
-    "status": "In Transit",
-    "description": "Urgent delivery of critical medical equipment and supplies.",
-    "route": {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  }],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-23T215023.500.json
-
-###
-
-POST http://localhost:8080/api/clients
-Content-Type: application/json
-Content-Length: 324
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "cinClient": "CLT200",
-  "username": "client",
-  "password": "client",
-  "isActive": true,
-  "firstName": "Bob",
-  "lastName": "Smith",
-  "email": "bob.smith@example.com",
-  "role": "Client",
-  "dateOfBirth": "1985-08-10",
-  "Location_Client": {
-    "latitude": 34.0522,
-    "longitude": -118.2437
-  },
-  "packets": []
-}
-
-<> 2024-04-23T214955.201.json
-
-###
-
-POST http://localhost:8080/api/clients
-Content-Type: application/json
-Content-Length: 324
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "cinClient": "CLT200",
-  "username": "client",
-  "password": "client",
-  "isActive": true,
-  "firstName": "Bob",
-  "lastName": "Smith",
-  "email": "bob.smith@example.com",
-  "role": "Client",
-  "dateOfBirth": "1985-08-10",
-  "Location_Client": {
-    "latitude": 34.0522,
-    "longitude": -118.2437
-  },
-  "packets": []
-}
-
-<> 2024-04-23T214937.201.json
-
-###
-
-POST http://localhost:8080/api/clients
-Content-Type: application/json
-Content-Length: 324
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "cinClient": "CLT200",
-  "username": "client",
-  "password": "client",
-  "isActive": true,
-  "firstName": "Bob",
-  "lastName": "Smith",
-  "email": "bob.smith@example.com",
-  "role": "Client",
-  "dateOfBirth": "1985-08-10",
-  "Location_Client": {
-    "latitude": 34.0522,
-    "longitude": -118.2437
-  },
-  "packets": []
-}
-
-<> 2024-04-23T214918.201.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2125
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [{
-    "cinPacket": 3,
-    "sender": {
-      "username": "sender",
-      "password": "sender",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "email": "alice.smith@example.com",
-      "role": "Sender",
-      "dateOfBirth": "1980-06-15",
-      "cinSender": "SND0001",
-      "packets": [],
-      "active": false
-    },
-    "client": {
-      "username": "client",
-      "password": "client",
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "role": "Client",
-      "dateOfBirth": "1985-08-10",
-      "cinClient": "CLT200",
-      "packets": [],
-      "location_Client": null,
-      "active": false
-    },
-    "drivers": [],
-    "timeChanges": [],
-    "medicalPieces": [
-      "EKG machine",
-      "Blood pressure monitor",
-      "Diabetes test strips"
-    ],
-    "city": "New Gotham",
-    "status": "In Transit",
-    "description": "Urgent delivery of critical medical equipment and supplies.",
-    "route": {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  }],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-23T214744.500.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2081
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [{
-    "cinPacket": 3,
-    "sender": {
-      "username": "sender",
-      "password": "sender",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "email": "alice.smith@example.com",
-      "role": "Sender",
-      "dateOfBirth": "1980-06-15",
-      "cinSender": "SND0001",
-      "packets": [],
-      "active": false
-    },
-    "client": {
-      "username": "client",
-      "password": "client",
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "role": "Client",
-      "dateOfBirth": "1985-08-10",
-      "cinClient": "CLT200",
-      "packets": [],
-      "location_Client": null,
-      "active": false
-    },
-    "drivers": [],
-    "timeChanges": [],
-    "medicalPieces": [
-      "EKG machine",
-      "Blood pressure monitor",
-      "Diabetes test strips"
-    ],
-    "city": "New Gotham",
-    "status": "In Transit",
-    "description": "Urgent delivery of critical medical equipment and supplies.",
-    "route": {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  }],
-  "routes": [{
-    "idRouter": 1,
-    "startTime": "2024-04-23T08:00:00",
-    "waypoints": [
-      {
-        "latitude": 36.7783,
-        "longitude": -119.418
-      },
-      {
-        "latitude": 34.0522,
-        "longitude": -118.244
-      }
-    ],
-    "endTimeEstimated": "2024-04-23T18:00:00",
-    "distance": 450.5,
-    "duration": 10,
-    "drivers": [],
-    "packets": []
-  }],
-  "active": true
-}
-
-<> 2024-04-23T214635.500.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2081
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [{
-    "cinPacket": 3,
-    "sender": {
-      "username": "sender",
-      "password": "sender",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "email": "alice.smith@example.com",
-      "role": "Sender",
-      "dateOfBirth": "1980-06-15",
-      "cinSender": "SND0001",
-      "packets": [],
-      "active": false
-    },
-    "client": {
-      "username": "client",
-      "password": "client",
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "role": "Client",
-      "dateOfBirth": "1985-08-10",
-      "cinClient": "CLT200",
-      "packets": [],
-      "location_Client": null,
-      "active": false
-    },
-    "drivers": [],
-    "timeChanges": [],
-    "medicalPieces": [
-      "EKG machine",
-      "Blood pressure monitor",
-      "Diabetes test strips"
-    ],
-    "city": "New Gotham",
-    "status": "In Transit",
-    "description": "Urgent delivery of critical medical equipment and supplies.",
-    "route": {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  }],
-  "routes": [{
-    "idRouter": 1,
-    "startTime": "2024-04-23T08:00:00",
-    "waypoints": [
-      {
-        "latitude": 36.7783,
-        "longitude": -119.418
-      },
-      {
-        "latitude": 34.0522,
-        "longitude": -118.244
-      }
-    ],
-    "endTimeEstimated": "2024-04-23T18:00:00",
-    "distance": 450.5,
-    "duration": 10,
-    "drivers": [],
-    "packets": []
-  }],
-  "active": true
-}
-
-<> 2024-04-23T214536.500.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 1713
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [{
-    "cinPacket": 3,
-    "sender": {
-      "username": "sender",
-      "password": "sender",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "email": "alice.smith@example.com",
-      "role": "Sender",
-      "dateOfBirth": "1980-06-15",
-      "cinSender": "SND0001",
-      "packets": [],
-      "active": false
-    },
-    "client": {
-      "username": "client",
-      "password": "client",
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "role": "Client",
-      "dateOfBirth": "1985-08-10",
-      "cinClient": "CLT200",
-      "packets": [],
-      "location_Client": null,
-      "active": false
-    },
-    "drivers": [],
-    "timeChanges": [],
-    "medicalPieces": [
-      "EKG machine",
-      "Blood pressure monitor",
-      "Diabetes test strips"
-    ],
-    "city": "New Gotham",
-    "status": "In Transit",
-    "description": "Urgent delivery of critical medical equipment and supplies.",
-    "route": {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  }],
-  "routes": [],
-  "active": true
-}
-
-<> 2024-04-23T214404.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 355
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-    }
-    ],
-  "routes": [],
-  "active": true
-}
-
-<> 2024-04-23T214112.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 377
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 2
-    }
-    ],
-  "routes": [],
-  "active": true
-}
-
-<> 2024-04-23T214100.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 378
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3
-    }
-    ],
-  "routes": [{}],
-  "active": true
-}
-
-<> 2024-04-23T214043.500.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 376
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3
-    }
-    ],
-  "routes": [],
-  "active": true
-}
-
-<> 2024-04-23T213833.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 1713
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [{
-    "cinPacket": 3,
-    "sender": {
-      "username": "sender",
-      "password": "sender",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "email": "alice.smith@example.com",
-      "role": "Sender",
-      "dateOfBirth": "1980-06-15",
-      "cinSender": "SND0001",
-      "packets": [],
-      "active": false
-    },
-    "client": {
-      "username": "client",
-      "password": "client",
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "role": "Client",
-      "dateOfBirth": "1985-08-10",
-      "cinClient": "CLT200",
-      "packets": [],
-      "location_Client": null,
-      "active": false
-    },
-    "drivers": [],
-    "timeChanges": [],
-    "medicalPieces": [
-      "EKG machine",
-      "Blood pressure monitor",
-      "Diabetes test strips"
-    ],
-    "city": "New Gotham",
-    "status": "In Transit",
-    "description": "Urgent delivery of critical medical equipment and supplies.",
-    "route": {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  }],
-  "routes": [],
-  "active": true
-}
-
-<> 2024-04-23T213649.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 1714
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "abdo",
-  "password": "abdo",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [{
-    "cinPacket": 3,
-    "sender": {
-      "username": "sender",
-      "password": "sender",
-      "firstName": "Alice",
-      "lastName": "Smith",
-      "email": "alice.smith@example.com",
-      "role": "Sender",
-      "dateOfBirth": "1980-06-15",
-      "cinSender": "SND0001",
-      "packets": [],
-      "active": false
-    },
-    "client": {
-      "username": "client",
-      "password": "client",
-      "firstName": "Bob",
-      "lastName": "Smith",
-      "email": "bob.smith@example.com",
-      "role": "Client",
-      "dateOfBirth": "1985-08-10",
-      "cinClient": "CLT200",
-      "packets": [],
-      "location_Client": null,
-      "active": false
-    },
-    "drivers": [],
-    "timeChanges": [],
-    "medicalPieces": [
-      "EKG machine",
-      "Blood pressure monitor",
-      "Diabetes test strips"
-    ],
-    "city": "New Gotham",
-    "status": "In Transit",
-    "description": "Urgent delivery of critical medical equipment and supplies.",
-    "route": {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        },
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "drivers": [],
-      "packets": []
-    }
-  }],
-  "routes": [],
-  "active": false
-}
-
-<> 2024-04-23T213538.200.json
-
-###
-
-POST http://localhost:8080/api/packets
-Content-Type: application/json
-Content-Length: 1692
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "cinPacket": 0,
-  "sender": {
-    "username": "sender",
-    "password": "sender",
-    "firstName": "Alice",
-    "lastName": "Smith",
-    "email": "alice.smith@example.com",
-    "role": "Sender",
-    "dateOfBirth": "1980-06-15",
-    "cinSender": "SND0001",
-    "packets": [],
-    "active": false
-  },
-  "client": {
-    "cinClient": "CLT200",
-    "username": "client",
-    "password": "client",
-    "isActive": true,
-    "firstName": "Bob",
-    "lastName": "Smith",
-    "email": "bob.smith@example.com",
-    "role": "Client",
-    "dateOfBirth": "1985-08-10",
-    "Location_Client": {
-      "latitude": 34.0522,
-      "longitude": -118.2437
-    },
-    "packets": []
-  },
-  "drivers": [{
-    "username": "abdo",
-    "password": "abdo",
-    "firstName": "John",
-    "lastName": "Doe",
-    "email": "johndoe@example.com",
-    "role": "Driver",
-    "dateOfBirth": "1985-05-15",
-    "cinDriver": "D123456789",
-    "licenseNumber": "LIC123456",
-    "licensePlate": "ABC-1234",
-    "brand": "Toyota",
-    "packets": [],
-    "routes": [],
-    "active": false
-  }],
-  "timeChanges": [],
-  "medicalPieces": [
-    "Blood pressure monitor",
-    "Diabetes test strips",
-    "EKG machine"
-  ],
-  "city": "New Gotham",
-  "status": "In Transit",
-  "description": "Urgent delivery of critical medical equipment and supplies.",
-  "route": {
-    "idRouter": 1,
-    "startTime": "2024-04-23T08:00:00",
-    "waypoints": [
-      {
-        "latitude": 36.7783,
-        "longitude": -119.418
-      },
-      {
-        "latitude": 34.0522,
-        "longitude": -118.244
-      }
-    ],
-    "endTimeEstimated": "2024-04-23T18:00:00",
-    "distance": 450.5,
-    "duration": 10,
-    "drivers": [],
-    "packets": []
-  }
-}
-
-<> 2024-04-23T142612.201.json
-
-###
-
-POST http://localhost:8080/api/clients
-Content-Type: application/json
-Content-Length: 324
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "cinClient": "CLT200",
-  "username": "client",
-  "password": "client",
-  "isActive": true,
-  "firstName": "Bob",
-  "lastName": "Smith",
-  "email": "bob.smith@example.com",
-  "role": "Client",
-  "dateOfBirth": "1985-08-10",
-  "Location_Client": {
-    "latitude": 34.0522,
-    "longitude": -118.2437
-  },
-  "packets": []
-}
-
-<> 2024-04-23T142602.201.json
-
-###
-
-POST http://localhost:8080/api/packets
-Content-Type: application/json
-Content-Length: 1692
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "cinPacket": 0,
-  "sender": {
-    "username": "sender",
-    "password": "sender",
-    "firstName": "Alice",
-    "lastName": "Smith",
-    "email": "alice.smith@example.com",
-    "role": "Sender",
-    "dateOfBirth": "1980-06-15",
-    "cinSender": "SND0001",
-    "packets": [],
-    "active": false
-  },
-  "client": {
-    "cinClient": "CLT200",
-    "username": "client",
-    "password": "client",
-    "isActive": true,
-    "firstName": "Bob",
-    "lastName": "Smith",
-    "email": "bob.smith@example.com",
-    "role": "Client",
-    "dateOfBirth": "1985-08-10",
-    "Location_Client": {
-      "latitude": 34.0522,
-      "longitude": -118.2437
-    },
-    "packets": []
-  },
-  "drivers": [{
-    "username": "abdo",
-    "password": "abdo",
-    "firstName": "John",
-    "lastName": "Doe",
-    "email": "johndoe@example.com",
-    "role": "Driver",
-    "dateOfBirth": "1985-05-15",
-    "cinDriver": "D123456789",
-    "licenseNumber": "LIC123456",
-    "licensePlate": "ABC-1234",
-    "brand": "Toyota",
-    "packets": [],
-    "routes": [],
-    "active": false
-  }],
-  "timeChanges": [],
-  "medicalPieces": [
-    "Blood pressure monitor",
-    "Diabetes test strips",
-    "EKG machine"
-  ],
-  "city": "New Gotham",
-  "status": "In Transit",
-  "description": "Urgent delivery of critical medical equipment and supplies.",
-  "route": {
-    "idRouter": 1,
-    "startTime": "2024-04-23T08:00:00",
-    "waypoints": [
-      {
-        "latitude": 36.7783,
-        "longitude": -119.418
-      },
-      {
-        "latitude": 34.0522,
-        "longitude": -118.244
-      }
-    ],
-    "endTimeEstimated": "2024-04-23T18:00:00",
-    "distance": 450.5,
-    "duration": 10,
-    "drivers": [],
-    "packets": []
-  }
-}
-
-<> 2024-04-23T142429.500.json
-
-###
-
-POST http://localhost:8080/api/packets
-Content-Type: application/json
-Content-Length: 324
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "cinClient": "CLT200",
-  "username": "client",
-  "password": "client",
-  "isActive": true,
-  "firstName": "Bob",
-  "lastName": "Smith",
-  "email": "bob.smith@example.com",
-  "role": "Client",
-  "dateOfBirth": "1985-08-10",
-  "Location_Client": {
-    "latitude": 34.0522,
-    "longitude": -118.2437
-  },
-  "packets": []
-}
-
-<> 2024-04-23T142304.201.json
-
-###
-
-POST http://localhost:8080/api/routes
-Content-Type: application/json
-Content-Length: 338
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "idRouter": 101,
-  "startTime": "2024-04-23T08:00:00",
-  "waypoints": [
-    {
-      "latitude": 34.0522,
-      "longitude": -118.2437
-    },
-    {
-      "latitude": 36.7783,
-      "longitude": -119.4179
-    }
-  ],
-  "endTimeEstimated": "2024-04-23T18:00:00",
-  "distance": 450.5,
-  "duration": 10.0,
-  "drivers": [],
-  "packets": []
-}
-
-<> 2024-04-23T141845.201.json
-
-###
-
-POST http://localhost:8080/api/packets
-Content-Type: application/json
-Content-Length: 340
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "cinPacket": 5001,
-  "sender": {},
-  "client": {},
-  "drivers": [],
-  "timeChanges": [],
-  "medicalPieces": [
-    "Blood pressure monitor",
-    "Diabetes test strips",
-    "EKG machine"
-  ],
-  "city": "New Gotham",
-  "status": "In Transit",
-  "description": "Urgent delivery of critical medical equipment and supplies.",
-  "route": {}
-}
-
-<> 2024-04-23T141800.500.json
-
-###
-
-POST http://localhost:8080/api/senders
-Content-Type: application/json
-Content-Length: 249
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "cinSender": "SND0001",
-  "username": "sender",
-  "password": "sender",
-  "isActive": true,
-  "firstName": "Alice",
-  "lastName": "Smith",
-  "email": "alice.smith@example.com",
-  "role": "Sender",
-  "dateOfBirth": "1980-06-15",
-  "packets": []
-}
-
-<> 2024-04-23T140331.201.json
-
-###
-
-POST http://localhost:8080/api/drivers
-Content-Type: application/json
-Content-Length: 340
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [],
-  "routes": [],
-  "username": "abdo",
-  "password": "abdo",
-  "isActive": true,
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15"
-}
-
-<> 2024-04-23T140145.201.json
-
-###
-
-POST http://localhost:8080/api/admins
-Content-Type: application/json
-Content-Length: 236
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassinesama",
-  "password": "yass",
-  "firstName": "Yassine",
-  "lastName": "Kacimi",
-  "email": "Kacimiyassine16@gmail.com",
-  "dateOfBirth": "2024-04-19",
-  "cinAdmin": "U200000",
-  "role": "Admin",
-  "active": true
-}
-
-<> 2024-04-23T130654.201.json
-
-###
-
-POST http://localhost:8080/api/drivers/login
-Content-Type: application/json
-Content-Length: 42
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "d1",
-  "password": "d1"
-}
-
-<> 2024-04-22T172958.405.json
-
-###
-
-POST http://localhost:8080/api/admins/login
-Content-Type: application/json
-Content-Length: 53
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "password": "yass",
-  "username": "yassinesama"
-}
-
-<> 2024-04-22T172621.200.txt
-
-###
-
-POST http://localhost:8080/api/drivers/login
-Content-Type: application/json
-Content-Length: 42
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "d1",
-  "password": "d1"
-}
-
-<> 2024-04-22T172559.405.json
-
-###
-
-POST http://localhost:8080/api/drivers/login
-Content-Type: application/json
-Content-Length: 42
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "password": "d1",
-  "username": "d1"
-}
-
-<> 2024-04-22T172426.405.json
-
-###
-
-POST http://localhost:8080/api/drivers/login
-Content-Type: application/json
-Content-Length: 42
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "password": "d1",
-  "username": "d1"
-}
-
-<> 2024-04-22T172419.405.json
-
-###
-
-POST http://192.168.43.207:8080/api/drivers/login
-Content-Type: application/json
-Content-Length: 42
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "password": "d1",
-  "username": "d1"
-}
-
-<> 2024-04-22T172347.405.json
-
-###
-
-POST http://localhost:8080/api/senders
-Content-Type: application/json
-Content-Length: 208
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "s3",
-  "password": "sa",
-  "cinSender": "Us4",
-  "dateOfBirth": "2024-04-19",
-  "email": "s2",
-  "firstName": "s2",
-  "lastName": "s2",
-  "packets": [],
-  "role": "Sender",
-  "active": true
-}
-
-<> 2024-04-21T214101.201.json
-
-###
-
-POST http://localhost:8080/api/senders
-Content-Type: application/json
-Content-Length: 208
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "s3",
-  "password": "sa",
-  "cinSender": "Us1",
-  "dateOfBirth": "2024-04-19",
-  "email": "s2",
-  "firstName": "s2",
-  "lastName": "s2",
-  "packets": [],
-  "role": "Sender",
-  "active": true
-}
-
-<> 2024-04-21T214029.201.json
-
-###
-
-POST http://localhost:8080/api/senders
-Content-Type: application/json
-Content-Length: 208
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "s3",
-  "password": "sa",
-  "cinSender": "Us2",
-  "dateOfBirth": "2024-04-19",
-  "email": "s2",
-  "firstName": "s2",
-  "lastName": "s2",
-  "packets": [],
-  "role": "Sender",
-  "active": true
-}
-
-<> 2024-04-21T213909.201.json
-
-###
-
-POST http://localhost:8080/api/admins
-Content-Type: application/json
-Content-Length: 236
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassinesama",
-  "password": "yass",
-  "firstName": "Yassine",
-  "lastName": "Kacimi",
-  "email": "Kacimiyassine16@gmail.com",
-  "dateOfBirth": "2024-04-19",
-  "cinAdmin": "U200000",
-  "role": "Admin",
-  "active": true
-}
-
-<> 2024-04-20T223241.201.json
-
-###
-
-POST http://localhost:8080/api/admins/login
-Content-Type: application/json
-Content-Length: 53
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "password": "yass",
-  "username": "yassinesama"
-}
-
-<> 2024-04-20T221539.200.txt
-
-###
-
-POST http://localhost:8080/api/admins/login
-Content-Type: application/json
-Content-Length: 53
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "password": "yassinesama",
-  "username": "yass"
-}
-
-<> 2024-04-20T221111.401.txt
 
 ###
 
