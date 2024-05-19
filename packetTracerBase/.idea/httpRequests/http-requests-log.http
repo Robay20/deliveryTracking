@@ -1,3 +1,217 @@
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 125
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "bL": 0,
+  "client": {},
+  "colis": 0,
+  "sachets": 0,
+  "status": "INITIALIZED",
+  "bordoreau": {},
+  "transferts": []
+}
+
+<> 2024-05-19T181324.500.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 129
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{"client":"400003",
+  "colis":10,"sachets":1,
+  "status":"INITIALIZED",
+  "bordoreau":"500001",
+  "transferts":[],
+  "bl":300003}
+
+<> 2024-05-19T175740.400.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 127
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{"client":"400003",
+  "colis":10,"sachets":1,
+  "status":"INITIALIZED",
+  "bordoreau":500001,
+  "transferts":[],
+  "bl":300003}
+
+<> 2024-05-19T175725.400.json
+
+###
+
+POST http://localhost:8080/api/packets
+Content-Type: application/json
+Content-Length: 129
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{"client":"400003",
+  "colis":10,"sachets":1,
+  "status":"INITIALIZED",
+  "bordoreau":500001,
+  "transferts":null,
+  "bl":300003}
+
+<> 2024-05-19T175712.400.json
+
+###
+
+GET http://localhost:8080/api/clients/aaaa
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 38
+
+{
+  "username": "",
+  "password": ""
+}
+
+<> 2024-05-19T115651.500.json
+
+###
+
+POST http://localhost:8080/api/senders
+Content-Type: application/json
+Content-Length: 231
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "abdo",
+  "password": "abdo",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "cinSender": "U200000",
+  "role": "Sender",
+  "active": true
+}
+
+<> 2024-05-08T103434.201.json
+
+###
+
+POST http://localhost:8080/api/clients
+Content-Type: application/json
+Content-Length: 300
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "cinClient": "qf",
+    "role": "Client",
+    "packets": [],
+    "lastName": "c1",
+    "firstName": "c1",
+    "email": "c1",
+    "dateOfBirth": "2024-04-19",
+    "password": "c1",
+    "username": "c1",
+    "Location_Client": {
+      "latitude": 0.0,
+      "longitude": 0.0},
+      "active": true
+}
+
+<> 2024-05-05T140603.201.json
+
+###
+
+POST http://localhost:8080/api/drivers
+Content-Type: application/json
+Content-Length: 315
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "abdo",
+  "password": "abdo",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "cinDriver": "WS0000",
+  "role": "Driver",
+  "brand": "bm",
+  "licenseNumber": "155",
+  "licensePlate": "645",
+  "packets": [],
+  "active": true
+}
+
+<> 2024-05-05T140552.201.json
+
+###
+
+POST http://localhost:8080/api/senders
+Content-Type: application/json
+Content-Length: 231
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "abdo",
+  "password": "abdo",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "cinSender": "U200000",
+  "role": "Sender",
+  "active": true
+}
+
+<> 2024-05-05T140545.201.json
+
+###
+
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+Content-Length: 229
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.8.1)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "username": "abdo",
+  "password": "abdo",
+  "firstName": "Yassine",
+  "lastName": "Kacimi",
+  "email": "Kacimiyassine16@gmail.com",
+  "dateOfBirth": "2024-04-19",
+  "cinAdmin": "U200000",
+  "role": "Admin",
+  "active": true
+}
+
+<> 2024-05-05T140538.201.json
+
+###
+
 PUT http://localhost:8080/api/drivers/D123456789
 Content-Type: application/json
 Content-Length: 2249
@@ -2539,197 +2753,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 }
 
 <> 2024-04-22T172621.200.txt
-
-###
-
-POST http://localhost:8080/api/drivers/login
-Content-Type: application/json
-Content-Length: 42
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "d1",
-  "password": "d1"
-}
-
-<> 2024-04-22T172559.405.json
-
-###
-
-POST http://localhost:8080/api/drivers/login
-Content-Type: application/json
-Content-Length: 42
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "password": "d1",
-  "username": "d1"
-}
-
-<> 2024-04-22T172426.405.json
-
-###
-
-POST http://localhost:8080/api/drivers/login
-Content-Type: application/json
-Content-Length: 42
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "password": "d1",
-  "username": "d1"
-}
-
-<> 2024-04-22T172419.405.json
-
-###
-
-POST http://192.168.43.207:8080/api/drivers/login
-Content-Type: application/json
-Content-Length: 42
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "password": "d1",
-  "username": "d1"
-}
-
-<> 2024-04-22T172347.405.json
-
-###
-
-POST http://localhost:8080/api/senders
-Content-Type: application/json
-Content-Length: 208
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "s3",
-  "password": "sa",
-  "cinSender": "Us4",
-  "dateOfBirth": "2024-04-19",
-  "email": "s2",
-  "firstName": "s2",
-  "lastName": "s2",
-  "packets": [],
-  "role": "Sender",
-  "active": true
-}
-
-<> 2024-04-21T214101.201.json
-
-###
-
-POST http://localhost:8080/api/senders
-Content-Type: application/json
-Content-Length: 208
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "s3",
-  "password": "sa",
-  "cinSender": "Us1",
-  "dateOfBirth": "2024-04-19",
-  "email": "s2",
-  "firstName": "s2",
-  "lastName": "s2",
-  "packets": [],
-  "role": "Sender",
-  "active": true
-}
-
-<> 2024-04-21T214029.201.json
-
-###
-
-POST http://localhost:8080/api/senders
-Content-Type: application/json
-Content-Length: 208
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "s3",
-  "password": "sa",
-  "cinSender": "Us2",
-  "dateOfBirth": "2024-04-19",
-  "email": "s2",
-  "firstName": "s2",
-  "lastName": "s2",
-  "packets": [],
-  "role": "Sender",
-  "active": true
-}
-
-<> 2024-04-21T213909.201.json
-
-###
-
-POST http://localhost:8080/api/admins
-Content-Type: application/json
-Content-Length: 236
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassinesama",
-  "password": "yass",
-  "firstName": "Yassine",
-  "lastName": "Kacimi",
-  "email": "Kacimiyassine16@gmail.com",
-  "dateOfBirth": "2024-04-19",
-  "cinAdmin": "U200000",
-  "role": "Admin",
-  "active": true
-}
-
-<> 2024-04-20T223241.201.json
-
-###
-
-POST http://localhost:8080/api/admins/login
-Content-Type: application/json
-Content-Length: 53
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "password": "yass",
-  "username": "yassinesama"
-}
-
-<> 2024-04-20T221539.200.txt
-
-###
-
-POST http://localhost:8080/api/admins/login
-Content-Type: application/json
-Content-Length: 53
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "password": "yassinesama",
-  "username": "yass"
-}
-
-<> 2024-04-20T221111.401.txt
 
 ###
 

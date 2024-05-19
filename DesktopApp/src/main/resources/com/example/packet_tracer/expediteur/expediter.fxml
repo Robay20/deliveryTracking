@@ -3,11 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
@@ -110,7 +112,7 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="ButtonConfirmer" layoutX="86.0" layoutY="397.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="confirmer" textFill="WHITE">
+      <Button fx:id="ButtonConfirmer" layoutX="94.0" layoutY="546.0" mnemonicParsing="false" onAction="#display" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="confirmer" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font></Button>
@@ -123,18 +125,38 @@
             </Label>
          </children>
       </Pane>
-      <ComboBox fx:id="driverComboBox" layoutX="176.0" layoutY="158.0" prefHeight="59.0" prefWidth="402.0" promptText="select a livreur" stylesheets="@../stylesheet.css" />
-      <TextField layoutX="174.0" layoutY="268.0" prefHeight="59.0" prefWidth="402.0" promptText="Packet serial number">
+      <ComboBox fx:id="driverComboBox" layoutX="174.0" layoutY="130.0" prefHeight="59.0" prefWidth="402.0" promptText="select a livreur" stylesheets="@../stylesheet.css" />
+      <TextField layoutX="174.0" layoutY="202.0" prefHeight="59.0" prefWidth="402.0" promptText="Packet serial number">
          <font>
             <Font size="22.0" />
          </font>
       </TextField>
-      <Button fx:id="ButtonAnnuler" layoutX="411.0" layoutY="397.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #BDBDBD;" stylesheets="@../stylesheet.css" text="annuler">
+      <Button fx:id="ButtonAnnuler" layoutX="411.0" layoutY="546.0" mnemonicParsing="false" onAction="#annuler" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #BDBDBD;" stylesheets="@../stylesheet.css" text="annuler">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Button>
-      <Button fx:id="refreshButton" layoutX="578.0" layoutY="158.0" mnemonicParsing="false" onAction="#handleRefreshButton" prefHeight="59.0" prefWidth="73.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="🔍" textFill="WHITE">
+      <Button fx:id="refreshButton" layoutX="576.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleRefreshButton" prefHeight="59.0" prefWidth="73.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="🔍" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Button>
+      <VBox layoutX="94.0" layoutY="288.0" prefHeight="198.0" prefWidth="418.0">
+         <children>
+            <Label text="Upload Image of QR Code:" />
+            <Button onAction="#uploadImage" text="Choose Image" />
+            <Label fx:id="statusLabel" />
+            <TextArea fx:id="resultTextArea" editable="false" prefHeight="106.0" prefWidth="302.0" />
+            <Button onAction="#scanQRCode" text="Scan QR Code" />
+         </children>
+      </VBox>
+      <ImageView fx:id="selectedImageView" fitHeight="150.0" fitWidth="200.0" layoutX="530.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="ButtonAnnuler1" layoutX="411.0" layoutY="475.0" mnemonicParsing="false" onAction="#annuler1" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #BDBDBD;" stylesheets="@../stylesheet.css" text="annuler">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Button>
+      <Button fx:id="ButtonConfirmer1" layoutX="116.0" layoutY="486.0" mnemonicParsing="false" onAction="#annuler10" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="confirmer" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
