@@ -146,7 +146,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void fetchBordoreauData(Long bordoreauId) {
-        String url = "http://192.168.43.207:8080/api/bordoreaux/" + bordoreauId + "/qr";
+        String url = "http://192.168.1.111:8080/api/bordoreaux/" + bordoreauId + "/qr";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
 

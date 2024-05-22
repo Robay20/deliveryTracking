@@ -2,6 +2,7 @@ package com.example.packettracer;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -44,7 +45,7 @@ public class InfoProfileActivity extends AppCompatActivity {
 
     private void fetchDriverData(String driverId) {
         OkHttpClient client = new OkHttpClient();
-        String url = "http://192.168.43.207:8080/api/drivers/" + driverId + "/mobile";  // Ensure the URL is accessible
+        String url = "http://192.168.1.111:8080/api/drivers/" + driverId + "/mobile";  // Ensure the URL is accessible
 
         Request request = new Request.Builder()
                 .url(url)
@@ -75,20 +76,20 @@ public class InfoProfileActivity extends AppCompatActivity {
 
         // Set text views with driver information
         // Store TextView references in variables
-        TextView tvDriverFirstName = findViewById(R.id.tvDriverFirstName);
-        TextView tvDriverLastName = findViewById(R.id.tvDriverLastName);
-        TextView tvDriverEmail = findViewById(R.id.tvDriverEmail);
-        TextView tvDateOfBirth = findViewById(R.id.tvDateOfBirth);
-        TextView tvLicenseNumber = findViewById(R.id.tvLicenseNumber);
-        TextView tvLicensePlate = findViewById(R.id.tvLicensePlate);
+        EditText tvDriverFirstName = findViewById(R.id.etFirstName);
+        EditText tvDriverLastName = findViewById(R.id.etLastName);
+        EditText tvDriverEmail = findViewById(R.id.etEmail);
+        EditText tvDateOfBirth = findViewById(R.id.etDOB);
+        EditText tvLicenseNumber = findViewById(R.id.etLicenseNumber);
+        EditText tvLicensePlate = findViewById(R.id.etLicensePlate);
 
 // Append driver information to the existing text in each TextView
-        tvDriverFirstName.setText(tvDriverFirstName.getText() + driver.getFirstName());
-        tvDriverLastName.setText(tvDriverLastName.getText() + driver.getLastName());
-        tvDriverEmail.setText(tvDriverEmail.getText() + driver.getEmail());
-        tvDateOfBirth.setText(tvDateOfBirth.getText() + driver.getDateOfBirth());
-        tvLicenseNumber.setText(tvLicenseNumber.getText() + driver.getLicenseNumber());
-        tvLicensePlate.setText(tvLicensePlate.getText() + driver.getLicensePlate());
+        tvDriverFirstName.setText(driver.getFirstName());
+        tvDriverLastName.setText(driver.getLastName());
+        tvDriverEmail.setText(driver.getEmail());
+        tvDateOfBirth.setText(driver.getDateOfBirth());
+        tvLicenseNumber.setText(driver.getLicenseNumber());
+        tvLicensePlate.setText(driver.getLicensePlate());
 
         ListView listView = findViewById(R.id.tvBordoreauHeader);
 
