@@ -29,7 +29,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutY="290.0" onMouseClicked="#switchToHistorique" prefHeight="66.0" prefWidth="326.0">
+            <Pane layoutY="356.0" onMouseClicked="#switchToHistorique" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -71,7 +71,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutY="356.0" onMouseClicked="#switchToLogin" prefHeight="66.0" prefWidth="326.0">
+            <Pane layoutY="422.0" onMouseClicked="#switchToLogin" prefHeight="66.0" prefWidth="326.0">
                <children>
                   <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Déconnection">
                      <font>
@@ -83,6 +83,20 @@
                         <Image url="@../image/icons8-logout-96.png" />
                      </image>
                   </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutY="290.0" onMouseClicked="#switchToLivreur" prefHeight="66.0" prefWidth="326.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8-deliveryman-96.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="65.0" layoutY="13.0" prefHeight="40.0" prefWidth="197.0" text="Livreurs">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children></Pane>

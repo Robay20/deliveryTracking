@@ -1,6 +1,21 @@
 package com.example.packet_tracer.expediteur;
 
 import com.example.packet_tracer.LoginController;
+import com.example.packet_tracer.models.Bordoreau;
+import com.example.packet_tracer.models.Client;
+import com.example.packet_tracer.models.Driver;
+import com.example.packet_tracer.models.Packet;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.zxing.*;
+import com.google.zxing.common.HybridBinarizer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,18 +23,44 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.IOException;
+import java.io.*;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.awt.image.BufferedImage;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+
+import static com.example.packet_tracer.models.PacketStatus.INITIALIZED;
+
 
 public class ExpediterController {
 
     @FXML
     private Button ButtonConfirmer;
+    @FXML
+    private Button refreshButton;
     @FXML
     private Button ButtonAnnuler;
     @FXML
@@ -135,4 +176,611 @@ public class ExpediterController {
             // Handle the IOException here (e.g., show an error message to the user)
         }
     }
+    @FXML
+    private void switchToLivreur(MouseEvent event) throws IOException {
+        try {
+            // Load login.fxml from the resources directory
+            URL url = getClass().getResource("/com/example/packet_tracer/expediteur/livreur.fxml");
+            if (url == null) {
+                throw new IOException("FXML file not found");
+            }
+
+            root = FXMLLoader.load(url);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the IOException here (e.g., show an error message to the user)
+        }
+    }
+
+    //------------------------------------------------------------------------------------------------
+    //------------------------choice box--------------------------------------------------------------
+
+    @FXML
+    private ComboBox<String> driverComboBox;
+
+    private ObservableList<ExpediterController.Driver1> driverList = FXCollections.observableArrayList(); // Initialize driverList;
+    @FXML
+    public void initialize() {
+        getalldriver();
+        populateDriverComboBox();
+    }
+    @FXML
+    private void handleRefreshButton(ActionEvent event) {
+        // Call the method to fetch all drivers from the database again
+        driverComboBox.getItems().clear();
+        driverComboBox.setPromptText("Select a Livreur");
+        getalldriver();
+        populateDriverComboBox();
+    }
+
+    private void populateDriverComboBox() {
+        // Check if driverList is not null before populating the ComboBox
+        if (driverList != null) {
+            // Loop through the driverList and add cinDriver values to the ComboBox
+            for (Driver1 driver : driverList) {
+                String cinDriverString = String.valueOf(driver.getCinDriver());
+                driverComboBox.getItems().add(cinDriverString);
+            }
+        }
+    }
+    @FXML
+    void getalldriver() {
+        String endpointUrl = "http://localhost:8080/api/drivers";
+        HttpClient client = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .followRedirects(HttpClient.Redirect.NORMAL)
+                .connectTimeout(Duration.ofSeconds(20))
+                .build();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpointUrl))
+                .timeout(Duration.ofMinutes(1))
+                .header("Content-Type", "application/json")
+                .GET()
+                .build();
+
+        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .thenApply(HttpResponse::body)
+                .thenAccept(jsonBody -> {
+                    try {
+                        ObjectMapper mapper = new ObjectMapper();
+                        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                        List<ExpediterController.Driver1> drivers = mapper.readValue(jsonBody, new TypeReference<List<ExpediterController.Driver1>>(){});
+
+                        driverList.clear();
+                        driverList.addAll(drivers);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+
+    }
+
+
+    public static class Driver1 {
+        private String username;
+        private String password;
+        private String firstName;
+        private String lastName;
+        private String email;
+        private String role;
+        private String dateOfBirth;
+        private String cinDriver;
+        private String licenseNumber;
+        private String licensePlate;
+        private String brand;
+        private List<Object> packets;  // Change Object to your specific packet class if you have one
+        private boolean active;
+
+        // Constructor
+        public Driver1() {}
+
+        // Getters and Setters
+        public String getUsername() {
+            return username;
+        }
+
+        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+
+        public String getDateOfBirth() {
+            return dateOfBirth;
+        }
+
+        public void setDateOfBirth(String dateOfBirth) {
+            this.dateOfBirth = dateOfBirth;
+        }
+
+        public String getCinDriver() {
+            return cinDriver;
+        }
+
+        public void setCinDriver(String cinDriver) {
+            this.cinDriver = cinDriver;
+        }
+
+        public String getLicenseNumber() {
+            return licenseNumber;
+        }
+
+        public void setLicenseNumber(String licenseNumber) {
+            this.licenseNumber = licenseNumber;
+        }
+
+        public String getLicensePlate() {
+            return licensePlate;
+        }
+
+        public void setLicensePlate(String licensePlate) {
+            this.licensePlate = licensePlate;
+        }
+
+        public String getBrand() {
+            return brand;
+        }
+
+        public void setBrand(String brand) {
+            this.brand = brand;
+        }
+
+        public List<Object> getPackets() {
+            return packets;
+        }
+
+        public void setPackets(List<Object> packets) {
+            this.packets = packets;
+        }
+
+        public boolean isActive() {
+            return active;
+        }
+
+        public void setActive(boolean active) {
+            this.active = active;
+        }
+    }
+
+    //--------------------------------------------------------------------------------
+    //-------QR CODE SCAN -----------------------------------------------------------
+
+    @FXML
+    private TextArea resultTextArea;
+
+    @FXML
+    private Label statusLabel;
+    @FXML
+    private ImageView selectedImageView;
+
+    private File selectedImageFile;
+
+    public void uploadImage() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Upload Image");
+        selectedImageFile = fileChooser.showOpenDialog(new Stage());
+        if (selectedImageFile != null) {
+            try {
+                Image image = new Image(selectedImageFile.toURI().toString());
+                selectedImageView.setImage(image);
+                statusLabel.setText("Image selected: " + selectedImageFile.getName());
+            } catch (Exception e) {
+                e.printStackTrace();
+                statusLabel.setText("Error loading image.");
+            }
+        } else {
+            statusLabel.setText("No image selected.");
+        }
+    }
+    public void scanQRCode() {
+        if (selectedImageFile != null) {
+            Image image = new Image(selectedImageFile.toURI().toString());
+            decodeQRCode(fromImageToBuff(image));
+        } else {
+            resultTextArea.setText("Please select an image first.");
+        }
+    }
+
+    private void decodeQRCode(BufferedImage bufferedImage) {
+        LuminanceSource source = new BufferedImageLuminanceSource(bufferedImage);
+        BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(source));
+
+        try {
+            // Decode QR code from binary bitmap
+            MultiFormatReader reader = new MultiFormatReader();
+            com.google.zxing.Result result = reader.decode(binaryBitmap);
+            resultTextArea.setText(result.getText());
+        } catch (NotFoundException e) {
+            resultTextArea.setText("QR Code not found");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private BufferedImage fromImageToBuff(Image image) {
+        int width = (int) image.getWidth();
+        int height = (int) image.getHeight();
+
+        WritableImage writableImage = new WritableImage(width, height);
+        PixelReader pixelReader = image.getPixelReader();
+        PixelWriter pixelWriter = writableImage.getPixelWriter();
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                pixelWriter.setArgb(x, y, pixelReader.getArgb(x, y));
+            }
+        }
+
+        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                bufferedImage.setRGB(x, y, writableImage.getPixelReader().getArgb(x, y));
+            }
+        }
+
+        return bufferedImage;
+    }
+
+
+    //-------------------------------------------------------------------------------------------
+    //---------parsing json to json from qr code (string)-----------------------------------------
+
+    private Bordoreau convertQRcodeToObjects(String dataString) {
+        String[] parts = dataString.replaceAll("[{}]", "").split(",");
+
+        // Check if the input string has at least 5 parts
+        if (parts.length < 5) {
+            System.out.println(parts);
+            System.out.println("------------- it has to be more than 5 parts !!");
+            return null;
+        }
+
+        Long idBordoreau = Long.parseLong(parts[0].trim());
+        String dateStr = parts[1].trim();
+        String codeLibreur = parts[2].trim();
+        String codeSecteur = parts[3].trim();
+
+        // Assuming dateStr is in the format "YYMMDD"
+        int year = Integer.parseInt(dateStr.substring(0, 2));
+        int month = Integer.parseInt(dateStr.substring(2, 4));
+        int day = Integer.parseInt(dateStr.substring(4, 6));
+        // Create a date string in the format "yyyy-MM-dd"
+        String formattedDateStr = String.format("20%02d-%02d-%02d", year, month, day);
+
+        // Parse the formatted date string to a java.util.Date
+        Date date = null;
+        try {
+            date = new SimpleDateFormat("yyyy-MM-dd").parse(formattedDateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        List<Packet> packets = new ArrayList<>();
+        for (int i = 4; i < parts.length; i = i + 4) {
+            Long bL = Long.parseLong(parts[i].trim());
+            String codeClient = parts[i + 1].trim();
+            int colis = Integer.parseInt(parts[i + 2].trim());
+            int sachets = Integer.parseInt(parts[i + 3].trim());
+
+            Packet packet = new Packet(bL, codeClient, colis, sachets, INITIALIZED, null, null);
+            packets.add(packet);
+        }
+
+        Bordoreau bordoreau = new Bordoreau(idBordoreau, date, codeLibreur, codeSecteur, null, packets);
+        // Set the Bordoreau object for each Packet
+        for (Packet packet : packets) {
+            packet.setBordoreau(bordoreau.getBordoreau());
+        }
+
+        return bordoreau;
+    }
+
+
+    @FXML
+    private void display() {
+        String dataString = "{500001, 220824, 100001, 200001, {{300001, 400002, 2,1}, {300002, 400002, 0,3}, {300003, 400003, 10,1}}}";
+        Bordoreau result = convertQRcodeToObjects(dataString);
+
+        // Print Bordoreau details
+        System.out.println("Bordoreau Details:");
+        System.out.println("ID: " + result.getBordoreau());
+        System.out.println("Date: " + result.getDate());
+        System.out.println("Livreur: " + result.getLivreur());
+        System.out.println("Secteur: " + result.getSecteur());
+        System.out.println("Sender: " + result.getSender());
+
+        // Print associated Packet details
+        System.out.println("\nPacket Details:");
+        List<Packet> packets = result.getPackets();
+        for (Packet packet : packets) {
+            System.out.println("BL: " + packet.getBL());
+            System.out.println("Client: " + packet.getClient());
+            System.out.println("Colis: " + packet.getColis());
+            System.out.println("Sachets: " + packet.getSachets());
+            System.out.println("Bordoreau: " + packet.getBordoreau());
+            System.out.println();
+        }
+    }
+
+    //---------------------------------------------------------------------------------------------
+    //------------------------------here we add bordoro---------------------------------------------
+    private static final String BASE_URL = "http://localhost:8080/api/";
+
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+
+    public static void addBordoreau(Bordoreau bordoreau) {
+        // Check if the driver (livreur) exists
+        if (!checkDriverExists(bordoreau.getLivreur())) {
+            System.out.println("Driver not found: " + bordoreau.getLivreur());
+            return;
+        }
+
+        // Create clients if they don't exist and add packets
+        List<Packet> packets = new ArrayList<>();
+        for (Packet packet : bordoreau.getPackets()) {
+            Client client = getOrCreateClient(packet.getClient());
+            packet.setClient(client.getCinClient());
+            addPacket(packet);
+            packets.add(packet);
+        }
+
+        // Set the updated packets list on the Bordoreau
+        bordoreau.setPackets(packets);
+
+        // Convert Bordoreau to JSON
+        String json = convertToJson(bordoreau);
+
+        String endpointUrl = "http://localhost:8080/api/bordoreaux";
+        HttpClient client = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .followRedirects(HttpClient.Redirect.NORMAL)
+                .connectTimeout(Duration.ofSeconds(20))
+                .build();
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            String jsonBordereau = mapper.writeValueAsString(bordoreau);
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(endpointUrl))
+                    .timeout(Duration.ofMinutes(1))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonBordereau))
+                    .build();
+
+            client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                    .thenApply(HttpResponse::body)
+                    .thenAccept(responseBody -> {
+                        System.out.println("Response: " + responseBody);
+                    });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private static boolean checkDriverExists(String driverCode) {
+        String endpointUrl = "http://localhost:8080/api/drivers";
+        HttpClient httpClient = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_2)
+                .followRedirects(HttpClient.Redirect.NORMAL)
+                .connectTimeout(Duration.ofSeconds(20))
+                .build();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(endpointUrl))
+                .timeout(Duration.ofMinutes(1))
+                .header("Content-Type", "application/json")
+                .GET()
+                .build();
+
+        try {
+            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            if (response.statusCode() == 200) {
+                List<Driver> drivers = objectMapper.readValue(response.body(), new TypeReference<List<Driver>>() {});
+                return drivers.stream().anyMatch(driver -> driver.getCinDriver().equals(driverCode));
+            }
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public static Client getOrCreateClient(String clientCode) {
+        try {
+            // Create HttpClient
+            HttpClient client = HttpClient.newBuilder()
+                    .version(HttpClient.Version.HTTP_2)
+                    .followRedirects(HttpClient.Redirect.NORMAL)
+                    .connectTimeout(Duration.ofSeconds(20))
+                    .build();
+
+            // Create GET request to check if the client exists
+            String getUrl = "http://localhost:8080/api/clients" + "/" + clientCode;
+            HttpRequest getRequest = HttpRequest.newBuilder()
+                    .uri(URI.create(getUrl))
+                    .timeout(Duration.ofMinutes(1))
+                    .header("Content-Type", "application/json")
+                    .GET()
+                    .build();
+
+            // Send GET request and handle response
+            HttpResponse<String> getResponse = client.send(getRequest, HttpResponse.BodyHandlers.ofString());
+
+            if (getResponse.statusCode() == 200) {
+                // Client exists, parse and return the existing client object
+                ObjectMapper mapper = new ObjectMapper();
+                return mapper.readValue(getResponse.body(), Client.class);
+            } else if (getResponse.statusCode() == 404 || getResponse.statusCode() == 500) {
+                // Client does not exist, create a new client
+                Client newClient = new Client(); // Customize as needed
+                newClient.setCinClient(clientCode);
+
+                // Convert new client object to JSON
+                ObjectMapper mapper = new ObjectMapper();
+                String jsonClient = mapper.writeValueAsString(newClient);
+
+                // Create POST request to create the new client
+                HttpRequest postRequest = HttpRequest.newBuilder()
+                        .uri(URI.create("http://localhost:8080/api/clients"))
+                        .timeout(Duration.ofMinutes(1))
+                        .header("Content-Type", "application/json")
+                        .POST(HttpRequest.BodyPublishers.ofString(jsonClient))
+                        .build();
+
+                // Send POST request and handle response
+                HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+
+                if (postResponse.statusCode() == 201) {
+                    // Client created successfully, parse and return the new client object
+                    return mapper.readValue(postResponse.body(), Client.class);
+                } else {
+                    // Handle errors appropriately
+                    throw new RuntimeException("Failed to create client: " + postResponse.body());
+                }
+            } else {
+                // Handle unexpected response codes
+                throw new RuntimeException("Unexpected response: " + getResponse.body());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to get or create client", e);
+        }
+    }
+
+    public static void addPacket(Packet packet) {
+        try {
+            // Create HttpClient
+            HttpClient client = HttpClient.newBuilder()
+                    .version(HttpClient.Version.HTTP_2)
+                    .followRedirects(HttpClient.Redirect.NORMAL)
+                    .connectTimeout(Duration.ofSeconds(20))
+                    .build();
+
+            // Convert Packet object to JSON
+            // Create JSON object manually
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("bL", packet.getBL());  // Assuming BL should be set to 0
+            jsonObject.add("client", new JsonObject());  // Empty object for client
+            jsonObject.addProperty("colis", packet.getColis());  // Assuming colis should be set to 0
+            jsonObject.addProperty("sachets", packet.getSachets());  // Assuming sachets should be set to 0
+            jsonObject.addProperty("status", "INITIALIZED");
+            jsonObject.add("bordoreau", new JsonObject());  // Empty object for bordoreau
+            jsonObject.add("transferts", new JsonArray());  // Empty array for transferts
+
+            // Convert JSON object to String
+            String jsonPacket = jsonObject.toString();
+            System.out.println(jsonPacket);
+
+            // Create POST request to add the packet
+            HttpRequest postRequest = HttpRequest.newBuilder()
+                    .uri(URI.create("http://localhost:8080/api/packets"))
+                    .timeout(Duration.ofMinutes(1))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonPacket))
+                    .build();
+
+            // Send POST request and handle response
+            HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
+
+            if (postResponse.statusCode() == 201) {
+                // Packet added successfully
+                System.out.println("Packet added successfully: " + packet.getBL());
+            } else {
+                // Handle errors appropriately
+                System.err.println("Failed to add packet: " + postResponse.body());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Failed to add packet");
+        }
+    }
+
+    private static String convertToJson(Bordoreau bordoreau) {
+        try {
+            return objectMapper.writeValueAsString(bordoreau);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @FXML
+    private void annuler(ActionEvent event){
+        String dataString = "{500001, 220824, 100001, 200001, {{300001, 400002, 2,1}, {300002, 400002, 0,3}, {300003, 400003, 10,1}}}";
+        Bordoreau result = convertQRcodeToObjects(dataString);
+
+        // Print associated Packet details
+        System.out.println("\nPacket Details:");
+        List<Packet> packets = result.getPackets();
+        for (Packet packet : packets) {
+            System.out.println("Client: " + packet.getClient());
+            getOrCreateClient(packet.getClient());
+        }
+    }
+    @FXML
+    private void annuler1(ActionEvent event){
+        String dataString = "{500001, 220824, 100001, 200001, {{300001, 400002, 2,1}, {300002, 400002, 0,3}, {300003, 400003, 10,1}}}";
+        Bordoreau result = convertQRcodeToObjects(dataString);
+
+        // Print associated Packet details
+        System.out.println(checkDriverExists("AB0000")); ;
+    }
+    @FXML
+    private void annuler10(ActionEvent event){
+        String dataString = "{500001, 220824, AB0000, 200001, {{300001, 400002, 2,1}, {300002, 400002, 0,3}, {300003, 400003, 10,1}}}";
+        Bordoreau result = convertQRcodeToObjects(dataString);
+        System.out.println("i am adding a bordoro");
+        addBordoreau(result);
+        System.out.println("add done !!");
+    }
+
+
+
+
 }
