@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="8dp"
+            android:shrinkColumns="1"
+            android:stretchColumns="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvFirstNameLabel"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:text="First Name:"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/etFirstName"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:text="First Name"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvLastNameLabel"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:text="Last Name:"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/etLastName"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:text="Doe"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvEmailLabel"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:text="Email:"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:text="john.doe@example.com"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvDOBLabel"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:text="Date of Birth:"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/etDOB"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:text="01-Jan-1990"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvLicenseNumberLabel"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:text="License Number:"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/etLicenseNumber"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:text="1234567890"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvLicensePlateLabel"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:text="License Plate:"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/etLicensePlate"
+                    style="@style/AppTheme.TextViewStyle"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:text="XYZ-1234"
+                    android:textSize="14sp" />
+            </TableRow>
+
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        tools:layout_editor_absoluteX="194dp">
+
+
+        <ListView
+            android:id="@+id/tvBordoreauHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp"
+            android:paddingTop="8dp"
+            android:scrollbars="vertical"
+            android:text="Bordoreaus"
+            tools:listitem="@layout/list_item_view" />
+
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

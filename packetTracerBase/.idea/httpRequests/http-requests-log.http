@@ -1,3 +1,30 @@
+GET http://localhost:8080/api/drivers/100001/mobile
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-05-09T113722.200.json
+
+###
+
+GET http://localhost:8080/api/drivers/100001/mobile
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-05-09T112537.404.json
+
+###
+
+GET http://localhost:8080/api/drivers/100001/mobile
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-05-09T112051.404.json
+
+###
+
 PUT http://localhost:8080/api/bordoreaux/500001
 Content-Type: application/json
 Content-Length: 1890
@@ -2131,244 +2158,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 }
 
 <> 2024-05-07T222400.405.json
-
-###
-
-POST http://localhost:8080/api/drivers
-Content-Type: application/json
-Content-Length: 305
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ye",
-  "password": "y",
-  "cinDriver": "100001",
-  "brand": "Toyota",
-  "licenseNumber": "DL-2024-XYZ-1234",
-  "licensePlate": "XYZ-1234",
-  "dateOfBirth": "1985-07-20",
-  "email": "ye@example.com",
-  "firstName": "Ye",
-  "lastName": "West",
-  "role": "Driver",
-  "bordoreausDriver": []
-}
-
-<> 2024-05-07T222327.201.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2249
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassino",
-  "password": "y",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3,
-      "sender": {
-        "username": "sender",
-        "password": "sender",
-        "firstName": "Alice",
-        "lastName": "Smith",
-        "email": "alice.smith@example.com",
-        "role": "Sender",
-        "dateOfBirth": "1980-06-15",
-        "cinSender": "SND0001",
-        "packets": [],
-        "active": false
-      },
-      "client": {
-        "username": "client",
-        "password": "client",
-        "firstName": "Bob",
-        "lastName": "Smith",
-        "email": "bob.smith@example.com",
-        "role": "Client",
-        "dateOfBirth": "1985-08-10",
-        "cinClient": "CLT200",
-        "packets": [],
-        "location_Client": {
-          "latitude": 36.7783,
-          "longitude": 36.7783
-        },
-        "active": false
-      },
-      "timeChanges": [],
-      "medicalPieces": [
-        "EKG machine",
-        "Blood pressure monitor",
-        "Diabetes test strips"
-      ],
-      "city": "New Gotham",
-      "status": "In Transit",
-      "description": "Urgent delivery of critical medical equipment and supplies.",
-      "route": {
-        "idRouter": 1,
-        "startTime": "2024-04-23T08:00:00",
-        "waypoints": [
-          {
-            "latitude": 34.0522,
-            "longitude": -118.244
-          },
-          {
-            "latitude": 36.7783,
-            "longitude": -119.418
-          }
-        ],
-        "endTimeEstimated": "2024-04-23T18:00:00",
-        "distance": 450.5,
-        "duration": 10,
-        "packets": []
-      }
-    }
-  ],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        },
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-25T060933.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers/D123456789
-Content-Type: application/json
-Content-Length: 2249
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "yassino",
-  "password": "y",
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "johndoe@example.com",
-  "role": "Driver",
-  "dateOfBirth": "1985-05-15",
-  "cinDriver": "D123456789",
-  "licenseNumber": "LIC123456",
-  "licensePlate": "ABC-1234",
-  "brand": "Toyota",
-  "packets": [
-    {
-      "cinPacket": 3,
-      "sender": {
-        "username": "sender",
-        "password": "sender",
-        "firstName": "Alice",
-        "lastName": "Smith",
-        "email": "alice.smith@example.com",
-        "role": "Sender",
-        "dateOfBirth": "1980-06-15",
-        "cinSender": "SND0001",
-        "packets": [],
-        "active": false
-      },
-      "client": {
-        "username": "client",
-        "password": "client",
-        "firstName": "Bob",
-        "lastName": "Smith",
-        "email": "bob.smith@example.com",
-        "role": "Client",
-        "dateOfBirth": "1985-08-10",
-        "cinClient": "CLT200",
-        "packets": [],
-        "location_Client": {
-          "latitude": 36.7783,
-          "longitude": 36.7783
-        },
-        "active": false
-      },
-      "timeChanges": [],
-      "medicalPieces": [
-        "EKG machine",
-        "Blood pressure monitor",
-        "Diabetes test strips"
-      ],
-      "city": "New Gotham",
-      "status": "In Transit",
-      "description": "Urgent delivery of critical medical equipment and supplies.",
-      "route": {
-        "idRouter": 1,
-        "startTime": "2024-04-23T08:00:00",
-        "waypoints": [
-          {
-            "latitude": 34.0522,
-            "longitude": -118.244
-          },
-          {
-            "latitude": 36.7783,
-            "longitude": -119.418
-          }
-        ],
-        "endTimeEstimated": "2024-04-23T18:00:00",
-        "distance": 450.5,
-        "duration": 10,
-        "packets": []
-      }
-    }
-  ],
-  "routes": [
-    {
-      "idRouter": 1,
-      "startTime": "2024-04-23T08:00:00",
-      "waypoints": [
-        {
-          "latitude": 34.0522,
-          "longitude": -118.244
-        },
-        {
-          "latitude": 36.7783,
-          "longitude": -119.418
-        }
-      ],
-      "endTimeEstimated": "2024-04-23T18:00:00",
-      "distance": 450.5,
-      "duration": 10,
-      "packets": []
-    }
-  ],
-  "active": true
-}
-
-<> 2024-04-25T060612.200.json
 
 ###
 

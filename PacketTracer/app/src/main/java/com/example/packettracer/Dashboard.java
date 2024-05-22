@@ -1,5 +1,6 @@
 package com.example.packettracer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -23,6 +24,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -38,14 +41,14 @@ import com.example.packettracer.model.AppDatabase;
 import com.example.packettracer.model.BordoreauDao;
 
 public class Dashboard extends AppCompatActivity {
-    private AppDatabase db;
     private BordoreauDao bordoreauDao;
 
-    String currentDriverId ;
+    private String currentDriverId ;
     private ImageView btn_scan;
+    private ImageView profileimage;
     private ListView listView;
     private Handler mainHandler = new Handler(Looper.getMainLooper());
-    private Set<BordoreauQRDTO> bordoreauSet = new HashSet<>();
+    private Set<BordoreauQRDTO> bordoreauSet;
     private ArrayAdapter<BordoreauQRDTO> adapter;
 
     private ActivityResultLauncher<ScanOptions> barLauncher = registerForActivityResult(new ScanContract(), result -> {
@@ -59,16 +62,36 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        db = AppDatabase.getDatabase(this);
+        bordoreauSet = new HashSet<>();
+
+        AppDatabase db = AppDatabase.getDatabase(this);
         bordoreauDao = db.bordoreauDao();
 
         currentDriverId=getIntent().getStringExtra("cinDriver");
 
+        profileimage = findViewById(R.id.profileimage);
         listView = findViewById(R.id.list_packet);
         btn_scan = findViewById(R.id.btn_qr_code);
         btn_scan.setOnClickListener(this::scanCode);
-        adapter = new BordoreauAdapter(this, R.layout.list_item_view, new ArrayList<>(bordoreauSet));
+        adapter = new BordoreauAdapterForDash(this, R.layout.list_item_view, new ArrayList<>(bordoreauSet));
         listView.setAdapter(adapter);
+
+        profileimage.setOnClickListener(view -> {
+            Intent  intent = new Intent(Dashboard.this, InfoProfileActivity.class);
+            intent.putExtra("idProfile",currentDriverId);
+            startActivity(intent);
+        });
+
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            BordoreauQRDTO selectedBordoreau = adapter.getItem(position);
+            if (selectedBordoreau != null) {
+                Intent intent = new Intent(Dashboard.this, InfoBordoreauActivity.class);
+                intent.putExtra("BordoreauData", selectedBordoreau.toJson());  // Serialize the object
+                intent.putExtra("cinDriver", currentDriverId);
+                startActivity(intent);
+            }
+        });
+
 
         loadBordoreauData();
     }
@@ -134,6 +157,10 @@ public class Dashboard extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(jsonData);
                     BordoreauQRDTO responseBordoreau = parseJSONToBordoreau(jsonObject);
                     if (responseBordoreau != null) {
+                        DateTimeFormatter oldFormatter = DateTimeFormatter.ofPattern("yyMMdd");
+                        LocalDate date = LocalDate.parse(responseBordoreau.getDate(), oldFormatter);
+                        responseBordoreau.setDate(date.toString());
+                        //bordoreauDao.delete(bordoreauDao.getAll().get(0));
                         bordoreauDao.insertAll(responseBordoreau);
                         mainHandler.post(() -> {
                             bordoreauSet.add(responseBordoreau);
@@ -206,7 +233,6 @@ public class Dashboard extends AppCompatActivity {
             return null;
         }
     }
-
 
     private void updateListView() {
         mainHandler.post(() -> {

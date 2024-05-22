@@ -1,5 +1,6 @@
 package com.example.packettracerbase.service;
 
+import com.example.packettracerbase.dto.DriverDTOMobile;
 import com.example.packettracerbase.model.Driver;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface DriverService {
     Driver createDriver(Driver driver);
     Driver updateDriver(String id, Driver driverDetails);
     void deleteDriver(String id);
-
+    public DriverDTOMobile convertToDriverDTOMoblie(String idMobileDriver);
 }

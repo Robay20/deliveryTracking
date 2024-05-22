@@ -1,5 +1,7 @@
 package com.example.packettracerbase.controller;
 
+import com.example.packettracerbase.dto.BordoreauQRDTO;
+import com.example.packettracerbase.dto.DriverDTOMobile;
 import com.example.packettracerbase.model.AuthenticationRequest;
 import com.example.packettracerbase.model.Driver;
 import com.example.packettracerbase.service.AuthenticationService;
@@ -70,5 +72,11 @@ public class DriverController {
         } else {
             return new ResponseEntity<>("Driver login failed", HttpStatus.UNAUTHORIZED);
         }
+    }
+
+    @GetMapping("/{id}/mobile")
+    public ResponseEntity<DriverDTOMobile> getDriverByIdForMobile(@PathVariable String id) {
+        DriverDTOMobile driver = driverService.convertToDriverDTOMoblie(id);
+        return new ResponseEntity<>(driver, HttpStatus.OK);
     }
 }

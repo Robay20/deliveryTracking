@@ -7,6 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
+
+import com.google.gson.Gson;
+
 @Entity
 public class BordoreauQRDTO {
     @PrimaryKey
@@ -100,5 +103,15 @@ public class BordoreauQRDTO {
                 ", packets=" + packets.toString() +
                 ", status=" + status +
                 '}';
+    }
+
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public static BordoreauQRDTO fromJson(String jsonData) {
+        Gson gson = new Gson();
+        return gson.fromJson(jsonData, BordoreauQRDTO.class);
     }
 }

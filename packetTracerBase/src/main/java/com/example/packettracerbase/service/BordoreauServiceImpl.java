@@ -83,4 +83,5 @@ public class BordoreauServiceImpl implements BordoreauService {
 
         return qrDTO;
     }
+
 }

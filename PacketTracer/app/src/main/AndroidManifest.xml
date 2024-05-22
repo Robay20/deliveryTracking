@@ -39,6 +39,14 @@
         android:name=".Dashboard"
         android:exported="true"/>
 
+        <activity android:name=".InfoBordoreauActivity"
+            android:exported="true"/>
+
+        <activity android:name=".InfoProfileActivity"
+            android:exported="true"/>
+
+
+
     </application>
 
 
