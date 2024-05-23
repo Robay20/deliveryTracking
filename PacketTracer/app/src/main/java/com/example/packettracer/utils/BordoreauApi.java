@@ -14,6 +14,6 @@ public interface BordoreauApi {
     @PUT("api/bordoreaux/{id}/mobile")
     Call<BordoreauQRDTO> updateBordoreau(@Path("id") Long id, @Body BordoreauQRDTO bordoreau);
 
-    @POST("/transferts")
+    @POST("/api/transferts/transferts")
     Call<Void> createTransfert(@Body TransfertRequest transfertRequest);
 }

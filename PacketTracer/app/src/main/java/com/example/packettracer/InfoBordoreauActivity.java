@@ -31,47 +31,40 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
     private RecyclerView recyclerView;
     private PacketDetailAdapter adapter;
     private BordoreauQRDTO bordoreau;
+    private String currentDriverId ;
 
-    private String currentDriverId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_bordoreau);
 
+        // Deserialize BordoreauQRDTO from JSON passed through intent
+        String bordoreauJson = getIntent().getStringExtra("BordoreauData");
+        bordoreau = BordoreauQRDTO.fromJson(bordoreauJson);
+
         currentDriverId=getIntent().getStringExtra("cinDriver");
 
 
-        // Deserialize BordoreauQRDTO from JSON passed through intent
-        String bordoreauJson = getIntent().getStringExtra("BordoreauData");
-        if (bordoreauJson != null) {
-            bordoreau = BordoreauQRDTO.fromJson(bordoreauJson);
-        } else {
-            Log.e("TAG", "BordoreauData is null");
-        }
+        // Initialize TextViews
+        TextView tvNumeroBordoreau = findViewById(R.id.tvNumeroBordoreau);
+        TextView tvDate = findViewById(R.id.tvDate);
+        TextView tvStringLivreur = findViewById(R.id.tvStringLivreur);
+        TextView tvCodeSecteur = findViewById(R.id.tvCodeSecteur);
+        TextView tvStatus = findViewById(R.id.tvStatus);
 
-        if (bordoreau != null) {
-            // Initialize TextViews
-            TextView tvNumeroBordoreau = findViewById(R.id.tvNumeroBordoreau);
-            TextView tvDate = findViewById(R.id.tvDate);
-            TextView tvStringLivreur = findViewById(R.id.tvStringLivreur);
-            TextView tvCodeSecteur = findViewById(R.id.tvCodeSecteur);
-            TextView tvStatus = findViewById(R.id.tvStatus);
+        // Set text to TextViews
+        tvNumeroBordoreau.setText(String.valueOf(bordoreau.getNumeroBordoreau()));
+        tvDate.setText(bordoreau.getDate());
+        tvStringLivreur.setText(bordoreau.getStringLivreur());
+        tvCodeSecteur.setText(String.valueOf(bordoreau.getCodeSecteur()));
+        tvStatus.setText(bordoreau.getStatus().toString());
 
-            // Set text to TextViews
-            tvNumeroBordoreau.setText(String.valueOf(bordoreau.getNumeroBordoreau()));
-            tvDate.setText(bordoreau.getDate());
-            tvStringLivreur.setText(bordoreau.getStringLivreur());
-            tvCodeSecteur.setText(String.valueOf(bordoreau.getCodeSecteur()));
-            tvStatus.setText(bordoreau.getStatus().toString());
-
-            // Setup ListView and Adapter for PacketDetails
-            recyclerView = findViewById(R.id.recyclerView);
-            adapter = new PacketDetailAdapter(this, bordoreau.getPackets(), this);
-            recyclerView.setAdapter(adapter);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        } else {
-            Log.e("TAG", "BordoreauQRDTO is null after deserialization");
-        }
+        // Setup ListView and Adapter for PacketDetails
+        recyclerView = findViewById(R.id.recyclerView);
+        adapter = new PacketDetailAdapter(this, bordoreau.getPackets(), this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Initialize Button
         Button btStart = findViewById(R.id.btStart);
@@ -121,9 +114,6 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
             @Override
             public void onResponse(Call<BordoreauQRDTO> call, retrofit2.Response<BordoreauQRDTO> response) {
                 if (response.isSuccessful()) {
-                    Log.d("TAG", "Bordoreau updated successfully: " + response.body());
-                    createTransfert(currentDriverId, bordoreau.getCodeSecteur());
-
                 } else {
                     Log.e("TAG", "Error updating bordoreau: " + response.errorBody());
                 }
@@ -134,6 +124,8 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
                 Log.e("TAG", "Failed to update bordoreau: " + t.getMessage());
             }
         });
+        createTransfert(currentDriverId, bordoreau.getCodeSecteur());
+
     }
 
     private void createTransfert(String currentDriverId, Long codeSecteur) {
@@ -153,7 +145,6 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
 
         // Make the network call to create the Transfert
         Call<Void> call = service.createTransfert(transfertRequest);
-
         call.enqueue(new retrofit2.Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
@@ -163,13 +154,10 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
                     Log.e("TAG", "Error creating transfert: " + response.errorBody());
                 }
             }
-
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Log.e("TAG", "Failed to create transfert: " + t.getMessage());
             }
         });
-
-
     }
 }
