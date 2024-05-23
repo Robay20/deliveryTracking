@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">PacketTracer</string>
+    <string name="logo">Logo</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="start">Start</string>
+    <string name="done">Done</string>
+    <string name="transfert_to">Transfert to</string>
+    <string name="scanned_by">Scanned By</string>
+    <string name="nbrsachets">NbrSachets</string>
+    <string name="nbrcolis">NbrColis</string>
+    <string name="codeclient">CodeClient</string>
+    <string name="numerobl">NumeroBL</string>
+
+</resources>

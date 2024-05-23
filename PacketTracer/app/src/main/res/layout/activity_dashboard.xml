@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Dashboard">
+
+    <ImageView
+        android:id="@+id/profileimage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/baseline_account_circle_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btn_qr_code"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/baseline_qr_code_scanner_24"
+        app:layout_constraintStart_toStartOf="@+id/Layoutmain"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/Layoutmain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:paddingTop="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ListView
+            android:id="@+id/list_packet"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/list_item_view" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+<!--
+
+<LinearLayout
+android:id="@+id/Layouttools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:layout_marginBottom="8dp"
+android:padding="8dp">
+
+<Button
+    android:id="@+id/btn_qr_code"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_weight="1"
+    android:background="@drawable/baseline_qr_code_scanner_24"
+    android:onClick="scanCode"
+    android:padding="20dp"
+    android:text="Button" />
+
+<Button
+    android:id="@+id/btn_qr_code2"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_weight="1"
+    android:padding="20dp"
+    android:text="Button" />
+
+<Button
+    android:id="@+id/btn_qr_code5"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_weight="1"
+    android:padding="20dp"
+    android:text="Button" />
+
+<Button
+    android:id="@+id/btn_qr_code4"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_weight="1"
+    android:padding="20dp"
+    android:text="Button" />
+
+<Button
+    android:id="@+id/btn_qr_code3"
+    android:layout_width="0dp"
+    android:layout_height="100dp"
+    android:layout_weight="1"
+    android:padding="20dp"
+    android:text="Button" />
+
+</LinearLayout>
+-->

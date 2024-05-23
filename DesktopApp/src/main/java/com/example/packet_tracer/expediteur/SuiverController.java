@@ -131,4 +131,42 @@ public class SuiverController {
             // Handle the IOException here (e.g., show an error message to the user)
         }
     }
+    @FXML
+    private void switchToLivreur(MouseEvent event) throws IOException {
+        try {
+            // Load login.fxml from the resources directory
+            URL url = getClass().getResource("/com/example/packet_tracer/expediteur/livreur.fxml");
+            if (url == null) {
+                throw new IOException("FXML file not found");
+            }
+
+            root = FXMLLoader.load(url);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the IOException here (e.g., show an error message to the user)
+        }
+    }
+    @FXML
+    private void switchToMap(MouseEvent event) throws IOException {
+        try {
+            // Load login.fxml from the resources directory
+            URL url = getClass().getResource("/com/example/packet_tracer/expediteur/map.fxml");
+            if (url == null) {
+                throw new IOException("FXML file not found");
+            }
+
+            root = FXMLLoader.load(url);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the IOException here (e.g., show an error message to the user)
+        }
+    }
 }
