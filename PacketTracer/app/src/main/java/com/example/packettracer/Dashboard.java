@@ -201,30 +201,6 @@ public class Dashboard extends AppCompatActivity {
         return new BordoreauQRDTO(numeroBordoreau,status, date, stringLivreur, codeSecteur, packets);
     }
 
-    private BordoreauQRDTO parseJSONToBordoreau2(JSONObject jsonObject) throws JSONException {
-        Long numeroBordoreau = jsonObject.getLong("bordereau");
-        String date = jsonObject.getString("date");
-        String stringLivreur = jsonObject.getString("livreur");
-        Long codeSecteur = jsonObject.getLong("codeSecteur");
-        PacketStatus status = PacketStatus.fromString(jsonObject.getString("status"));
-
-
-        List<PacketDetailDTO> packets = new ArrayList<>();
-        JSONArray packetsArray = jsonObject.getJSONArray("packets");
-        for (int i = 0; i < packetsArray.length(); i++) {
-            JSONObject packetObject = packetsArray.getJSONObject(i);
-            Long numeroBL = packetObject.getLong("numeroBL");
-            String codeClient = packetObject.getString("codeClient");
-            int nbrColis = packetObject.getInt("nbrColis");
-            int nbrSachets = packetObject.getInt("nbrSachets");
-
-
-            packets.add(new PacketDetailDTO(numeroBL, codeClient, nbrColis, nbrSachets,PacketStatus.INITIALIZED));
-        }
-
-        return new BordoreauQRDTO(numeroBordoreau,status, date, stringLivreur, codeSecteur, packets);
-    }
-
 
     private BordoreauQRDTO parseBordoreauData(String data) {
         Log.d("ScanData", "Scanned QR Data: " + data);
