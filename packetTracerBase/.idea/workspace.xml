@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="fix themmmmmmmmm hhhhhhhhhhuh&#10;&#10;eme of your git">
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/utils/BordoreauApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/utils/BordoreauApi.java" afterDir="false" />
-    </list>
+    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="vvvvvvvvvvvvvvvvvvvvvHGCVGHC" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,6 +107,11 @@
     ]
   }
 }</component>
+  <component name="Push.Settings">
+    <force-push-targets>
+      <force-push-target remote-path="origin" branch="all-project" />
+    </force-push-targets>
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.packettracerbase.model" />
@@ -183,7 +184,7 @@
       <workItem from="1714911114081" duration="60888000" />
       <workItem from="1715242263319" duration="8517000" />
       <workItem from="1715365065122" duration="4210000" />
-      <workItem from="1716468538816" duration="18390000" />
+      <workItem from="1716468538816" duration="22548000" />
     </task>
     <task id="LOCAL-00001" summary="push it">
       <option name="closed" value="true" />
@@ -281,7 +282,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716484923148</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="vvvvvvvvvvvvvvvvvvvvv">
+      <option name="closed" value="true" />
+      <created>1716496537378</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716496537378</updated>
+    </task>
+    <task id="LOCAL-00014" summary="vvvvvvvvvvvvvvvvvvvvvHGCVGHC">
+      <option name="closed" value="true" />
+      <created>1716499895604</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716499895604</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,6 +335,8 @@
     <MESSAGE value="resolve probleme of your git" />
     <MESSAGE value="resolve probl&#10;&#10;&#10;eme of your git" />
     <MESSAGE value="fix themmmmmmmmm hhhhhhhhhhuh&#10;&#10;eme of your git" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix themmmmmmmmm hhhhhhhhhhuh&#10;&#10;eme of your git" />
+    <MESSAGE value="vvvvvvvvvvvvvvvvvvvvv" />
+    <MESSAGE value="vvvvvvvvvvvvvvvvvvvvvHGCVGHC" />
+    <option name="LAST_COMMIT_MESSAGE" value="vvvvvvvvvvvvvvvvvvvvvHGCVGHC" />
   </component>
 </project>
