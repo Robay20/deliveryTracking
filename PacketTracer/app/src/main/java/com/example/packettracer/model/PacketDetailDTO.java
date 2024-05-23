@@ -10,6 +10,8 @@ public class PacketDetailDTO {
     private int nbrColis;
     private int nbrSachets;
 
+    private PacketStatus status;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -23,11 +25,20 @@ public class PacketDetailDTO {
         return Objects.hash(getNumeroBL(), getCodeClient(), getNbrColis(), getNbrSachets());
     }
 
-    public PacketDetailDTO(Long numeroBL, String codeClient, int nbrColis, int nbrSachets) {
+    public PacketDetailDTO(Long numeroBL, String codeClient, int nbrColis, int nbrSachets,PacketStatus status) {
         this.numeroBL = numeroBL;
         this.codeClient = codeClient;
         this.nbrColis = nbrColis;
         this.nbrSachets = nbrSachets;
+        this.status=status;
+    }
+
+    public PacketStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(PacketStatus status) {
+        this.status = status;
     }
 
     public Long getNumeroBL() {

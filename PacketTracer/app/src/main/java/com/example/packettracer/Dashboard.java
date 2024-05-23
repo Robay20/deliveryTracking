@@ -194,7 +194,8 @@ public class Dashboard extends AppCompatActivity {
             int nbrColis = packetObject.getInt("nbrColis");
             int nbrSachets = packetObject.getInt("nbrSachets");
 
-            packets.add(new PacketDetailDTO(numeroBL, codeClient, nbrColis, nbrSachets));
+
+            packets.add(new PacketDetailDTO(numeroBL, codeClient, nbrColis, nbrSachets,PacketStatus.INITIALIZED));
         }
 
         return new BordoreauQRDTO(numeroBordoreau,status, date, stringLivreur, codeSecteur, packets);
@@ -224,10 +225,10 @@ public class Dashboard extends AppCompatActivity {
                 int nbrColis = Integer.parseInt(packetParts[i + 2].replaceAll(",", "").trim());
                 int nbrSachets = Integer.parseInt(packetParts[i + 3].replaceAll(",", "").trim());
 
-                packets.add(new PacketDetailDTO(numeroBL, codeClient, nbrColis, nbrSachets));
+                packets.add(new PacketDetailDTO(numeroBL, codeClient, nbrColis, nbrSachets,PacketStatus.INITIALIZED));
             }
 
-            return new BordoreauQRDTO(numeroBordoreau, null, date, stringLivreur, codeSecteur, packets);
+            return new BordoreauQRDTO(numeroBordoreau, PacketStatus.INITIALIZED, date, stringLivreur, codeSecteur, packets);
         } catch (Exception e) {
             Log.e("ParseError", "Error parsing bordoreau data", e);
             return null;

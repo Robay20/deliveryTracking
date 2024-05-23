@@ -56,23 +56,79 @@
         android:layout_marginTop="8dp" />
 
     <androidx.core.widget.NestedScrollView
-        android:layout_marginTop="40dp"
+        android:id="@+id/nestedScrollView"
         android:layout_width="0dp"
         android:layout_height="200dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvStatus">
 
-    <androidx.recyclerview.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10dp"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/packet_detail_item_view" />
+            android:divider="@android:color/transparent"
+            android:dividerHeight="120dp"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/packet_detail_item_view" />
+
 
     </androidx.core.widget.NestedScrollView>
 
+    <Button
+        android:id="@+id/btStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:tag="Start"
+        android:text="@string/start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btScannedBy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:tag="Done"
+        android:text="@string/done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btScannedBy"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btTransfertto"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:tag="Transfert to"
+        android:text="@string/transfert_to"
+        app:layout_constraintBottom_toTopOf="@+id/btScannedBy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView"
+        app:layout_constraintVertical_bias="0.75">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btScannedBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:tag="Scanned By"
+        android:text="@string/scanned_by"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
