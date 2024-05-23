@@ -96,8 +96,9 @@ public class BordoreauController {
     }
 
     @PostMapping("/json")
-    public ResponseEntity<?> addBordoreau(@RequestBody Map<String, Object> bordereauData) {
+    public ResponseEntity<?> addBordoreau(@RequestBody String bordereauData) {
         try {
+            System.out.println(bordereauData);
             bordoreauService.processBordoreau(bordereauData);
             return ResponseEntity.status(HttpStatus.CREATED).body("Bordoreau saved successfully");
         } catch (Exception e) {

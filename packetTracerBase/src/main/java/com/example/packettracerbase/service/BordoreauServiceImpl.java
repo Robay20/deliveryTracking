@@ -14,10 +14,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -134,54 +131,106 @@ public class BordoreauServiceImpl implements BordoreauService {
 
 
     @Override
-    public void processBordoreau(Map<String, Object> bordereauData) throws Exception {
-        String driverCode = (String) bordereauData.get("codeLibreur");
-
-        // Check if the driver exists
-        Optional<Driver> driver = driverRepository.findById(driverCode);
-        if (!driver.isPresent()) {
-            throw new Exception("Driver not found");
-        }
-
-        // Fetch the Secteur entity by idSecteur
-        Long idSecteur = Long.parseLong(bordereauData.get("codeSecteur").toString());
-        Secteur secteur = secteurRepository.findById(idSecteur)
-                .orElseThrow(() -> new Exception("Secteur not found for idSecteur: " + idSecteur));
-
-        // Create and save Bordereau
-        Bordoreau bordoreau = new Bordoreau();
-        bordoreau.setBordoreau(Long.parseLong(bordereauData.get("idBordoreau").toString()));
-        bordoreau.setDate(LocalDateTime.parse(bordereauData.get("date").toString()));
-        bordoreau.setLivreur(driver.get());
-        bordoreau.setSecteur(secteur);
-
-        // Save the Bordereau to the database
-        bordoreau = bordoreauRepository.save(bordoreau);
-
-        // Process packets
-        List<Map<String, Object>> packetsData = (List<Map<String, Object>>) bordereauData.get("packets");
-        for (Map<String, Object> packetData : packetsData) {
-            String clientCode = packetData.get("cinClient").toString();
-
-            // Check if client exists or create a new one
-            Client client = clientRepository.findById(clientCode).orElseGet(() -> {
-                Client newClient = new Client();
-                newClient.setCinClient(clientCode);
-                return clientRepository.save(newClient);
-            });
-
-            // Create and save Packet
-            Packet packet = new Packet();
-            packet.setIdPacket(Long.parseLong(packetData.get("idPacket").toString()));
-            packet.setClient(client);
-            packet.setColis(Integer.parseInt(packetData.get("colis").toString()));
-            packet.setSachets(Integer.parseInt(packetData.get("sachets").toString()));
-            packet.setStatus(PacketStatus.INITIALIZED);  // Assuming INITIALIZED is the default status
-            packet.setBordoreau(bordoreau);
-
-            packetRepository.save(packet);
+    public void processBordoreau(String bordereauData) {
+        try {
+            Bordoreau bordoreau = convertQRcodeToObjects(bordereauData);
+            if (bordoreau != null) {
+                bordoreauRepository.save(bordoreau);
+            } else {
+                System.out.println("Bordoreau conversion failed. Not saving to repository.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+
+    public Bordoreau convertQRcodeToObjects(String dataString) {
+        try {
+            String[] parts = dataString.replaceAll("[{}]", "").split(",");
+            System.out.println("Data parts: " + Arrays.toString(parts));
+
+            // Check if the input string has at least 5 parts
+            if (parts.length < 5) {
+                System.out.println("------------- it has to be more than 5 parts !!");
+                return null;
+            }
+            System.out.println("Start");
+
+            Long idBordoreau = Long.parseLong(parts[0].trim());
+            String dateStr = parts[1].trim();
+            String codeLibreur = parts[2].trim();
+            String codeSecteur = parts[3].trim();
+            System.out.println("Start10");
+            // Assuming dateStr is in the format "DDMMYY"
+            int year = Integer.parseInt(dateStr.substring(4, 6)) + 2000; // Add 2000 to get the full year
+            int month = Integer.parseInt(dateStr.substring(2, 4));
+            int day = Integer.parseInt(dateStr.substring(0, 2));
+
+            LocalDateTime date = LocalDateTime.of(year, month, day, 0, 0); // Assuming time is not available in the QR code
+
+            List<Packet> packets = new ArrayList<>();
+            for (int i = 4; i < parts.length; i = i + 4) {
+                try {
+                    Long idPacket = Long.parseLong(parts[i].trim());
+                    Long codeClient = Long.parseLong(parts[i + 1].trim());
+                    int colis = Integer.parseInt(parts[i + 2].trim());
+                    int sachets = Integer.parseInt(parts[i + 3].trim());
+
+                    Packet packet = new Packet();
+                    packet.setIdPacket(idPacket);
+
+                    Client client1 = new Client();
+                    client1.setCinClient(codeClient.toString());
+                    Client client = clientRepository.findById(codeClient.toString()).orElseGet(() -> clientRepository.save(client1));
+                    System.out.println("Client found or created: " + client.getCinClient());
+
+                    packet.setClient(client); // Assuming you have a Client constructor with codeClient
+                    packet.setColis(colis);
+                    packet.setSachets(sachets);
+                    packet.setStatus(PacketStatus.INITIALIZED); // Adjust as needed
+                    packet.setBordoreau(null); // To be set later
+                    packets.add(packet);
+                } catch (Exception e) {
+                    System.out.println("Error parsing packet at index " + i + ": " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("Parsed packets: " + packets.size());
+
+            Bordoreau bordoreau = new Bordoreau();
+            bordoreau.setBordoreau(idBordoreau);
+            bordoreau.setDate(date);
+
+            Optional<Driver> driver = driverRepository.findById(codeLibreur);
+            if (driver.isPresent()) {
+                bordoreau.setLivreur(driver.get()); // Assuming you have a Driver constructor with codeLibreur
+                System.out.println("Driver found: " + driver.get().getCinDriver());
+            } else {
+                System.out.println("Driver not found for code: " + codeLibreur);
+            }
+
+            Secteur secteur = new Secteur();
+            secteur.setIdSecteur(Long.parseLong(codeSecteur));
+            Secteur secteur1 = secteurRepository.findById(Long.parseLong(codeSecteur)).orElseGet(() -> secteurRepository.save(secteur));
+            bordoreau.setSecteur(secteur1); // Assuming you have a Secteur constructor with codeSecteur
+            System.out.println("Secteur found or created: " + secteur1.getIdSecteur());
+
+            bordoreau.setPacketsBordoreau(new HashSet<>(packets)); // Add packets to Bordoreau
+
+            // Set the Bordoreau object for each Packet
+            for (Packet packet : packets) {
+                packet.setBordoreau(bordoreau);
+            }
+            System.out.println("Bordoreau and packets linked successfully.");
+
+            return bordoreau;
+        } catch (Exception e) {
+            System.out.println("Error in convertQRcodeToObjects: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public String getAllBordoreauxAsJson() {
         try {

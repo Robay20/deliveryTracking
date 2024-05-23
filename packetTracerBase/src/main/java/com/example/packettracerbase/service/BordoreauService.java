@@ -17,7 +17,7 @@ public interface BordoreauService {
     public BordoreauQRDTO getBordoreauForQR(Long bordoreauId);
 
     Bordoreau updateBordoreau1(Long id, UpdateBordoreauRequest updateRequest);
-    public void processBordoreau(Map<String, Object> bordereauData) throws Exception;
+    public void processBordoreau(String bordereauData);
 
     String getAllBordoreauxAsJson();
 }

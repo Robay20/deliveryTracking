@@ -557,11 +557,6 @@ public class ExpediterController {
 
     @FXML
     private void addBordoreauButton(ActionEvent event){
-        String dataString = decoded;
-        Bordoreau result = convertQRcodeToObjects(dataString);
-
-        display(decoded);
-        // Print associated Packet details
         addBordoreau();
     }
 
@@ -575,21 +570,23 @@ public class ExpediterController {
                 .build();
 
         try {
-            String jsonBordereau = this.decoded;
-
-            if (jsonBordereau != null) {
+            System.out.println(decoded);
+            if (decoded != null) {
                 HttpRequest request = HttpRequest.newBuilder()
                         .uri(URI.create(endpointUrl))
                         .timeout(Duration.ofMinutes(1))
                         .header("Content-Type", "application/json")
-                        .POST(HttpRequest.BodyPublishers.ofString(jsonBordereau))
+                        .POST(HttpRequest.BodyPublishers.ofString(decoded))
                         .build();
+                System.out.println(decoded);
 
                 client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                         .thenApply(HttpResponse::body)
                         .thenAccept(responseBody -> {
                             System.out.println("Response: " + responseBody);
                         });
+                System.out.println(decoded);
+
             } else {
                 System.err.println("Failed to convert Bordereau to JSON");
             }
