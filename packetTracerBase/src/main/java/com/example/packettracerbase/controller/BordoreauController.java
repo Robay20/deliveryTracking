@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,5 +78,24 @@ public class BordoreauController {
     public ResponseEntity<BordoreauQRDTO> getBordoreauQR(@PathVariable Long id) {
         BordoreauQRDTO bordoreauQRDTO = bordoreauService.getBordoreauForQR(id);
         return ResponseEntity.ok(bordoreauQRDTO);
+    }
+
+    @PostMapping("/json")
+    public ResponseEntity<?> addBordoreau(@RequestBody Map<String, Object> bordereauData) {
+        try {
+            bordoreauService.processBordoreau(bordereauData);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Bordoreau saved successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+    @GetMapping("/json")
+    public ResponseEntity<String> getAllBordoreauxAsJson() {
+        String bordoreauxJson = bordoreauService.getAllBordoreauxAsJson();
+        if (bordoreauxJson != null) {
+            return new ResponseEntity<>(bordoreauxJson, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

@@ -3,10 +3,10 @@ package com.example.packettracerbase.service;
 import com.example.packettracerbase.dto.BordoreauQRDTO;
 import com.example.packettracerbase.dto.PacketDetailDTO;
 import com.example.packettracerbase.dto.UpdateBordoreauRequest;
-import com.example.packettracerbase.model.Bordoreau;
-import com.example.packettracerbase.model.Packet;
-import com.example.packettracerbase.repository.BordoreauRepository;
-import com.example.packettracerbase.repository.PacketRepository;
+import com.example.packettracerbase.model.*;
+import com.example.packettracerbase.repository.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -24,11 +25,19 @@ public class BordoreauServiceImpl implements BordoreauService {
 
     private final BordoreauRepository bordoreauRepository;
     private final PacketRepository packetRepository;
+    private final ClientRepository clientRepository;
+    private final SenderRepository senderRepository;
+    private final SecteurRepository secteurRepository;
+    private final DriverRepository driverRepository;
 
     @Autowired
-    public BordoreauServiceImpl(BordoreauRepository bordoreauRepository, PacketRepository packetRepository) {
+    public BordoreauServiceImpl(BordoreauRepository bordoreauRepository, PacketRepository packetRepository, ClientRepository clientRepository, SenderRepository senderRepository, SecteurRepository secteurRepository, DriverRepository driverRepository) {
         this.bordoreauRepository = bordoreauRepository;
         this.packetRepository = packetRepository;
+        this.clientRepository = clientRepository;
+        this.senderRepository = senderRepository;
+        this.secteurRepository = secteurRepository;
+        this.driverRepository = driverRepository;
     }
 
     @Override
@@ -121,5 +130,70 @@ public class BordoreauServiceImpl implements BordoreauService {
 
 
             return bordoreau;
+    }
+
+
+    @Override
+    public void processBordoreau(Map<String, Object> bordereauData) throws Exception {
+        String driverCode = (String) bordereauData.get("codeLibreur");
+
+        // Check if the driver exists
+        Optional<Driver> driver = driverRepository.findById(driverCode);
+        if (!driver.isPresent()) {
+            throw new Exception("Driver not found");
+        }
+
+        // Fetch the Secteur entity by idSecteur
+        Long idSecteur = Long.parseLong(bordereauData.get("codeSecteur").toString());
+        Secteur secteur = secteurRepository.findById(idSecteur)
+                .orElseThrow(() -> new Exception("Secteur not found for idSecteur: " + idSecteur));
+
+        // Create and save Bordereau
+        Bordoreau bordoreau = new Bordoreau();
+        bordoreau.setBordoreau(Long.parseLong(bordereauData.get("idBordoreau").toString()));
+        bordoreau.setDate(LocalDateTime.parse(bordereauData.get("date").toString()));
+        bordoreau.setLivreur(driver.get());
+        bordoreau.setSecteur(secteur);
+
+        // Save the Bordereau to the database
+        bordoreau = bordoreauRepository.save(bordoreau);
+
+        // Process packets
+        List<Map<String, Object>> packetsData = (List<Map<String, Object>>) bordereauData.get("packets");
+        for (Map<String, Object> packetData : packetsData) {
+            String clientCode = packetData.get("cinClient").toString();
+
+            // Check if client exists or create a new one
+            Client client = clientRepository.findById(clientCode).orElseGet(() -> {
+                Client newClient = new Client();
+                newClient.setCinClient(clientCode);
+                return clientRepository.save(newClient);
+            });
+
+            // Create and save Packet
+            Packet packet = new Packet();
+            packet.setIdPacket(Long.parseLong(packetData.get("idPacket").toString()));
+            packet.setClient(client);
+            packet.setColis(Integer.parseInt(packetData.get("colis").toString()));
+            packet.setSachets(Integer.parseInt(packetData.get("sachets").toString()));
+            packet.setStatus(PacketStatus.INITIALIZED);  // Assuming INITIALIZED is the default status
+            packet.setBordoreau(bordoreau);
+
+            packetRepository.save(packet);
+        }
+    }
+
+    public String getAllBordoreauxAsJson() {
+        try {
+            // Retrieve all Bordoreau objects from the database or repository
+            List<Bordoreau> bordoreaux = bordoreauRepository.findAll();
+
+            // Serialize the Bordoreau objects to JSON array
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.writeValueAsString(bordoreaux);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace(); // Handle the exception as needed
+            return null;
+        }
     }
 }
