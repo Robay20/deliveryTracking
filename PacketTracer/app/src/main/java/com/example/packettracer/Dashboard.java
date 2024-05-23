@@ -62,12 +62,15 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+
+
         bordoreauSet = new HashSet<>();
 
         AppDatabase db = AppDatabase.getDatabase(this);
         bordoreauDao = db.bordoreauDao();
 
         currentDriverId=getIntent().getStringExtra("cinDriver");
+
 
         profileimage = findViewById(R.id.profileimage);
         listView = findViewById(R.id.list_packet);
