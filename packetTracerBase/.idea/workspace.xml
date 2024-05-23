@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="resolve probleme of your git">
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/PacketDetailAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/PacketDetailAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/PacketDetailDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/PacketDetailDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_info_bordoreau.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_info_bordoreau.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/packet_detail_item_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/packet_detail_item_view.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/values/strings.xml" afterDir="false" />
-    </list>
+    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="here we are!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,13 +21,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "YASSINEKOO"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Robay20/deliveryTracking",
+    "accountId": "ffaa5539-b22f-4df9-af42-3267aa9073b3"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -88,8 +90,8 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.PacketTracerBaseApplication.executor": "Debug",
-    "git-widget-placeholder": "all-project",
+    "Spring Boot.PacketTracerBaseApplication.executor": "Run",
+    "git-widget-placeholder": "#1 on all-project",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/growu/IdeaProjects/packetTracerBase/src/main/java/com/example/packettracerbase/model",
     "node.js.detected.package.eslint": "true",
@@ -105,6 +107,11 @@
     ]
   }
 }]]></component>
+  <component name="Push.Settings">
+    <force-push-targets>
+      <force-push-target remote-path="origin" branch="all-project" />
+    </force-push-targets>
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.packettracerbase.model" />
@@ -152,6 +159,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -169,6 +184,9 @@
       <workItem from="1714911114081" duration="60888000" />
       <workItem from="1715242263319" duration="8517000" />
       <workItem from="1715365065122" duration="4210000" />
+      <workItem from="1716462612068" duration="905000" />
+      <workItem from="1716463997951" duration="644000" />
+      <workItem from="1716465023577" duration="806000" />
     </task>
     <task id="LOCAL-00001" summary="push it">
       <option name="closed" value="true" />
@@ -250,7 +268,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716399603322</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="here we are!">
+      <option name="closed" value="true" />
+      <created>1716461924884</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716461924886</updated>
+    </task>
+    <task id="LOCAL-00012" summary="here we are!">
+      <option name="closed" value="true" />
+      <created>1716461950932</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716461950932</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,36 +319,7 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/all-project' into all-project&#10;&#10;# Conflicts:&#10;#&#9;packetTracerBase/.idea/dataSources/a9427356-d8dd-4f5c-9aeb-bf316b865447.xml&#10;#&#9;packetTracerBase/.idea/httpRequests/http-requests-log.http&#10;#&#9;packetTracerBase/.idea/workspace.xml&#10;#&#9;packetTracerBase/target/classes/com/example/packettracerbase/controller/DriverController.class&#10;#&#9;packetTracerBase/target/classes/com/example/packettracerbase/service/DriverServiceImpl.class" />
     <MESSAGE value="mini database has been slain" />
     <MESSAGE value="resolve probleme of your git" />
-    <option name="LAST_COMMIT_MESSAGE" value="resolve probleme of your git" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/packettracerbase/service/BordoreauServiceImpl.java</url>
-          <line>118</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/packettracerbase/service/BordoreauServiceImpl.java</url>
-          <line>119</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/packettracerbase/service/BordoreauServiceImpl.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/packettracerbase/service/BordoreauServiceImpl.java</url>
-          <line>94</line>
-          <properties class="com.example.packettracerbase.service.BordoreauServiceImpl" method="updateBordoreau1">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="here we are!" />
+    <option name="LAST_COMMIT_MESSAGE" value="here we are!" />
   </component>
 </project>
