@@ -562,11 +562,11 @@ public class ExpediterController {
 
         display(decoded);
         // Print associated Packet details
-        addBordoreau(result);
+        addBordoreau();
     }
 
 
-    public static void addBordoreau(Bordoreau bordoreau) {
+    public void addBordoreau() {
         String endpointUrl = "http://localhost:8080/api/bordoreaux/json";
         HttpClient client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
@@ -575,7 +575,7 @@ public class ExpediterController {
                 .build();
 
         try {
-            String jsonBordereau = convertToSimplifiedJson(bordoreau);
+            String jsonBordereau = this.decoded;
 
             if (jsonBordereau != null) {
                 HttpRequest request = HttpRequest.newBuilder()
