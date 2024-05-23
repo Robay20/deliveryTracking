@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="fix themmmmmmmmm hhhhhhhhhhuh&#10;&#10;eme of your git">
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/utils/BordoreauApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/utils/BordoreauApi.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +183,7 @@
       <workItem from="1714911114081" duration="60888000" />
       <workItem from="1715242263319" duration="8517000" />
       <workItem from="1715365065122" duration="4210000" />
-      <workItem from="1716468538816" duration="13672000" />
+      <workItem from="1716468538816" duration="18390000" />
     </task>
     <task id="LOCAL-00001" summary="push it">
       <option name="closed" value="true" />

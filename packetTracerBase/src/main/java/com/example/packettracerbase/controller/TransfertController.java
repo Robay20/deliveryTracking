@@ -1,12 +1,15 @@
 package com.example.packettracerbase.controller;
 
+import com.example.packettracerbase.dto.TransfertRequest;
 import com.example.packettracerbase.model.Transfert;
+import com.example.packettracerbase.repository.TransfertRepository;
 import com.example.packettracerbase.service.TransfertService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -14,10 +17,12 @@ import java.util.List;
 public class TransfertController {
 
     private final TransfertService transfertService;
+    private final TransfertRepository transfertRepository;
 
     @Autowired
-    public TransfertController(TransfertService transfertService) {
+    public TransfertController(TransfertService transfertService, TransfertRepository transfertRepository) {
         this.transfertService = transfertService;
+        this.transfertRepository = transfertRepository;
     }
 
     @GetMapping
@@ -49,5 +54,21 @@ public class TransfertController {
     public ResponseEntity<Void> deleteTransfert(@PathVariable Long id) {
         transfertService.deleteTransfert(id);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/transferts")
+    public ResponseEntity<String> createTransfert(@RequestBody TransfertRequest request) {
+
+        // Create a new Transfert entity
+        Transfert transfert = new Transfert();
+        transfert.setOldPerson(request.getCodeSecteur().toString());
+        transfert.setNewPerson(request.getIdDriver().toString());
+        transfert.setTime(LocalDateTime.now()); // Set current date and time
+
+        // Save the Transfert entity
+        transfertRepository.save(transfert);
+
+        // Return a success response
+        return ResponseEntity.status(HttpStatus.CREATED).body("Transfert created successfully");
     }
 }
