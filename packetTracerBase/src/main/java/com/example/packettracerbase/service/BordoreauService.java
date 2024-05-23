@@ -1,6 +1,7 @@
 package com.example.packettracerbase.service;
 
 import com.example.packettracerbase.dto.BordoreauQRDTO;
+import com.example.packettracerbase.dto.UpdateBordoreauRequest;
 import com.example.packettracerbase.model.Bordoreau;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface BordoreauService {
     Bordoreau updateBordoreau(Long id, Bordoreau bordoreauDetails);
     void deleteBordoreau(Long id);
     public BordoreauQRDTO getBordoreauForQR(Long bordoreauId);
+
+    Bordoreau updateBordoreau1(Long id, UpdateBordoreauRequest updateRequest);
 }

@@ -2,25 +2,33 @@ package com.example.packettracerbase.service;
 
 import com.example.packettracerbase.dto.BordoreauQRDTO;
 import com.example.packettracerbase.dto.PacketDetailDTO;
+import com.example.packettracerbase.dto.UpdateBordoreauRequest;
 import com.example.packettracerbase.model.Bordoreau;
+import com.example.packettracerbase.model.Packet;
 import com.example.packettracerbase.repository.BordoreauRepository;
+import com.example.packettracerbase.repository.PacketRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 public class BordoreauServiceImpl implements BordoreauService {
 
     private final BordoreauRepository bordoreauRepository;
+    private final PacketRepository packetRepository;
 
     @Autowired
-    public BordoreauServiceImpl(BordoreauRepository bordoreauRepository) {
+    public BordoreauServiceImpl(BordoreauRepository bordoreauRepository, PacketRepository packetRepository) {
         this.bordoreauRepository = bordoreauRepository;
+        this.packetRepository = packetRepository;
     }
 
     @Override
@@ -83,5 +91,35 @@ public class BordoreauServiceImpl implements BordoreauService {
 
         return qrDTO;
     }
+    @Override
+    public Bordoreau updateBordoreau1(Long id, UpdateBordoreauRequest updateRequest) {
+        Bordoreau bordoreau = bordoreauRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Bordoreau not found with id: " + id));
 
+        /*try {
+            bordoreau.setDate(LocalDateTime.parse(updateRequest.getDate()));
+        } catch (DateTimeParseException e) {
+            throw new RuntimeException("Invalid date format: " + updateRequest.getDate());
+        }*/
+
+        bordoreau.setStatus(updateRequest.getStatus());
+
+        Set<Packet> updatedPackets = updateRequest.getPackets().stream().map(packetRequest -> {
+            Packet packet = packetRepository.findById(packetRequest.getIdPacket())
+                    .orElseThrow(() -> new RuntimeException("Packet not found with id: " + packetRequest.getIdPacket()));
+            packet.setColis(packetRequest.getColis());
+            packet.setSachets(packetRequest.getSachets());
+            packet.setStatus(packetRequest.getStatus());
+            return packet;
+        }).collect(Collectors.toSet());
+
+        bordoreau.setPacketsBordoreau(updatedPackets);
+
+        // Save the Bordoreau and its Packets
+        packetRepository.saveAll(updatedPackets);
+        bordoreau = bordoreauRepository.save(bordoreau);
+
+
+            return bordoreau;
+    }
 }

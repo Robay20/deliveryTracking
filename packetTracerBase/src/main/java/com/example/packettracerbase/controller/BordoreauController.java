@@ -1,6 +1,7 @@
 package com.example.packettracerbase.controller;
 
 import com.example.packettracerbase.dto.BordoreauQRDTO;
+import com.example.packettracerbase.dto.UpdateBordoreauRequest;
 import com.example.packettracerbase.model.Bordoreau;
 import com.example.packettracerbase.service.BordoreauService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/bordoreaux")
@@ -38,6 +42,23 @@ public class BordoreauController {
     public ResponseEntity<Bordoreau> createBordoreau(@RequestBody Bordoreau bordoreau) {
         Bordoreau createdBordoreau = bordoreauService.createBordoreau(bordoreau);
         return new ResponseEntity<>(createdBordoreau, HttpStatus.CREATED);
+    }
+
+
+
+    private static final Logger logger = LoggerFactory.getLogger(BordoreauController.class);
+
+    @PutMapping("/{id}/mobile")
+    public ResponseEntity<?> updateBordoreau(@PathVariable Long id, @RequestBody UpdateBordoreauRequest updateRequest) {
+        logger.info("Received update request: {}", updateRequest);
+        try {
+            Bordoreau updatedBordoreau = bordoreauService.updateBordoreau1(id, updateRequest);
+            return ResponseEntity.ok(updatedBordoreau);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Bordoreau not found for id: " + id);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while updating Bordoreau: " + e.getMessage());
+        }
     }
 
     @PutMapping("/{id}")
