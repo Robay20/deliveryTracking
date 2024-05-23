@@ -33,8 +33,6 @@ public class Transfert {
     //@JsonBackReference
     private Packet packetTransfert;
 
-
-
     @Override
     public int hashCode() {
         return Objects.hash(idTransfert);  // assuming 'id' is a unique identifier for Packet
