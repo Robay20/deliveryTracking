@@ -1,5 +1,6 @@
 package com.example.packettracerbase.controller;
 
+import com.example.packettracerbase.dto.BordoreauMapper;
 import com.example.packettracerbase.dto.BordoreauQRDTO;
 import com.example.packettracerbase.dto.UpdateBordoreauRequest;
 import com.example.packettracerbase.model.Bordoreau;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,15 +23,28 @@ public class BordoreauController {
 
     private final BordoreauService bordoreauService;
 
+    private BordoreauMapper bordoreauMapper;
+
+
     @Autowired
-    public BordoreauController(BordoreauService bordoreauService) {
+    public BordoreauController(BordoreauService bordoreauService, BordoreauMapper bordoreauMapper) {
         this.bordoreauService = bordoreauService;
+        this.bordoreauMapper = bordoreauMapper;
     }
 
     @GetMapping
     public ResponseEntity<List<Bordoreau>> getAllBordoreaux() {
         List<Bordoreau> bordoreaux = bordoreauService.getAllBordoreaux();
         return new ResponseEntity<>(bordoreaux, HttpStatus.OK);
+    }
+
+    @GetMapping("/Dashboard")
+    public ResponseEntity<List<BordoreauQRDTO>> getAllBordoreaux1() {
+        List<Bordoreau> bordoreaux = bordoreauService.getAllBordoreaux();
+        List<BordoreauQRDTO> bordoreauQRDTOs = bordoreaux.stream()
+                .map(bordoreauMapper::toBordoreauQRDTO)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(bordoreauQRDTOs, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
