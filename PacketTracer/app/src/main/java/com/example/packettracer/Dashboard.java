@@ -111,7 +111,7 @@ public class Dashboard extends AppCompatActivity {
 
     private void saveBordoreauData(BordoreauQRDTO bordoreau) {
         executorService.execute(() -> {
-            bordoreauDao.insertAll(bordoreau);
+            bordoreauDao.insert(bordoreau);
         });
     }
 
@@ -146,7 +146,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void fetchBordoreauData(Long bordoreauId) {
-        String url = "http://192.168.1.111:8080/api/bordoreaux/" + bordoreauId + "/qr";
+        String url = "http://192.168.1.111:8080/api/bordoreaux" + bordoreauId + "/qr";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
 
@@ -161,7 +161,7 @@ public class Dashboard extends AppCompatActivity {
                         LocalDate date = LocalDate.parse(responseBordoreau.getDate(), oldFormatter);
                         responseBordoreau.setDate(date.toString());
                         //bordoreauDao.delete(bordoreauDao.getAll().get(0));
-                        bordoreauDao.insertAll(responseBordoreau);
+                        bordoreauDao.insert(responseBordoreau);
                         mainHandler.post(() -> {
                             bordoreauSet.add(responseBordoreau);
                             updateListView();
@@ -200,6 +200,31 @@ public class Dashboard extends AppCompatActivity {
 
         return new BordoreauQRDTO(numeroBordoreau,status, date, stringLivreur, codeSecteur, packets);
     }
+
+    private BordoreauQRDTO parseJSONToBordoreau2(JSONObject jsonObject) throws JSONException {
+        Long numeroBordoreau = jsonObject.getLong("bordereau");
+        String date = jsonObject.getString("date");
+        String stringLivreur = jsonObject.getString("livreur");
+        Long codeSecteur = jsonObject.getLong("codeSecteur");
+        PacketStatus status = PacketStatus.fromString(jsonObject.getString("status"));
+
+
+        List<PacketDetailDTO> packets = new ArrayList<>();
+        JSONArray packetsArray = jsonObject.getJSONArray("packets");
+        for (int i = 0; i < packetsArray.length(); i++) {
+            JSONObject packetObject = packetsArray.getJSONObject(i);
+            Long numeroBL = packetObject.getLong("numeroBL");
+            String codeClient = packetObject.getString("codeClient");
+            int nbrColis = packetObject.getInt("nbrColis");
+            int nbrSachets = packetObject.getInt("nbrSachets");
+
+
+            packets.add(new PacketDetailDTO(numeroBL, codeClient, nbrColis, nbrSachets,PacketStatus.INITIALIZED));
+        }
+
+        return new BordoreauQRDTO(numeroBordoreau,status, date, stringLivreur, codeSecteur, packets);
+    }
+
 
     private BordoreauQRDTO parseBordoreauData(String data) {
         Log.d("ScanData", "Scanned QR Data: " + data);
@@ -242,4 +267,49 @@ public class Dashboard extends AppCompatActivity {
             adapter.notifyDataSetChanged();
         });
     }
+
+    private void synchronizeWithServer() {
+        String url = "http://192.168.1.111:8080/api/bordoreaux/Dashboard";
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(url).build();
+
+        executorService.execute(() -> {
+            try (Response response = client.newCall(request).execute()) {
+                if (response.isSuccessful() && response.body() != null) {
+                    String jsonData = response.body().string();
+                    JSONArray jsonArray = new JSONArray(jsonData);
+
+                    List<BordoreauQRDTO> bordereaux = new ArrayList<>();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        BordoreauQRDTO bordoreau = parseJSONToBordoreau(jsonObject);
+                        if (bordoreau != null) {
+                            bordereaux.add(bordoreau);
+                        }
+                    }
+
+                    // Update the local database and UI
+                    bordoreauDao.insertAll(bordereaux);
+                    mainHandler.post(() -> {
+                        bordoreauSet.clear();
+                        bordoreauSet.addAll(bordereaux);
+                        updateListView();
+                    });
+                } else {
+                    mainHandler.post(() -> Toast.makeText(Dashboard.this, "Error fetching data from server", Toast.LENGTH_SHORT).show());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                mainHandler.post(() -> Toast.makeText(Dashboard.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show());
+                Log.e("ERROR", "synchronizeWithServer: "+e.getMessage() );
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        synchronizeWithServer();
+    }
+
 }
