@@ -5,6 +5,7 @@ import com.example.packettracerbase.dto.UpdateBordoreauRequest;
 import com.example.packettracerbase.model.Bordoreau;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface BordoreauService {
@@ -16,4 +17,7 @@ public interface BordoreauService {
     public BordoreauQRDTO getBordoreauForQR(Long bordoreauId);
 
     Bordoreau updateBordoreau1(Long id, UpdateBordoreauRequest updateRequest);
+    public void processBordoreau(Map<String, Object> bordereauData) throws Exception;
+
+    String getAllBordoreauxAsJson();
 }

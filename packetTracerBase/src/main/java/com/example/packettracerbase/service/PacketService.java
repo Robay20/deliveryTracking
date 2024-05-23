@@ -11,4 +11,6 @@ public interface PacketService {
     Packet createPacket(Packet packet);
     Packet updatePacket(Long id, Packet packetDetails);
     void deletePacket(Long id);
+
+    String getAllPacketsAsJson();
 }

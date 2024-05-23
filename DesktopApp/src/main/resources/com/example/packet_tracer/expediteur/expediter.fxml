@@ -112,10 +112,6 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="ButtonConfirmer" layoutX="94.0" layoutY="546.0" mnemonicParsing="false" onAction="#display" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="Display" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font></Button>
       <Pane layoutX="375.0" layoutY="17.0" onMouseClicked="#switchToSuiver" prefHeight="59.0" prefWidth="380.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="59.0" layoutY="4.0" prefHeight="51.0" prefWidth="252.0" text="Suiver" textAlignment="CENTER" textFill="#888888">
@@ -131,11 +127,6 @@
             <Font size="22.0" />
          </font>
       </TextField>
-      <Button fx:id="ButtonAnnuler" layoutX="411.0" layoutY="546.0" mnemonicParsing="false" onAction="#annuler" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #BDBDBD;" stylesheets="@../stylesheet.css" text="check driver">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Button>
       <Button fx:id="refreshButton" layoutX="576.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleRefreshButton" prefHeight="59.0" prefWidth="73.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="🔍" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
@@ -151,12 +142,7 @@
          </children>
       </VBox>
       <ImageView fx:id="selectedImageView" fitHeight="150.0" fitWidth="200.0" layoutX="530.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="ButtonAnnuler1" layoutX="411.0" layoutY="475.0" mnemonicParsing="false" onAction="#annuler1" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #BDBDBD;" stylesheets="@../stylesheet.css" text="check client">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Button>
-      <Button fx:id="ButtonConfirmer1" layoutX="116.0" layoutY="486.0" mnemonicParsing="false" onAction="#annuler10" prefHeight="59.0" prefWidth="258.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="add bord" textFill="WHITE">
+      <Button fx:id="ButtonConfirmer1" layoutX="213.0" layoutY="510.0" mnemonicParsing="false" onAction="#addBordoreauButton" prefHeight="59.0" prefWidth="351.0" style="-fx-background-color: #008897;" stylesheets="@../stylesheet.css" text="ajouter Bordoreau" textFill="WHITE">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>

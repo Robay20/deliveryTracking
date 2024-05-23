@@ -1,13 +1,17 @@
 package com.example.packettracerbase.service;
 
+import com.example.packettracerbase.dto.PacketDTO;
 import com.example.packettracerbase.model.Packet;
 import com.example.packettracerbase.repository.PacketRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PacketServiceImpl implements PacketService {
@@ -58,5 +62,35 @@ public class PacketServiceImpl implements PacketService {
             throw new EntityNotFoundException("Packet not found with id: " + id);
         }
         packetRepository.deleteById(id);
+    }
+    private PacketDTO convertToDTO(Packet packet) {
+        PacketDTO dto = new PacketDTO();
+        dto.setIdPacket(packet.getIdPacket());
+        dto.setClientCin(packet.getClient().getCinClient());
+        dto.setColis(packet.getColis());
+        dto.setSachets(packet.getSachets());
+        dto.setStatus(packet.getStatus());
+        dto.setBordoreau(packet.getBordoreau().getBordoreau());
+        dto.setTransferts(packet.getTransferts());
+        return dto;
+    }
+    @Override
+    public String getAllPacketsAsJson() {
+        try {
+            // Retrieve all Packet objects from the database or repository
+            List<Packet> packets = packetRepository.findAll();
+
+            // Convert Packet entities to PacketDTO instances
+            List<PacketDTO> packetDTOs = packets.stream()
+                    .map(this::convertToDTO)
+                    .collect(Collectors.toList());
+
+            // Serialize the PacketDTO objects to JSON array
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.writeValueAsString(packetDTOs);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace(); // Handle the exception as needed
+            return null;
+        }
     }
 }

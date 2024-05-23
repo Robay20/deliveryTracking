@@ -9,6 +9,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -46,6 +48,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.awt.image.BufferedImage;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -397,6 +400,7 @@ public class ExpediterController {
     private ImageView selectedImageView;
 
     private File selectedImageFile;
+    private String decoded;
 
     public void uploadImage() {
         FileChooser fileChooser = new FileChooser();
@@ -433,6 +437,7 @@ public class ExpediterController {
             MultiFormatReader reader = new MultiFormatReader();
             com.google.zxing.Result result = reader.decode(binaryBitmap);
             resultTextArea.setText(result.getText());
+            decoded = result.getText();
         } catch (NotFoundException e) {
             resultTextArea.setText("QR Code not found");
         } catch (Exception e) {
@@ -520,8 +525,7 @@ public class ExpediterController {
 
 
     @FXML
-    private void display() {
-        String dataString = "{500001, 220824, 100001, 200001, {{300001, 400002, 2,1}, {300002, 400002, 0,3}, {300003, 400003, 10,1}}}";
+    private void display(String dataString) {
         Bordoreau result = convertQRcodeToObjects(dataString);
 
         // Print Bordoreau details
@@ -549,31 +553,21 @@ public class ExpediterController {
     //------------------------------here we add bordoro---------------------------------------------
     private static final String BASE_URL = "http://localhost:8080/api/";
 
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+
+
+    @FXML
+    private void addBordoreauButton(ActionEvent event){
+        String dataString = decoded;
+        Bordoreau result = convertQRcodeToObjects(dataString);
+
+        display(decoded);
+        // Print associated Packet details
+        addBordoreau(result);
+    }
+
 
     public static void addBordoreau(Bordoreau bordoreau) {
-        // Check if the driver (livreur) exists
-        if (!checkDriverExists(bordoreau.getLivreur())) {
-            System.out.println("Driver not found: " + bordoreau.getLivreur());
-            return;
-        }
-
-        // Create clients if they don't exist and add packets
-        List<Packet> packets = new ArrayList<>();
-        for (Packet packet : bordoreau.getPackets()) {
-            Client client = getOrCreateClient(packet.getClient());
-            packet.setClient(client.getCinClient());
-            addPacket(packet);
-            packets.add(packet);
-        }
-
-        // Set the updated packets list on the Bordoreau
-        bordoreau.setPackets(packets);
-
-        // Convert Bordoreau to JSON
-        String json = convertToJson(bordoreau);
-
-        String endpointUrl = "http://localhost:8080/api/bordoreaux";
+        String endpointUrl = "http://localhost:8080/api/bordoreaux/json";
         HttpClient client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
                 .followRedirects(HttpClient.Redirect.NORMAL)
@@ -581,205 +575,58 @@ public class ExpediterController {
                 .build();
 
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            String jsonBordereau = mapper.writeValueAsString(bordoreau);
+            String jsonBordereau = convertToSimplifiedJson(bordoreau);
 
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(endpointUrl))
-                    .timeout(Duration.ofMinutes(1))
-                    .header("Content-Type", "application/json")
-                    .POST(HttpRequest.BodyPublishers.ofString(jsonBordereau))
-                    .build();
-
-            client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                    .thenApply(HttpResponse::body)
-                    .thenAccept(responseBody -> {
-                        System.out.println("Response: " + responseBody);
-                    });
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    private static boolean checkDriverExists(String driverCode) {
-        String endpointUrl = "http://localhost:8080/api/drivers";
-        HttpClient httpClient = HttpClient.newBuilder()
-                .version(HttpClient.Version.HTTP_2)
-                .followRedirects(HttpClient.Redirect.NORMAL)
-                .connectTimeout(Duration.ofSeconds(20))
-                .build();
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(endpointUrl))
-                .timeout(Duration.ofMinutes(1))
-                .header("Content-Type", "application/json")
-                .GET()
-                .build();
-
-        try {
-            HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() == 200) {
-                List<Driver> drivers = objectMapper.readValue(response.body(), new TypeReference<List<Driver>>() {});
-                return drivers.stream().anyMatch(driver -> driver.getCinDriver().equals(driverCode));
-            }
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-
-    public static Client getOrCreateClient(String clientCode) {
-        try {
-            // Create HttpClient
-            HttpClient client = HttpClient.newBuilder()
-                    .version(HttpClient.Version.HTTP_2)
-                    .followRedirects(HttpClient.Redirect.NORMAL)
-                    .connectTimeout(Duration.ofSeconds(20))
-                    .build();
-
-            // Create GET request to check if the client exists
-            String getUrl = "http://localhost:8080/api/clients" + "/" + clientCode;
-            HttpRequest getRequest = HttpRequest.newBuilder()
-                    .uri(URI.create(getUrl))
-                    .timeout(Duration.ofMinutes(1))
-                    .header("Content-Type", "application/json")
-                    .GET()
-                    .build();
-
-            // Send GET request and handle response
-            HttpResponse<String> getResponse = client.send(getRequest, HttpResponse.BodyHandlers.ofString());
-
-            if (getResponse.statusCode() == 200) {
-                // Client exists, parse and return the existing client object
-                ObjectMapper mapper = new ObjectMapper();
-                return mapper.readValue(getResponse.body(), Client.class);
-            } else if (getResponse.statusCode() == 404 || getResponse.statusCode() == 500) {
-                // Client does not exist, create a new client
-                Client newClient = new Client(); // Customize as needed
-                newClient.setCinClient(clientCode);
-
-                // Convert new client object to JSON
-                ObjectMapper mapper = new ObjectMapper();
-                String jsonClient = mapper.writeValueAsString(newClient);
-
-                // Create POST request to create the new client
-                HttpRequest postRequest = HttpRequest.newBuilder()
-                        .uri(URI.create("http://localhost:8080/api/clients"))
+            if (jsonBordereau != null) {
+                HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create(endpointUrl))
                         .timeout(Duration.ofMinutes(1))
                         .header("Content-Type", "application/json")
-                        .POST(HttpRequest.BodyPublishers.ofString(jsonClient))
+                        .POST(HttpRequest.BodyPublishers.ofString(jsonBordereau))
                         .build();
 
-                // Send POST request and handle response
-                HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
-
-                if (postResponse.statusCode() == 201) {
-                    // Client created successfully, parse and return the new client object
-                    return mapper.readValue(postResponse.body(), Client.class);
-                } else {
-                    // Handle errors appropriately
-                    throw new RuntimeException("Failed to create client: " + postResponse.body());
-                }
+                client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                        .thenApply(HttpResponse::body)
+                        .thenAccept(responseBody -> {
+                            System.out.println("Response: " + responseBody);
+                        });
             } else {
-                // Handle unexpected response codes
-                throw new RuntimeException("Unexpected response: " + getResponse.body());
+                System.err.println("Failed to convert Bordereau to JSON");
             }
+
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("Failed to get or create client", e);
         }
     }
 
-    public static void addPacket(Packet packet) {
+
+    private static String convertToSimplifiedJson(Bordoreau bordoreau) {
         try {
-            // Create HttpClient
-            HttpClient client = HttpClient.newBuilder()
-                    .version(HttpClient.Version.HTTP_2)
-                    .followRedirects(HttpClient.Redirect.NORMAL)
-                    .connectTimeout(Duration.ofSeconds(20))
-                    .build();
+            ObjectMapper mapper = new ObjectMapper();
+            // Create a simplified JSON structure
+            ObjectNode bordereauJson = mapper.createObjectNode();
+            bordereauJson.put("idBordoreau", bordoreau.getBordoreau());
+            bordereauJson.put("date", bordoreau.getDate().toString());
+            bordereauJson.put("codeLibreur", bordoreau.getLivreur());
+            bordereauJson.put("codeSecteur", bordoreau.getSecteur());
 
-            // Convert Packet object to JSON
-            // Create JSON object manually
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("bL", packet.getBL());  // Assuming BL should be set to 0
-            jsonObject.add("client", new JsonObject());  // Empty object for client
-            jsonObject.addProperty("colis", packet.getColis());  // Assuming colis should be set to 0
-            jsonObject.addProperty("sachets", packet.getSachets());  // Assuming sachets should be set to 0
-            jsonObject.addProperty("status", "INITIALIZED");
-            jsonObject.add("bordoreau", new JsonObject());  // Empty object for bordoreau
-            jsonObject.add("transferts", new JsonArray());  // Empty array for transferts
-
-            // Convert JSON object to String
-            String jsonPacket = jsonObject.toString();
-            System.out.println(jsonPacket);
-
-            // Create POST request to add the packet
-            HttpRequest postRequest = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:8080/api/packets"))
-                    .timeout(Duration.ofMinutes(1))
-                    .header("Content-Type", "application/json")
-                    .POST(HttpRequest.BodyPublishers.ofString(jsonPacket))
-                    .build();
-
-            // Send POST request and handle response
-            HttpResponse<String> postResponse = client.send(postRequest, HttpResponse.BodyHandlers.ofString());
-
-            if (postResponse.statusCode() == 201) {
-                // Packet added successfully
-                System.out.println("Packet added successfully: " + packet.getBL());
-            } else {
-                // Handle errors appropriately
-                System.err.println("Failed to add packet: " + postResponse.body());
+            ArrayNode packetsJson = mapper.createArrayNode();
+            for (Packet packet : bordoreau.getPackets()) {
+                ObjectNode packetJson = mapper.createObjectNode();
+                packetJson.put("idPacket", packet.getBL());
+                packetJson.put("cinClient", packet.getClient());
+                packetJson.put("colis", packet.getColis());
+                packetJson.put("sachets", packet.getSachets());
+                packetsJson.add(packetJson);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Failed to add packet");
-        }
-    }
+            bordereauJson.set("packets", packetsJson);
 
-    private static String convertToJson(Bordoreau bordoreau) {
-        try {
-            return objectMapper.writeValueAsString(bordoreau);
+            return mapper.writeValueAsString(bordereauJson);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return null;
         }
     }
-
-    @FXML
-    private void annuler(ActionEvent event){
-        String dataString = "{500001, 220824, 100001, 200001, {{300001, 400002, 2,1}, {300002, 400002, 0,3}, {300003, 400003, 10,1}}}";
-        Bordoreau result = convertQRcodeToObjects(dataString);
-
-        // Print associated Packet details
-        System.out.println("\nPacket Details:");
-        List<Packet> packets = result.getPackets();
-        for (Packet packet : packets) {
-            System.out.println("Client: " + packet.getClient());
-            getOrCreateClient(packet.getClient());
-        }
-    }
-    @FXML
-    private void annuler1(ActionEvent event){
-        String dataString = "{500001, 220824, 100001, 200001, {{300001, 400002, 2,1}, {300002, 400002, 0,3}, {300003, 400003, 10,1}}}";
-        Bordoreau result = convertQRcodeToObjects(dataString);
-
-        // Print associated Packet details
-        System.out.println(checkDriverExists("AB0000")); ;
-    }
-    @FXML
-    private void annuler10(ActionEvent event){
-        String dataString = "{500001, 220824, AB0000, 200001, {{300001, 400002, 2,1}, {300002, 400002, 0,3}, {300003, 400003, 10,1}}}";
-        Bordoreau result = convertQRcodeToObjects(dataString);
-        System.out.println("i am adding a bordoro");
-        addBordoreau(result);
-        System.out.println("add done !!");
-    }
-
 
 
 

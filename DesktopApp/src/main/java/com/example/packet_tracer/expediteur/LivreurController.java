@@ -166,8 +166,8 @@ public class LivreurController {
 
 
     @FXML
-    public void initialize() {
-        autocompleteTextField.setSuggestions(suggestions);
+  public void initialize() {
+          autocompleteTextField.setSuggestions(suggestions);
         autocompleteTextField.setOnKeyPressed(this::handleKeyPressed);
         autocompleteTextField.textProperty().addListener((observable, oldValue, newValue) -> showSuggestions());
         colCin.setCellValueFactory(new PropertyValueFactory<>("cinDriver"));
