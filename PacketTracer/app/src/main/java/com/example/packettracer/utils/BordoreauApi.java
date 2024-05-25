@@ -16,4 +16,8 @@ public interface BordoreauApi {
 
     @POST("/api/transferts/transferts")
     Call<Void> createTransfert(@Body TransfertRequest transfertRequest);
+
+    @PUT("api/bordoreaux/{id}/mobile/transit")
+    Call<Void> updateBordoreauStringLivreur(@Path("id") Long id, @Body String newStringLivreur);
+
 }

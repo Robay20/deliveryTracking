@@ -1,9 +1,12 @@
 package com.example.packettracer;
 
+import android.app.Dialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,20 +14,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.packettracer.model.BordoreauQRDTO;
+import com.example.packettracer.model.Packet;
 import com.example.packettracer.model.PacketDetailDTO;
 import com.example.packettracer.model.PacketStatus;
 import com.example.packettracer.model.TransfertRequest;
 import com.example.packettracer.utils.BordoreauApi;
 import com.google.gson.Gson;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class InfoBordoreauActivity extends AppCompatActivity implements PacketDetailAdapter.OnItemClickListener {
@@ -80,8 +86,32 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
                 sendBordoreauToBackend(bordoreau);
             }
         });
+
+        Button btTransfertto = findViewById(R.id.btTransfertto);
+        btTransfertto.setOnClickListener(v -> showQrCodeDialog(currentDriverId));
+
+
     }
 
+    private void showQrCodeDialog(String data) {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_qr_code);
+
+        ImageView qrCodeImageView = dialog.findViewById(R.id.qrCodeImageView);
+        Button closeButton = dialog.findViewById(R.id.closeButton);
+
+        try {
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.encodeBitmap(data, BarcodeFormat.QR_CODE, 400, 400);
+            qrCodeImageView.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
+        closeButton.setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
+    }
     @Override
     public void onItemClick(int position) {
         // Update the status of the clicked packet to DONE
@@ -110,9 +140,9 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
         // Make the network call
         Call<BordoreauQRDTO> call = service.updateBordoreau(bordoreau.getNumeroBordoreau(), bordoreau);
 
-        call.enqueue(new retrofit2.Callback<BordoreauQRDTO>() {
+        call.enqueue(new Callback<BordoreauQRDTO>() {
             @Override
-            public void onResponse(Call<BordoreauQRDTO> call, retrofit2.Response<BordoreauQRDTO> response) {
+            public void onResponse(Call<BordoreauQRDTO> call, Response<BordoreauQRDTO> response) {
                 if (response.isSuccessful()) {
                 } else {
                     Log.e("TAG", "Error updating bordoreau: " + response.errorBody());
@@ -124,40 +154,43 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
                 Log.e("TAG", "Failed to update bordoreau: " + t.getMessage());
             }
         });
-        createTransfert(currentDriverId, bordoreau.getCodeSecteur());
+        List<PacketDetailDTO> packetIds = bordoreau.getPackets();
+        Set<Long> ids = new HashSet<>();  // Initialize the set
+
+        for (PacketDetailDTO packetDetail : packetIds) {
+            ids.add(packetDetail.getNumeroBL());
+        }
+        createTransfert(currentDriverId, bordoreau.getCodeSecteur(), ids);
 
     }
 
-    private void createTransfert(String currentDriverId, Long codeSecteur) {
-        // Base URL of your backend server
+    private void createTransfert(String currentDriverId, Long codeSecteur, Set<Long> ids) {
         String baseUrl = "http://192.168.1.111:8080/";
 
-        // Create Retrofit instance
         Retrofit retrofit = RetrofitClient.getClient(baseUrl);
-
-        // Create API service
         BordoreauApi service = retrofit.create(BordoreauApi.class);
 
-        // Create the request body for the Transfert
         TransfertRequest transfertRequest = new TransfertRequest();
         transfertRequest.setCodeSecteur(codeSecteur);
         transfertRequest.setIdDriver(Long.parseLong(currentDriverId));
+        transfertRequest.setPackets(ids);// Include packets
 
-        // Make the network call to create the Transfert
         Call<Void> call = service.createTransfert(transfertRequest);
-        call.enqueue(new retrofit2.Callback<Void>() {
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
                     Log.d("TAG", "Transfert created successfully");
                 } else {
                     Log.e("TAG", "Error creating transfert: " + response.errorBody());
                 }
             }
+
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Log.e("TAG", "Failed to create transfert: " + t.getMessage());
             }
         });
     }
+
 }

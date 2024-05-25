@@ -1,5 +1,6 @@
 package com.example.packettracer;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ public class BordoreauAdapterForDash extends ArrayAdapter<BordoreauQRDTO> {
         TextView listStatus;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         ViewHolder holder;
@@ -40,12 +42,9 @@ public class BordoreauAdapterForDash extends ArrayAdapter<BordoreauQRDTO> {
 
         BordoreauQRDTO item = getItem(position);
         if (item != null) {
-            String d1 = holder.listId.getText() + " : " + item.getNumeroBordoreau();
-            holder.listId.setText(d1);
+            holder.listId.setText(item.getNumeroBordoreau().toString());
 
-// Concatenating the date and setting the text for the listDate TextView
-            String d2 = holder.listDate.getText() + " : " + item.getDate();
-            holder.listDate.setText(d2);
+            holder.listDate.setText(item.getDate());
 
             holder.listStatus.setText(item.getStatus().toString());
         }

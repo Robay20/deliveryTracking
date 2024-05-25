@@ -84,7 +84,7 @@
         android:tag="Start"
         android:text="@string/start"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btScannedBy"
+        app:layout_constraintEnd_toStartOf="@+id/btTransfertto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nestedScrollView">
 
@@ -99,7 +99,7 @@
         android:text="@string/done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btScannedBy"
+        app:layout_constraintStart_toEndOf="@+id/btTransfertto"
         app:layout_constraintTop_toBottomOf="@+id/nestedScrollView">
 
     </Button>
@@ -110,24 +110,11 @@
         android:layout_height="48dp"
         android:tag="Transfert to"
         android:text="@string/transfert_to"
-        app:layout_constraintBottom_toTopOf="@+id/btScannedBy"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nestedScrollView"
-        app:layout_constraintVertical_bias="0.75">
-
-    </Button>
-
-    <Button
-        android:id="@+id/btScannedBy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:tag="Scanned By"
-        android:text="@string/scanned_by"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintVertical_bias="0.7">
 
     </Button>
 
