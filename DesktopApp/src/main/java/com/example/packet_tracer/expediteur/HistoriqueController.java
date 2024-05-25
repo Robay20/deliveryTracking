@@ -1,10 +1,13 @@
 package com.example.packet_tracer.expediteur;
 
 import com.example.packet_tracer.admin.AutocompleteTextField;
+import com.example.packet_tracer.admin.PacketController;
 import com.example.packet_tracer.models.Packet;
+import com.example.packet_tracer.models.PacketStatus;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,10 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -156,21 +156,23 @@ public class HistoriqueController {
     @FXML
     private TableView<Packet> tableView;
     @FXML
-    private TableColumn<Packet, Long> colIdPacket;
+    private TableColumn<Packet, String> colIdPacket;
     @FXML
-    private TableColumn<Packet, String> colClientCin;
+    private TableColumn<Packet, String> colClient;
     @FXML
-    private TableColumn<Packet, Integer> colColis;
+    private TableColumn<Packet, String> colColis;
     @FXML
-    private TableColumn<Packet, Integer> colSachets;
+    private TableColumn<Packet, String> colSachets;
     @FXML
     private TableColumn<Packet, String> colStatus;
-
-    private ObservableList<Packet> packetList = FXCollections.observableArrayList();
-    private ObservableList<String> suggestions = FXCollections.observableArrayList("all");
-
+    @FXML
+    private TableColumn<Packet, String> colBordoreau;
     @FXML
     private AutocompleteTextField autocompleteTextField;
+
+
+    private final ObservableList<String> suggestions = FXCollections.observableArrayList("all");
+    private final ObservableList<Packet> packetList = FXCollections.observableArrayList();
     private Popup popup = new Popup();
 
     @FXML
@@ -178,16 +180,28 @@ public class HistoriqueController {
         autocompleteTextField.setSuggestions(suggestions);
         autocompleteTextField.setOnKeyPressed(this::handleKeyPressed);
         autocompleteTextField.textProperty().addListener((observable, oldValue, newValue) -> showSuggestions());
-
         colIdPacket.setCellValueFactory(new PropertyValueFactory<>("idPacket"));
-        colClientCin.setCellValueFactory(new PropertyValueFactory<>("clientCin"));
+        colClient.setCellValueFactory(new PropertyValueFactory<>("clientCin"));
         colColis.setCellValueFactory(new PropertyValueFactory<>("colis"));
         colSachets.setCellValueFactory(new PropertyValueFactory<>("sachets"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colBordoreau.setCellValueFactory(new PropertyValueFactory<>("bordoreau"));
 
         tableView.setItems(packetList);
-        fetchPacketsAndPopulateTable(null); // Trigger data loading automatically on initialize
+        fetchPacketsAndPopulateTable();
+
+        tableView.setRowFactory(tv -> {
+            TableRow<Packet> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getClickCount() == 1) {
+                    Packet clickedRow = row.getItem();
+                    showTransferDetails(clickedRow.getIdPacket());
+                }
+            });
+            return row;
+        });
     }
+
 
     private void showSuggestions() {
         String input = autocompleteTextField.getText().toLowerCase();
@@ -214,11 +228,11 @@ public class HistoriqueController {
     private void updateTableView(String selectedItem) {
         if ("all".equalsIgnoreCase(selectedItem)) {
             tableView.setItems(packetList);
-            fetchPacketsAndPopulateTable(null);
+            fetchPacketsAndPopulateTable();
         } else {
             // Filter the packetList based on the selected item
             ObservableList<Packet> filteredPackets = packetList.filtered(packet ->
-                    packet.getBL().toString().equalsIgnoreCase(selectedItem));
+                    packet.getIdPacket().equals(Long.parseLong(selectedItem)));
 
             // Set the updated filteredPackets to the TableView
             tableView.setItems(filteredPackets);
@@ -232,11 +246,10 @@ public class HistoriqueController {
     }
     @FXML
     private void handleRefreshButton(ActionEvent event) {
-        fetchPacketsAndPopulateTable(null);
+        fetchPacketsAndPopulateTable();
     }
 
-    @FXML
-    private void fetchPacketsAndPopulateTable(Object o) {
+    private void fetchPacketsAndPopulateTable() {
         String endpointUrl = "http://localhost:8080/api/packets/json";
         HttpClient client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
@@ -255,16 +268,21 @@ public class HistoriqueController {
                 .thenApply(HttpResponse::body)
                 .thenAccept(jsonBody -> {
                     try {
+                        if (jsonBody == null || jsonBody.isEmpty()) {
+                            showAlert("No packets found.");
+                            return;
+                        }
+
                         ObjectMapper mapper = new ObjectMapper();
                         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-                        List<Packet> packets = mapper.readValue(jsonBody, new TypeReference<List<Packet>>(){});
+                        List<Packet> packets = mapper.readValue(jsonBody, new TypeReference<List<Packet>>() {});
 
                         // Clear the suggestions list before adding new suggestions
                         suggestions.clear();
                         suggestions.add("all");
 
-                        for (Packet packet: packets) {
-                            suggestions.add(packet.getBL().toString());
+                        for (Packet packet : packets) {
+                            suggestions.add(packet.getIdPacket().toString());
                         }
 
                         packetList.clear();
@@ -272,6 +290,40 @@ public class HistoriqueController {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                })
+                .exceptionally(e -> {
+                    e.printStackTrace();
+                    showAlert("Error fetching packets: " + e.getMessage());
+                    return null;
                 });
     }
+
+    private void showAlert(String message) {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
+        });
+    }
+
+
+    private void showTransferDetails(Long packetId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/packet_tracer/expediteur/transfer.fxml"));
+            Parent root = loader.load();
+
+            Transfer controller = loader.getController();
+            controller.setPacketId(packetId);
+
+            Stage stage = new Stage();
+            stage.setTitle("Transfer Details");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

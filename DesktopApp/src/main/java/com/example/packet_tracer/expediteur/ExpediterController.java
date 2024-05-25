@@ -42,13 +42,14 @@ import java.net.http.HttpResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.awt.image.BufferedImage;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -205,7 +206,7 @@ public class ExpediterController {
     @FXML
     private ComboBox<String> driverComboBox;
 
-    private ObservableList<ExpediterController.Driver1> driverList = FXCollections.observableArrayList(); // Initialize driverList;
+    private ObservableList<Driver1> driverList = FXCollections.observableArrayList(); // Initialize driverList;
     @FXML
     public void initialize() {
         getalldriver();
@@ -252,7 +253,7 @@ public class ExpediterController {
                     try {
                         ObjectMapper mapper = new ObjectMapper();
                         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-                        List<ExpediterController.Driver1> drivers = mapper.readValue(jsonBody, new TypeReference<List<ExpediterController.Driver1>>(){});
+                        List<Driver1> drivers = mapper.readValue(jsonBody, new TypeReference<List<Driver1>>(){});
 
                         driverList.clear();
                         driverList.addAll(drivers);
@@ -435,9 +436,9 @@ public class ExpediterController {
         try {
             // Decode QR code from binary bitmap
             MultiFormatReader reader = new MultiFormatReader();
-            com.google.zxing.Result result = reader.decode(binaryBitmap);
-            resultTextArea.setText(result.getText());
+            Result result = reader.decode(binaryBitmap);
             decoded = result.getText();
+            resultTextArea.setText(result.getText());
         } catch (NotFoundException e) {
             resultTextArea.setText("QR Code not found");
         } catch (Exception e) {
@@ -494,14 +495,13 @@ public class ExpediterController {
         // Create a date string in the format "yyyy-MM-dd"
         String formattedDateStr = String.format("20%02d-%02d-%02d", year, month, day);
 
-        // Parse the formatted date string to a java.util.Date
-        Date date = null;
-        try {
-            date = new SimpleDateFormat("yyyy-MM-dd").parse(formattedDateStr);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return null;
-        }
+        // Convert to LocalDateTime
+        LocalDateTime date = LocalDateTime.of(2000 + year, month, day, 0, 0); // Assuming time is not provided
+        // Convert LocalDateTime to Date
+        ZoneId zoneId = ZoneId.systemDefault(); // or ZoneId.of("Z") for UTC
+        Instant instant = date.atZone(zoneId).toInstant();
+        Date date1 = Date.from(instant);
+
 
         List<Packet> packets = new ArrayList<>();
         for (int i = 4; i < parts.length; i = i + 4) {
@@ -514,7 +514,7 @@ public class ExpediterController {
             packets.add(packet);
         }
 
-        Bordoreau bordoreau = new Bordoreau(idBordoreau, date, codeLibreur, codeSecteur, null, packets);
+        Bordoreau bordoreau = new Bordoreau(idBordoreau, date1, codeLibreur, codeSecteur, null, packets);
         // Set the Bordoreau object for each Packet
         for (Packet packet : packets) {
             packet.setBordoreau(bordoreau.getBordoreau());
@@ -525,7 +525,8 @@ public class ExpediterController {
 
 
     @FXML
-    private void display(String dataString) {
+    private void display() {
+        String dataString = decoded;
         Bordoreau result = convertQRcodeToObjects(dataString);
 
         // Print Bordoreau details
@@ -540,8 +541,8 @@ public class ExpediterController {
         System.out.println("\nPacket Details:");
         List<Packet> packets = result.getPackets();
         for (Packet packet : packets) {
-            System.out.println("BL: " + packet.getBL());
-            System.out.println("Client: " + packet.getClient());
+            System.out.println("BL: " + packet.getIdPacket());
+            System.out.println("Client: " + packet.getClientCin());
             System.out.println("Colis: " + packet.getColis());
             System.out.println("Sachets: " + packet.getSachets());
             System.out.println("Bordoreau: " + packet.getBordoreau());
@@ -553,16 +554,55 @@ public class ExpediterController {
     //------------------------------here we add bordoro---------------------------------------------
     private static final String BASE_URL = "http://localhost:8080/api/";
 
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
 
     @FXML
-    private void addBordoreauButton(ActionEvent event){
-        addBordoreau();
+    private void addBordoroButton(ActionEvent event){
+        String dataString = decoded;
+        Bordoreau result = convertQRcodeToObjects(dataString);
+
+        display();
+
+        sendBordoreauJson(constructBordoreauJson(result));
     }
 
 
-    public void addBordoreau() {
-        String endpointUrl = "http://localhost:8080/api/bordoreaux/json";
+
+    ///------------ the new one here --------------
+
+    public static String constructBordoreauJson(Bordoreau bordoreau) {
+        ObjectMapper mapper = new ObjectMapper();
+        ObjectNode rootNode = mapper.createObjectNode();
+
+        rootNode.put("idBordoreau", bordoreau.getBordoreau());
+        rootNode.put("date", bordoreau.getDate().toString());
+        rootNode.put("codeLibreur", bordoreau.getLivreur());
+        rootNode.put("codeSecteur", bordoreau.getSecteur());
+
+        ArrayNode packetsArray = mapper.createArrayNode();
+        for (Packet packet : bordoreau.getPackets()) {
+            ObjectNode packetNode = mapper.createObjectNode();
+            packetNode.put("idPacket", packet.getIdPacket());
+            packetNode.put("cinClient", packet.getClientCin());
+            packetNode.put("colis", packet.getColis());
+            packetNode.put("sachets", packet.getSachets());
+            packetsArray.add(packetNode);
+        }
+
+        rootNode.set("packets", packetsArray);
+
+        try {
+            return mapper.writeValueAsString(rootNode);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    @FXML
+    public static void sendBordoreauJson(String jsonBordoreau) {
+        String endpointUrl = "http://localhost:8080/api/bordoreaux/json"; // Replace with your actual endpoint URL
+
         HttpClient client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
                 .followRedirects(HttpClient.Redirect.NORMAL)
@@ -570,61 +610,21 @@ public class ExpediterController {
                 .build();
 
         try {
-            System.out.println(decoded);
-            if (decoded != null) {
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(endpointUrl))
-                        .timeout(Duration.ofMinutes(1))
-                        .header("Content-Type", "application/json")
-                        .POST(HttpRequest.BodyPublishers.ofString(decoded))
-                        .build();
-                System.out.println(decoded);
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(endpointUrl))
+                    .timeout(Duration.ofMinutes(1))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(jsonBordoreau))
+                    .build();
 
-                client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                        .thenApply(HttpResponse::body)
-                        .thenAccept(responseBody -> {
-                            System.out.println("Response: " + responseBody);
-                        });
-                System.out.println(decoded);
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            } else {
-                System.err.println("Failed to convert Bordereau to JSON");
-            }
-
+            System.out.println("Response status code: " + response.statusCode());
+            System.out.println("Response body: " + response.body());
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-
-    private static String convertToSimplifiedJson(Bordoreau bordoreau) {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            // Create a simplified JSON structure
-            ObjectNode bordereauJson = mapper.createObjectNode();
-            bordereauJson.put("idBordoreau", bordoreau.getBordoreau());
-            bordereauJson.put("date", bordoreau.getDate().toString());
-            bordereauJson.put("codeLibreur", bordoreau.getLivreur());
-            bordereauJson.put("codeSecteur", bordoreau.getSecteur());
-
-            ArrayNode packetsJson = mapper.createArrayNode();
-            for (Packet packet : bordoreau.getPackets()) {
-                ObjectNode packetJson = mapper.createObjectNode();
-                packetJson.put("idPacket", packet.getBL());
-                packetJson.put("cinClient", packet.getClient());
-                packetJson.put("colis", packet.getColis());
-                packetJson.put("sachets", packet.getSachets());
-                packetsJson.add(packetJson);
-            }
-            bordereauJson.set("packets", packetsJson);
-
-            return mapper.writeValueAsString(bordereauJson);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
 
 
 }

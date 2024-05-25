@@ -129,7 +129,7 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
         // Ensure the status is set to IN_TRANSIT
 
         // Base URL of your backend server
-        String baseUrl = "http://192.168.1.111:8080/";
+        String baseUrl = "http://192.168.43.207:8080/";
 
         // Create Retrofit instance
         Retrofit retrofit = RetrofitClient.getClient(baseUrl);
@@ -165,7 +165,7 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
     }
 
     private void createTransfert(String currentDriverId, Long codeSecteur, Set<Long> ids) {
-        String baseUrl = "http://192.168.1.111:8080/";
+        String baseUrl = "http://192.168.43.207:8080/";
 
         Retrofit retrofit = RetrofitClient.getClient(baseUrl);
         BordoreauApi service = retrofit.create(BordoreauApi.class);

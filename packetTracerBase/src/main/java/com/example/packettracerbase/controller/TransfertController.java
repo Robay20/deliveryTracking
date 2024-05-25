@@ -1,6 +1,7 @@
 package com.example.packettracerbase.controller;
 
 import com.example.packettracerbase.dto.PacketDetailDTO;
+import com.example.packettracerbase.dto.TransfertDesktop;
 import com.example.packettracerbase.dto.TransfertRequest;
 import com.example.packettracerbase.model.Packet;
 import com.example.packettracerbase.model.Transfert;
@@ -85,4 +86,19 @@ public class TransfertController {
         // Return a success response
         return ResponseEntity.status(HttpStatus.CREATED).body("Transfert created successfully");
     }
+
+    @PostMapping("/json")
+    public ResponseEntity<TransfertDesktop> createTransfert(@RequestBody TransfertDesktop transfertDesktop) {
+        System.out.println("Creating Transfert Desktop");
+        TransfertDesktop createdTransfert = transfertService.createTransfert(transfertDesktop);
+        System.out.println("created");
+        return new ResponseEntity<>(createdTransfert, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/packet/{packetId}")
+    public ResponseEntity<List<TransfertDesktop>> getTransfersByPacketId(@PathVariable Long packetId) {
+        List<TransfertDesktop> transferts = transfertService.getTransfersDTOByPacketId(packetId);
+        return new ResponseEntity<>(transferts, HttpStatus.OK);
+    }
 }
+

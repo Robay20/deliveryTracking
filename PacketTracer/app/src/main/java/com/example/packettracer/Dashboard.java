@@ -169,7 +169,7 @@ public class Dashboard extends AppCompatActivity {
         String newStringLivreur = currentDriverId;
 
         // Base URL of your backend server
-        String baseUrl = "http://192.168.1.111:8080/";
+        String baseUrl = "http://192.168.43.207:8080/";
 
         // Create Retrofit instance
         Retrofit retrofit = RetrofitClient.getClient(baseUrl);
@@ -207,7 +207,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void fetchBordoreauData(Long bordoreauId) {
-        String url = "http://192.168.1.111:8080/api/bordoreaux" + bordoreauId + "/qr";
+        String url = "http://192.168.43.207:8080/api/bordoreaux" + bordoreauId + "/qr";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
 
@@ -221,7 +221,7 @@ public class Dashboard extends AppCompatActivity {
                         DateTimeFormatter oldFormatter = DateTimeFormatter.ofPattern("yyMMdd");
                         LocalDate date = LocalDate.parse(responseBordoreau.getDate(), oldFormatter);
                         responseBordoreau.setDate(date.toString());
-                        //bordoreauDao.delete(bordoreauDao.getAll().get(0));
+                        bordoreauDao.delete(bordoreauDao.getAll().get(0));
                         bordoreauDao.insert(responseBordoreau);
                         mainHandler.post(() -> {
                             bordoreauSet.add(responseBordoreau);
@@ -306,7 +306,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void synchronizeWithServer() {
-        String url = "http://192.168.1.111:8080/api/bordoreaux/Dashboard";
+        String url = "http://192.168.43.207:8080/api/bordoreaux/Dashboard";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
 

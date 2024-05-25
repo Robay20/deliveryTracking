@@ -6,8 +6,8 @@ import java.util.Set;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Packet {
-    private Long bL;
-    private String client;
+    private Long idPacket;
+    private String clientCin;
     private int colis;
     private int sachets;
     private PacketStatus status;
@@ -19,8 +19,8 @@ public class Packet {
     }
 
     public Packet(Long bL, String client, int colis, int sachets, PacketStatus status, Long bordoreau, Set<Transfert> transferts) {
-        this.bL = bL;
-        this.client = client;
+        this.idPacket = bL;
+        this.clientCin = client;
         this.colis = colis;
         this.sachets = sachets;
         this.status = status;
@@ -28,20 +28,20 @@ public class Packet {
         this.transferts = transferts;
     }
 
-    public Long getBL() {
-        return bL;
+    public Long getIdPacket() {
+        return idPacket;
     }
 
-    public void setBL(Long bL) {
-        this.bL = bL;
+    public void setIdPacket(Long bL) {
+        this.idPacket = bL;
     }
 
-    public String getClient() {
-        return client;
+    public String getClientCin() {
+        return clientCin;
     }
 
-    public void setClient(String client) {
-        this.client = client;
+    public void setClientCin(String client) {
+        this.clientCin = client;
     }
 
     public int getColis() {

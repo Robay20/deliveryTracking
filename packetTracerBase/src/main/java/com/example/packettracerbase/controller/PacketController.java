@@ -50,6 +50,7 @@ public class PacketController {
         packetService.deletePacket(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
     @GetMapping("/json")
     public ResponseEntity<String> getAllPacketsAsJson() {
         String packetsJson = packetService.getAllPacketsAsJson();
