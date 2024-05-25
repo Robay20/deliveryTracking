@@ -25,7 +25,6 @@ public class BordoreauController {
 
     private BordoreauMapper bordoreauMapper;
 
-
     @Autowired
     public BordoreauController(BordoreauService bordoreauService, BordoreauMapper bordoreauMapper) {
         this.bordoreauService = bordoreauService;
@@ -111,6 +110,7 @@ public class BordoreauController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
     @GetMapping("/json")
     public ResponseEntity<String> getAllBordoreauxAsJson() {
         String bordoreauxJson = bordoreauService.getAllBordoreauxAsJson();
@@ -120,4 +120,5 @@ public class BordoreauController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 }
