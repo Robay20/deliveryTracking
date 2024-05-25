@@ -38,6 +38,12 @@ public class BordoreauController {
         return new ResponseEntity<>(bordoreaux, HttpStatus.OK);
     }
 
+    @PutMapping("/{id}/mobile/transit")
+    public ResponseEntity<Void> updateBordoreauForMobile(@PathVariable Long id, @RequestBody String newStringLivreur) {
+        bordoreauService.updateStringLivreur(id, newStringLivreur);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/Dashboard")
     public ResponseEntity<List<BordoreauQRDTO>> getAllBordoreaux1() {
         List<Bordoreau> bordoreaux = bordoreauService.getAllBordoreaux();
