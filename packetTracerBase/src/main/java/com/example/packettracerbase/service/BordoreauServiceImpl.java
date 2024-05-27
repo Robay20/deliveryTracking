@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -51,6 +52,17 @@ public class BordoreauServiceImpl implements BordoreauService {
     @Override
     public Bordoreau createBordoreau(Bordoreau bordoreau) {
         return bordoreauRepository.save(bordoreau);
+    }
+
+    @Override
+    public void updateStringLivreur(Long id, String newStringLivreur) {
+        Bordoreau bordoreau = bordoreauRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Bordoreau not found with id: " + id));
+
+        Optional<Driver> driver= driverRepository.findById(newStringLivreur);
+        if (driver.isPresent()){
+        bordoreau.setLivreur(driver.get());
+        bordoreauRepository.save(bordoreau);}
     }
 
     @Override

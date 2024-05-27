@@ -1,6 +1,7 @@
 package com.example.packettracerbase.controller;
 
 import com.example.packettracerbase.dto.BordoreauQRDTO;
+import com.example.packettracerbase.dto.DriverDTO;
 import com.example.packettracerbase.dto.DriverDTOMobile;
 import com.example.packettracerbase.model.AuthenticationRequest;
 import com.example.packettracerbase.model.Driver;
@@ -78,5 +79,11 @@ public class DriverController {
     public ResponseEntity<DriverDTOMobile> getDriverByIdForMobile(@PathVariable String id) {
         DriverDTOMobile driver = driverService.convertToDriverDTOMoblie(id);
         return new ResponseEntity<>(driver, HttpStatus.OK);
+    }
+
+    @PostMapping("json")
+    public ResponseEntity<DriverDTO> createDriver(@RequestBody DriverDTO driverDTO) {
+        DriverDTO createdDriver = driverService.addDriver(driverDTO);
+        return new ResponseEntity<>(createdDriver, HttpStatus.CREATED);
     }
 }

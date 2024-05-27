@@ -25,7 +25,6 @@ public class BordoreauController {
 
     private BordoreauMapper bordoreauMapper;
 
-
     @Autowired
     public BordoreauController(BordoreauService bordoreauService, BordoreauMapper bordoreauMapper) {
         this.bordoreauService = bordoreauService;
@@ -36,6 +35,12 @@ public class BordoreauController {
     public ResponseEntity<List<Bordoreau>> getAllBordoreaux() {
         List<Bordoreau> bordoreaux = bordoreauService.getAllBordoreaux();
         return new ResponseEntity<>(bordoreaux, HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}/mobile/transit")
+    public ResponseEntity<Void> updateBordoreauForMobile(@PathVariable Long id, @RequestBody String newStringLivreur) {
+        bordoreauService.updateStringLivreur(id, newStringLivreur);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/Dashboard")
@@ -105,6 +110,7 @@ public class BordoreauController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
     @GetMapping("/json")
     public ResponseEntity<String> getAllBordoreauxAsJson() {
         String bordoreauxJson = bordoreauService.getAllBordoreauxAsJson();
@@ -114,4 +120,5 @@ public class BordoreauController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 }

@@ -10,13 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-
+import retrofit2.Callback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.packettracer.model.BordoreauQRDTO;
 import com.example.packettracer.model.PacketDetailDTO;
 import com.example.packettracer.model.PacketStatus;
+import com.example.packettracer.utils.BordoreauApi;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -39,6 +40,9 @@ import okhttp3.Response;
 
 import com.example.packettracer.model.AppDatabase;
 import com.example.packettracer.model.BordoreauDao;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
 
 public class Dashboard extends AppCompatActivity {
     private BordoreauDao bordoreauDao;
@@ -134,22 +138,76 @@ public class Dashboard extends AppCompatActivity {
         if (bordoreau == null) {
             Toast.makeText(Dashboard.this, "Invalid QR code format.", Toast.LENGTH_LONG).show();
             return;
-        }
+        } else if (bordoreau.getStatus() == PacketStatus.INITIALIZED) {
+            fetchBordoreauData(bordoreau.getNumeroBordoreau());
+            return;
+        } else if (bordoreau.getStatus() == PacketStatus.IN_TRANSIT) {
+            if (!verifyDriver(bordoreau.getStringLivreur())) {
+                // If the current driver is not the same as the stringLivreur, update it
+                handleInTransitBordoreau(bordoreau);
+                return;
 
-        if (!verifyDriver(bordoreau.getStringLivreur())) {
+            } else {
+                // If the current driver is the same as the stringLivreur, fetch the bordoreau data
+                fetchBordoreauData(bordoreau.getNumeroBordoreau());
+                return;
+            }
+        } else if (!verifyDriver(bordoreau.getStringLivreur())) {
             Toast.makeText(Dashboard.this, "You are not the driver", Toast.LENGTH_LONG).show();
             return;
+        } else {
+            Toast.makeText(Dashboard.this, "Bordoreau status not handled: " + bordoreau.getStatus(), Toast.LENGTH_LONG).show();
         }
 
-        fetchBordoreauData(bordoreau.getNumeroBordoreau());
     }
+
+    private void handleInTransitBordoreau(BordoreauQRDTO bordoreau) {
+        // Implement your logic for handling "IN_TRANSIT" bordoreau here
+        Toast.makeText(Dashboard.this, "Handling IN_TRANSIT bordoreau", Toast.LENGTH_LONG).show();
+
+        // Update stringLivreur value to currentDriverId
+        String newStringLivreur = currentDriverId;
+
+        // Base URL of your backend server
+        String baseUrl = "http://192.168.43.207:8080/";
+
+        // Create Retrofit instance
+        Retrofit retrofit = RetrofitClient.getClient(baseUrl);
+
+        // Create API service
+        BordoreauApi service = retrofit.create(BordoreauApi.class);
+
+        // Make the network call to update stringLivreur
+        Call<Void> call = service.updateBordoreauStringLivreur(bordoreau.getNumeroBordoreau(), newStringLivreur);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, retrofit2.Response<Void> response) {
+                if (response.isSuccessful()) {
+                    // Handle successful response
+                    Log.d("TAG", "Bordoreau stringLivreur updated successfully");
+                } else {
+                    // Handle unsuccessful response
+                    Log.e("TAG", "Error updating Bordoreau stringLivreur: " + response.errorBody());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                // Handle network failures
+                Log.e("TAG", "Failed to update Bordoreau stringLivreur: " + t.getMessage());
+            }
+        });
+
+        // Add your additional functionality here
+    }
+
 
     private boolean verifyDriver(String qrDriverId) {
         return qrDriverId.equals(currentDriverId);
     }
 
     private void fetchBordoreauData(Long bordoreauId) {
-        String url = "http://192.168.1.111:8080/api/bordoreaux" + bordoreauId + "/qr";
+        String url = "http://192.168.43.207:8080/api/bordoreaux" + bordoreauId + "/qr";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
 
@@ -163,7 +221,7 @@ public class Dashboard extends AppCompatActivity {
                         DateTimeFormatter oldFormatter = DateTimeFormatter.ofPattern("yyMMdd");
                         LocalDate date = LocalDate.parse(responseBordoreau.getDate(), oldFormatter);
                         responseBordoreau.setDate(date.toString());
-                        //bordoreauDao.delete(bordoreauDao.getAll().get(0));
+                        bordoreauDao.delete(bordoreauDao.getAll().get(0));
                         bordoreauDao.insert(responseBordoreau);
                         mainHandler.post(() -> {
                             bordoreauSet.add(responseBordoreau);
@@ -248,7 +306,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void synchronizeWithServer() {
-        String url = "http://192.168.1.111:8080/api/bordoreaux/Dashboard";
+        String url = "http://192.168.43.207:8080/api/bordoreaux/Dashboard";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.packet_tracer.expediteur.Transfer">
+   <children>
+       <TableView fx:id="transferTableView" prefHeight="400.0" prefWidth="600.0">
+           <columns>
+               <TableColumn fx:id="colIdTransfert" minWidth="0.0" prefWidth="145.5999755859375" text="ID Transfer" />
+               <TableColumn fx:id="colOldPerson" minWidth="0.0" prefWidth="134.4000244140625" text="Old Person" />
+               <TableColumn fx:id="colNewPerson" prefWidth="141.5999755859375" text="New Person" />
+               <TableColumn fx:id="colTime" prefWidth="186.40008544921875" text="Time" />
+           </columns>
+       </TableView>
+   </children>
+</AnchorPane>

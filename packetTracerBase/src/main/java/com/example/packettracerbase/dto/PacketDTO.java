@@ -18,7 +18,6 @@ public class PacketDTO {
     private int sachets;
     private PacketStatus status;
     private Long bordoreau;
-    private Set<Transfert> transferts;
 
     // Constructors, getters, and setters
 }

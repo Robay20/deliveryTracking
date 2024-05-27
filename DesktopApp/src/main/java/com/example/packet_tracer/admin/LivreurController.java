@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -32,6 +33,8 @@ import java.time.Duration;
 import java.util.List;
 
 public class LivreurController {
+    @FXML
+    public Button refreshButton;
     @FXML
     private Pane LabelExpediteur;
     @FXML
@@ -199,17 +202,17 @@ public class LivreurController {
     //----------------------------------------                          ------------------------------------------
     //---------------------------------                                      --------------------------------------
     @FXML
-    private TableView<LivreurController.Driver> tableView;
+    private TableView<Driver> tableView;
     @FXML
-    private TableColumn<LivreurController.Driver, String> colCin;
+    private TableColumn<Driver, String> colCin;
     @FXML
-    private TableColumn<LivreurController.Driver, String> colFirstName;
+    private TableColumn<Driver, String> colFirstName;
     @FXML
-    private TableColumn<LivreurController.Driver, String> colLastName;
+    private TableColumn<Driver, String> colLastName;
     @FXML
-    private TableColumn<LivreurController.Driver, String> colDateOfBirth;
+    private TableColumn<Driver, String> colDateOfBirth;
 
-    private ObservableList<LivreurController.Driver> driverList = FXCollections.observableArrayList();
+    private ObservableList<Driver> driverList = FXCollections.observableArrayList();
 
     @FXML
     void getalldriver(ActionEvent event) {
@@ -233,8 +236,10 @@ public class LivreurController {
                     try {
                         ObjectMapper mapper = new ObjectMapper();
                         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-                        List<LivreurController.Driver> drivers = mapper.readValue(jsonBody, new TypeReference<List<LivreurController.Driver>>(){});
+                        List<Driver> drivers = mapper.readValue(jsonBody, new TypeReference<List<Driver>>(){});
                         //------------filling the suggestions----------------------
+                        suggestions.clear();
+                        suggestions.add("all");
                         for (Driver driver: drivers) {
                             suggestions.add(driver.cinDriver);
 
@@ -247,6 +252,30 @@ public class LivreurController {
                         e.printStackTrace();
                     }
                 });
+    }
+
+    @FXML
+    private void openAddDriverWindow(ActionEvent event) throws IOException {
+        try {
+            URL url = getClass().getResource("/com/example/packet_tracer/admin/DriverAdd.fxml");
+            if (url == null) {
+                throw new IOException("FXML file not found");
+            }
+
+            Parent root = FXMLLoader.load(url);
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Add New Driver");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the IOException here (e.g., show an error message to the user)
+        }
+    }
+    @FXML
+    private void handleRefreshButton(ActionEvent event) {
+        getalldriver(null);
     }
 
 

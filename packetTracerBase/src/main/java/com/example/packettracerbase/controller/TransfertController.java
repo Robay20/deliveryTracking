@@ -1,7 +1,11 @@
 package com.example.packettracerbase.controller;
 
+import com.example.packettracerbase.dto.PacketDetailDTO;
+import com.example.packettracerbase.dto.TransfertDesktop;
 import com.example.packettracerbase.dto.TransfertRequest;
+import com.example.packettracerbase.model.Packet;
 import com.example.packettracerbase.model.Transfert;
+import com.example.packettracerbase.repository.PacketRepository;
 import com.example.packettracerbase.repository.TransfertRepository;
 import com.example.packettracerbase.service.TransfertService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/transferts")
@@ -18,11 +24,13 @@ public class TransfertController {
 
     private final TransfertService transfertService;
     private final TransfertRepository transfertRepository;
+    private final PacketRepository packetRepository;
 
     @Autowired
-    public TransfertController(TransfertService transfertService, TransfertRepository transfertRepository) {
+    public TransfertController(TransfertService transfertService, TransfertRepository transfertRepository, PacketRepository packetRepository) {
         this.transfertService = transfertService;
         this.transfertRepository = transfertRepository;
+        this.packetRepository = packetRepository;
     }
 
     @GetMapping
@@ -62,14 +70,35 @@ public class TransfertController {
         // Create a new Transfert entity
         Transfert transfert = new Transfert();
         transfert.setIdTransfert(2L);
-        transfert.setOldPerson(request.getCodeSecteur().toString());
-        transfert.setNewPerson(request.getIdDriver().toString());
+        transfert.setOldPerson(request.getCodeSecteur());
+        transfert.setNewPerson(request.getIdDriver());
         transfert.setTime(LocalDateTime.now()); // Set current date and time
 
-        // Save the Transfert entity
-        transfertRepository.save(transfert);
+        Set<Long> packetIds = request.getPackets();
+        for (Long packetId : packetIds) {
+            Optional<Packet> packet = packetRepository.findById(packetId);
+            packet.ifPresent(p -> {
+                transfert.setPacketTransfert(p); // Associate the packet with the transfert
+                transfertRepository.save(transfert); // Save the transfert
+            });
+        }
 
         // Return a success response
         return ResponseEntity.status(HttpStatus.CREATED).body("Transfert created successfully");
     }
+
+    @PostMapping("/json")
+    public ResponseEntity<TransfertDesktop> createTransfert(@RequestBody TransfertDesktop transfertDesktop) {
+        System.out.println("Creating Transfert Desktop");
+        TransfertDesktop createdTransfert = transfertService.createTransfert(transfertDesktop);
+        System.out.println("created");
+        return new ResponseEntity<>(createdTransfert, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/packet/{packetId}")
+    public ResponseEntity<List<TransfertDesktop>> getTransfersByPacketId(@PathVariable Long packetId) {
+        List<TransfertDesktop> transferts = transfertService.getTransfersDTOByPacketId(packetId);
+        return new ResponseEntity<>(transferts, HttpStatus.OK);
+    }
 }
+

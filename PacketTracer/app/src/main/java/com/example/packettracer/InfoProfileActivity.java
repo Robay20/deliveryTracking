@@ -45,7 +45,7 @@ public class InfoProfileActivity extends AppCompatActivity {
 
     private void fetchDriverData(String driverId) {
         OkHttpClient client = new OkHttpClient();
-        String url = "http://192.168.1.111:8080/api/drivers/" + driverId + "/mobile";  // Ensure the URL is accessible
+        String url = "http://192.168.43.207:8080/api/drivers/" + driverId + "/mobile";  // Ensure the URL is accessible
 
         Request request = new Request.Builder()
                 .url(url)

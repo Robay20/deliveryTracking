@@ -63,6 +63,7 @@ public class PacketServiceImpl implements PacketService {
         }
         packetRepository.deleteById(id);
     }
+
     private PacketDTO convertToDTO(Packet packet) {
         PacketDTO dto = new PacketDTO();
         dto.setIdPacket(packet.getIdPacket());
@@ -71,9 +72,9 @@ public class PacketServiceImpl implements PacketService {
         dto.setSachets(packet.getSachets());
         dto.setStatus(packet.getStatus());
         dto.setBordoreau(packet.getBordoreau().getBordoreau());
-        dto.setTransferts(packet.getTransferts());
         return dto;
     }
+
     @Override
     public String getAllPacketsAsJson() {
         try {

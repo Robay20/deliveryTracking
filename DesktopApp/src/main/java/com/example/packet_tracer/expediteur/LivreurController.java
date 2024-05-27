@@ -55,7 +55,7 @@ public class LivreurController {
     private AutocompleteTextField autocompleteTextField;
 
     private final ObservableList<String> suggestions = FXCollections.observableArrayList("all");
-    private final Popup popup = new Popup();
+    private  Popup popup = new Popup();
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -166,8 +166,8 @@ public class LivreurController {
 
 
     @FXML
-  public void initialize() {
-          autocompleteTextField.setSuggestions(suggestions);
+    public void initialize() {
+        autocompleteTextField.setSuggestions(suggestions);
         autocompleteTextField.setOnKeyPressed(this::handleKeyPressed);
         autocompleteTextField.textProperty().addListener((observable, oldValue, newValue) -> showSuggestions());
         colCin.setCellValueFactory(new PropertyValueFactory<>("cinDriver"));
@@ -231,15 +231,15 @@ public class LivreurController {
     @FXML
     private TableView<Driver1> tableView;
     @FXML
-    private TableColumn<LivreurController.Driver1, String> colCin;
+    private TableColumn<Driver1, String> colCin;
     @FXML
-    private TableColumn<LivreurController.Driver1, String> colFirstName;
+    private TableColumn<Driver1, String> colFirstName;
     @FXML
-    private TableColumn<LivreurController.Driver1, String> colLastName;
+    private TableColumn<Driver1, String> colLastName;
     @FXML
-    private TableColumn<LivreurController.Driver1, String> colDateOfBirth;
+    private TableColumn<Driver1, String> colDateOfBirth;
 
-    private ObservableList<LivreurController.Driver1> driverList = FXCollections.observableArrayList();
+    private ObservableList<Driver1> driverList = FXCollections.observableArrayList();
 
     @FXML
     void getalldriver(ActionEvent event) {
@@ -263,8 +263,14 @@ public class LivreurController {
                     try {
                         ObjectMapper mapper = new ObjectMapper();
                         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-                        List<LivreurController.Driver1> drivers = mapper.readValue(jsonBody, new TypeReference<List<LivreurController.Driver1>>(){});
+                        List<Driver1> drivers = mapper.readValue(jsonBody, new TypeReference<List<Driver1>>(){});
+
                         //------------filling the suggestions----------------------
+
+                        // Clear the suggestions list before adding new suggestions
+                        suggestions.clear();
+                        suggestions.add("all");
+
                         for (Driver1 driver: drivers) {
                             suggestions.add(driver.cinDriver);
 

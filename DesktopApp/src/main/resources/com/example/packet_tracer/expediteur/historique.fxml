@@ -117,7 +117,7 @@
             <TableView fx:id="tableView" prefHeight="454.0" prefWidth="754.0">
                <columns>
                   <TableColumn fx:id="colIdPacket" prefWidth="123.20000916719437" text="ID Packet" />
-                  <TableColumn fx:id="colClientCin" prefWidth="124.80001831054688" text="Client" />
+                  <TableColumn fx:id="colClient" prefWidth="124.80001831054688" text="Client" />
                   <TableColumn fx:id="colColis" prefWidth="88.800048828125" text="Colis" />
                   <TableColumn fx:id="colSachets" prefWidth="102.39996337890625" text="Sachets" />
                   <TableColumn fx:id="colStatus" prefWidth="145.60006713867188" text="Status" />

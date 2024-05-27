@@ -1,6 +1,8 @@
 package com.example.packettracerbase.controller;
 
 import com.example.packettracerbase.model.Packet;
+import com.example.packettracerbase.model.PacketStatus;
+import com.example.packettracerbase.repository.PacketRepository;
 import com.example.packettracerbase.service.PacketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,16 +10,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/packets")
 public class PacketController {
 
     private final PacketService packetService;
+    private final PacketRepository packetRepository;
 
     @Autowired
-    public PacketController(PacketService packetService) {
+    public PacketController(PacketService packetService, PacketRepository packetRepository) {
         this.packetService = packetService;
+        this.packetRepository = packetRepository;
     }
 
     @GetMapping
@@ -50,6 +55,7 @@ public class PacketController {
         packetService.deletePacket(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
     @GetMapping("/json")
     public ResponseEntity<String> getAllPacketsAsJson() {
         String packetsJson = packetService.getAllPacketsAsJson();
@@ -57,6 +63,17 @@ public class PacketController {
             return new ResponseEntity<>(packetsJson, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Void> updatePacketStatus(@PathVariable Long id, @RequestBody PacketStatus status) {
+        try {
+            Optional<Packet> packet= packetRepository.findById(id);
+            packet.ifPresent(value -> packetService.updatePacket(id, value));
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
         }
     }
 }

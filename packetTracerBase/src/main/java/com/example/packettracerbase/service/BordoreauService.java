@@ -20,4 +20,6 @@ public interface BordoreauService {
     public void processBordoreau(String bordereauData);
 
     String getAllBordoreauxAsJson();
+
+    void updateStringLivreur(Long id, String newStringLivreur);
 }

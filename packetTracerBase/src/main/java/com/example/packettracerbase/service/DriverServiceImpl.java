@@ -1,6 +1,7 @@
 package com.example.packettracerbase.service;
 
 import com.example.packettracerbase.dto.BordoreauQRDTO;
+import com.example.packettracerbase.dto.DriverDTO;
 import com.example.packettracerbase.dto.DriverDTOMobile;
 import com.example.packettracerbase.dto.PacketDetailDTO;
 import com.example.packettracerbase.model.Bordoreau;
@@ -115,6 +116,48 @@ public class DriverServiceImpl implements DriverService {
         dto.setBordoreauQRDTOS(bordoreaus);
 
         return dto;
+    }
+
+    @Override
+    public DriverDTO addDriver(DriverDTO driverDTO) {
+        // Convert DTO to entity
+        Driver driver = convertToEntity(driverDTO);
+
+        // Save the entity to the database
+        Driver savedDriver = driverRepository.save(driver);
+
+        // Convert the saved entity back to DTO and return
+        return convertToDTO(savedDriver);
+    }
+
+    private Driver convertToEntity(DriverDTO driverDTO) {
+        Driver driver = new Driver();
+        driver.setCinDriver(driverDTO.getCinDriver());
+        driver.setFirstName(driverDTO.getFirstName());
+        driver.setLastName(driverDTO.getLastName());
+        driver.setEmail(driverDTO.getEmail());
+        driver.setDateOfBirth(driverDTO.getDateOfBirth());
+        driver.setLicenseNumber(driverDTO.getLicenseNumber());
+        driver.setLicensePlate(driverDTO.getLicensePlate());
+        driver.setBrand(driverDTO.getBrand());
+        driver.setUsername(driverDTO.getUsername());
+        driver.setPassword(driverDTO.getPassword());
+        // Set other fields as needed
+        return driver;
+    }
+
+    private DriverDTO convertToDTO(Driver driver) {
+        DriverDTO driverDTO = new DriverDTO();
+        driverDTO.setCinDriver(driver.getCinDriver());
+        driverDTO.setFirstName(driver.getFirstName());
+        driverDTO.setLastName(driver.getLastName());
+        driverDTO.setEmail(driver.getEmail());
+        driverDTO.setDateOfBirth(driver.getDateOfBirth());
+        driverDTO.setLicenseNumber(driver.getLicenseNumber());
+        driverDTO.setLicensePlate(driver.getLicensePlate());
+        driverDTO.setBrand(driver.getBrand());
+        // Set other fields as needed
+        return driverDTO;
     }
 
 }
