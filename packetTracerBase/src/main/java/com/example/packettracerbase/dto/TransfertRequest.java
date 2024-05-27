@@ -8,8 +8,8 @@ import java.util.Set;
 
 @Data
 public class TransfertRequest {
-    private Long codeSecteur;
-    private Long idDriver;
+    private String codeSecteur;
+    private String idDriver;
     private Set<Long> packets;
 
 }

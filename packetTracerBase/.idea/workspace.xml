@@ -5,25 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="gggggggggggggggggggrhhhhhhhhhh">
-      <change afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/admin/DriverAdd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/DateOfBirthDeserializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/Transfer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/models/DriverF.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DesktopApp/src/main/resources/com/example/packet_tracer/admin/DriverAdd.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DesktopApp/src/main/resources/com/example/packet_tracer/expediteur/transfer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/admin/LivreurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/admin/LivreurController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/admin/PacketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/admin/PacketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/ExpediterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/ExpediterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/HistoriqueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/HistoriqueController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/LivreurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/LivreurController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/models/Packet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/models/Packet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/resources/com/example/packet_tracer/admin/livreur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/resources/com/example/packet_tracer/admin/livreur.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/resources/com/example/packet_tracer/admin/packets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/resources/com/example/packet_tracer/admin/packets.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/resources/com/example/packet_tracer/expediteur/expediter.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/resources/com/example/packet_tracer/expediteur/expediter.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/resources/com/example/packet_tracer/expediteur/historique.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/resources/com/example/packet_tracer/expediteur/historique.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/utils/BordoreauApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/utils/BordoreauApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_info_bordoreau.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_info_bordoreau.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +101,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.PacketTracerBaseApplication.executor": "Run",
-    "git-widget-placeholder": "all-project",
+    "git-widget-placeholder": "#3 on all-project",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/growu/IdeaProjects/deliveryTracking/packetTracerBase/src/main/java/com/example/packettracerbase/dto",
     "node.js.detected.package.eslint": "true",
@@ -215,6 +200,7 @@
       <workItem from="1716500838523" duration="839000" />
       <workItem from="1716591153650" duration="10097000" />
       <workItem from="1716628062296" duration="3810000" />
+      <workItem from="1716811327833" duration="2789000" />
     </task>
     <task id="LOCAL-00001" summary="push it">
       <option name="closed" value="true" />

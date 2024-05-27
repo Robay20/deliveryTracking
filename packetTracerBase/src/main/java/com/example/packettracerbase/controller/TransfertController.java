@@ -70,8 +70,8 @@ public class TransfertController {
         // Create a new Transfert entity
         Transfert transfert = new Transfert();
         transfert.setIdTransfert(2L);
-        transfert.setOldPerson(request.getCodeSecteur().toString());
-        transfert.setNewPerson(request.getIdDriver().toString());
+        transfert.setOldPerson(request.getCodeSecteur());
+        transfert.setNewPerson(request.getIdDriver());
         transfert.setTime(LocalDateTime.now()); // Set current date and time
 
         Set<Long> packetIds = request.getPackets();
