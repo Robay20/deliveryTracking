@@ -66,7 +66,7 @@ public class LoginController {
             toggleButton1.setStyle("-fx-background-color: #008897;");// Set custom background color
         }
         userType = "sender";
-         // Toggle the boolean flag
+         // Toggle the boolean flagx
     }
 
 

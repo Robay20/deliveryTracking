@@ -17,10 +17,9 @@ public class BordoreauQRDTO {
     private String date;
     private String stringLivreur;
     private Long codeSecteur;
+    private PacketStatus status;
     @TypeConverters(PacketDetailConverter.class)
     private List<PacketDetailDTO> packets;
-
-    private PacketStatus status;
 
     public PacketStatus getStatus() {
         return status;
@@ -35,12 +34,12 @@ public class BordoreauQRDTO {
         if (this == o) return true;
         if (!(o instanceof BordoreauQRDTO)) return false;
         BordoreauQRDTO that = (BordoreauQRDTO) o;
-        return Objects.equals(getNumeroBordoreau(), that.getNumeroBordoreau()) && Objects.equals(getDate(), that.getDate()) && Objects.equals(getStringLivreur(), that.getStringLivreur()) && Objects.equals(getCodeSecteur(), that.getCodeSecteur()) && Objects.equals(getPackets(), that.getPackets()) && getStatus() == that.getStatus();
+        return Objects.equals(getNumeroBordoreau(), that.getNumeroBordoreau()) && Objects.equals(getStringLivreur(), that.getStringLivreur());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNumeroBordoreau(), getDate(), getStringLivreur(), getCodeSecteur(), getPackets(), getStatus());
+        return Objects.hash(getNumeroBordoreau(), getStringLivreur());
     }
 
     public Long getNumeroBordoreau() {

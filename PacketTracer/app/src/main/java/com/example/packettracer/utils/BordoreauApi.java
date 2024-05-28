@@ -1,6 +1,7 @@
 package com.example.packettracer.utils;
 
 import com.example.packettracer.model.BordoreauQRDTO;
+import com.example.packettracer.model.PacketStatus;
 import com.example.packettracer.model.TransfertRequest;
 
 import retrofit2.Call;
@@ -19,5 +20,8 @@ public interface BordoreauApi {
 
     @PUT("api/bordoreaux/{id}/mobile/transit")
     Call<Void> updateBordoreauStringLivreur(@Path("id") Long id, @Body String newStringLivreur);
+
+    @PUT("api/packets/{id}/status")
+    Call<Void> updatePacketStatus(@Path("id") Long packetId, @Body PacketStatus status);
 
 }

@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 public class TransfertRequest {
-    private Long codeSecteur;
-    private Long idDriver;
+    private String codeSecteur;
+    private String idDriver;
     private Set<Long> packets;
 
     public TransfertRequest() {
@@ -19,19 +19,19 @@ public class TransfertRequest {
         this.packets = packets;
     }
 
-    public Long getCodeSecteur() {
+    public String getCodeSecteur() {
         return codeSecteur;
     }
 
-    public void setCodeSecteur(Long codeSecteur) {
+    public void setCodeSecteur(String codeSecteur) {
         this.codeSecteur = codeSecteur;
     }
 
-    public Long getIdDriver() {
+    public String getIdDriver() {
         return idDriver;
     }
 
-    public void setIdDriver(Long idDriver) {
+    public void setIdDriver(String idDriver) {
         this.idDriver = idDriver;
     }
 }

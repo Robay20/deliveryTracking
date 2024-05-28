@@ -23,5 +23,9 @@ public interface BordoreauDao {
 
     @Delete
     void delete(BordoreauQRDTO bordoreau);
+
+    @Query("DELETE FROM BordoreauQRDTO")
+    void deleteAllBordoreaux();
+
 }
 

@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".Dashboard">
 
+    <Button
+        android:id="@+id/btn_delete_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete All Bordereaux"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_qr_code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/profileimage"
         android:layout_width="70dp"
@@ -28,7 +37,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:paddingTop="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -45,6 +54,16 @@
             tools:listitem="@layout/list_item_view" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="193dp"
+        android:layout_height="wrap_content"
+        android:onClick="logout"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 <!--
 

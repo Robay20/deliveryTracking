@@ -1,6 +1,7 @@
 package com.example.packettracer;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +30,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Check if the user is already logged in
+        SharedPreferences sharedPreferences = getSharedPreferences("login_prefs", MODE_PRIVATE);
+        if (sharedPreferences.getBoolean("logged_in", false)) {
+            // If already logged in, go to Dashboard
+            goToDashboard(sharedPreferences.getString("cinDriver", ""));
+        }
+
         setContentView(R.layout.activity_login);
 
         usernameEditText = findViewById(R.id.txtUsername);
@@ -74,9 +83,14 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
                             Log.d("LoginStatus", message);
 
-                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
-                            intent.putExtra("cinDriver", cinDriver); // Pass cinDriver to the next activity
-                            startActivity(intent);
+                            // Save login state and credentials
+                            SharedPreferences sharedPreferences = getSharedPreferences("login_prefs", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putBoolean("logged_in", true);
+                            editor.putString("cinDriver", cinDriver);
+                            editor.apply();
+
+                            goToDashboard(cinDriver);
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(MainActivity.this, "Failed to parse response", Toast.LENGTH_LONG).show();
@@ -90,5 +104,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void goToDashboard(String cinDriver) {
+        Intent intent = new Intent(MainActivity.this, Dashboard.class);
+        intent.putExtra("cinDriver", cinDriver);
+        startActivity(intent);
+        finish();
     }
 }
