@@ -4,6 +4,7 @@ import com.example.packettracerbase.dto.PacketDetailDTO;
 import com.example.packettracerbase.dto.TransfertDesktop;
 import com.example.packettracerbase.dto.TransfertRequest;
 import com.example.packettracerbase.model.Packet;
+import com.example.packettracerbase.model.PacketStatus;
 import com.example.packettracerbase.model.Transfert;
 import com.example.packettracerbase.repository.PacketRepository;
 import com.example.packettracerbase.repository.TransfertRepository;
@@ -66,7 +67,7 @@ public class TransfertController {
 
     @PostMapping("/transferts")
     public ResponseEntity<String> createTransfert(@RequestBody TransfertRequest request) {
-
+        System.out.println("something happen------");
         // Create a new Transfert entity
         Transfert transfert = new Transfert();
         transfert.setIdTransfert(2L);
@@ -77,9 +78,14 @@ public class TransfertController {
         Set<Long> packetIds = request.getPackets();
         for (Long packetId : packetIds) {
             Optional<Packet> packet = packetRepository.findById(packetId);
+
             packet.ifPresent(p -> {
-                transfert.setPacketTransfert(p); // Associate the packet with the transfert
-                transfertRepository.save(transfert); // Save the transfert
+                if(p.getStatus()!= PacketStatus.DONE){
+                    System.out.println("--------hoyakacha--------");
+                    p.setStatus(PacketStatus.IN_TRANSIT);
+                    transfert.setPacketTransfert(p); // Associate the packet with the transfert
+                    transfertService.createTransfert(transfert);
+                }
             });
         }
 

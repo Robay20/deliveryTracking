@@ -559,12 +559,7 @@ public class ExpediterController {
 
     @FXML
     private void addBordoroButton(ActionEvent event){
-        String dataString = decoded;
-        Bordoreau result = convertQRcodeToObjects(dataString);
-
-        display();
-
-        sendBordoreauJson(constructBordoreauJson(result));
+        sendBordoreauJson(decoded);
     }
 
 

@@ -3,6 +3,7 @@ package com.example.packettracerbase.service;
 import com.example.packettracerbase.dto.BordoreauQRDTO;
 import com.example.packettracerbase.dto.UpdateBordoreauRequest;
 import com.example.packettracerbase.model.Bordoreau;
+import com.example.packettracerbase.model.Driver;
 
 import java.util.List;
 import java.util.Map;
@@ -22,4 +23,6 @@ public interface BordoreauService {
     String getAllBordoreauxAsJson();
 
     void updateStringLivreur(Long id, String newStringLivreur);
+
+    List<Bordoreau> getBordereauxByDriver(Driver driver);
 }

@@ -4,11 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="gggggggggggggggggggrhhhhhhhhhh">
+    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="lkjsdlkjasdlkjasdlkjasdlkjasd">
+      <change afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/dialog_packet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/ExpediterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/ExpediterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoProfileActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoProfileActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/AppDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/AppDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/BordoreauDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/BordoreauDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/BordoreauQRDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/BordoreauQRDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/PacketDetailDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/PacketDetailDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/TransfertRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/TransfertRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/utils/BordoreauApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/utils/BordoreauApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_dashboard.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_info_bordoreau.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_info_bordoreau.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,13 +156,13 @@
     <configuration name="generated-requests | #11" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="11" requestIdentifier="#11" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="3" requestIdentifier="#3" runType="Run single request">
+    <configuration name="generated-requests | #15" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="15" requestIdentifier="#15" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #16" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="16" requestIdentifier="#16" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="generated-requests | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="6" requestIdentifier="#6" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="generated-requests | #8" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="8" requestIdentifier="#8" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="PacketTracerBaseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -162,11 +174,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests | #16" />
+        <item itemvalue="HTTP Request.generated-requests | #15" />
         <item itemvalue="HTTP Request.generated-requests | #11" />
         <item itemvalue="HTTP Request.generated-requests | #10" />
         <item itemvalue="HTTP Request.generated-requests | #6" />
-        <item itemvalue="HTTP Request.generated-requests | #8" />
-        <item itemvalue="HTTP Request.generated-requests | #3" />
       </list>
     </recent_temporary>
   </component>
@@ -200,7 +212,9 @@
       <workItem from="1716500838523" duration="839000" />
       <workItem from="1716591153650" duration="10097000" />
       <workItem from="1716628062296" duration="3810000" />
-      <workItem from="1716811327833" duration="2789000" />
+      <workItem from="1716811327833" duration="27630000" />
+      <workItem from="1716855021676" duration="656000" />
+      <workItem from="1716884691030" duration="5539000" />
     </task>
     <task id="LOCAL-00001" summary="push it">
       <option name="closed" value="true" />
@@ -371,6 +385,22 @@
     <MESSAGE value="vvvvvvvvvvvvvvvvvvvvvHGCVGHC" />
     <MESSAGE value="vvvvvvvvvvvvvvvvvvvvvHGCVGHChhhhhhhhhhhhhhhh" />
     <MESSAGE value="gggggggggggggggggggrhhhhhhhhhh" />
-    <option name="LAST_COMMIT_MESSAGE" value="gggggggggggggggggggrhhhhhhhhhh" />
+    <MESSAGE value="lkjsdlkjasdlkjasdlkjasdlkjasd" />
+    <option name="LAST_COMMIT_MESSAGE" value="lkjsdlkjasdlkjasdlkjasdlkjasd" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/packettracerbase/controller/BordoreauController.java</url>
+          <line>50</line>
+          <properties class="com.example.packettracerbase.controller.BordoreauController" method="getAllBordoreaux1">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

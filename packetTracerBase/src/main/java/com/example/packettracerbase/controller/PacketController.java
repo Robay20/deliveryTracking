@@ -70,7 +70,11 @@ public class PacketController {
     public ResponseEntity<Void> updatePacketStatus(@PathVariable Long id, @RequestBody PacketStatus status) {
         try {
             Optional<Packet> packet= packetRepository.findById(id);
-            packet.ifPresent(value -> packetService.updatePacket(id, value));
+            if (packet.isPresent()) {
+                Packet packet1 = packet.get();
+                packet1.setStatus(status);
+                packetService.updatePacket(id,packet1);
+            }
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             return ResponseEntity.notFound().build();

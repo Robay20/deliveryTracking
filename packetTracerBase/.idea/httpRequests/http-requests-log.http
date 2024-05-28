@@ -1,3 +1,47 @@
+POST http://localhost:8080/api/senders
+Content-Type: application/json
+Content-Length: 166
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "cinSender": "q",
+  "role": "Sender",
+  "username": "q",
+  "password": "q",
+  "firstName": "q",
+  "lastName": "q",
+  "email": "q",
+  "dateOfBirth": "1111-11-11"
+}
+
+<> 2024-05-27T205556.201.json
+
+###
+
+POST http://localhost:8080/api/admins
+Content-Type: application/json
+Content-Length: 164
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "cinAdmin": "a",
+  "role": "Admin",
+  "username": "a",
+  "password": "a",
+  "firstName": "a",
+  "lastName": "a",
+  "email": "a",
+  "dateOfBirth": "1111-11-11"
+}
+
+<> 2024-05-27T205451.201.json
+
+###
+
 GET http://localhost:8080/api/drivers/100001/mobile
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
@@ -2104,60 +2148,6 @@ User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
 Accept-Encoding: br,deflate,gzip,x-gzip
 
 <> 2024-05-07T222829.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers/100001
-Content-Type: application/json
-Content-Length: 323
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ye",
-  "password": "y",
-  "cinDriver": "100001",
-  "brand": "Toyota",
-  "licenseNumber": "DL-2024-XYZ-1234",
-  "licensePlate": "XYZ-1234",
-  "dateOfBirth": "1985-07-20",
-  "email": "ye@example.com",
-  "firstName": "Ye",
-  "lastName": "West",
-  "role": "Driver",
-  "active": true,
-  "bordoreausDriver": []
-}
-
-<> 2024-05-07T222752.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers
-Content-Type: application/json
-Content-Length: 323
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ye",
-  "password": "y",
-  "cinDriver": "100001",
-  "brand": "Toyota",
-  "licenseNumber": "DL-2024-XYZ-1234",
-  "licensePlate": "XYZ-1234",
-  "dateOfBirth": "1985-07-20",
-  "email": "ye@example.com",
-  "firstName": "Ye",
-  "lastName": "West",
-  "role": "Driver",
-  "bordoreausDriver": [],
-  "active": true
-}
-
-<> 2024-05-07T222400.405.json
 
 ###
 

@@ -9,12 +9,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,37 +21,31 @@ public class BordoreauServiceImpl implements BordoreauService {
 
     private final BordoreauRepository bordoreauRepository;
     private final PacketRepository packetRepository;
+
     private final ClientRepository clientRepository;
-    private final SenderRepository senderRepository;
     private final SecteurRepository secteurRepository;
     private final DriverRepository driverRepository;
 
     @Autowired
-    public BordoreauServiceImpl(BordoreauRepository bordoreauRepository, PacketRepository packetRepository, ClientRepository clientRepository, SenderRepository senderRepository, SecteurRepository secteurRepository, DriverRepository driverRepository) {
+    public BordoreauServiceImpl(BordoreauRepository bordoreauRepository, PacketRepository packetRepository, ClientRepository clientRepository, SecteurRepository secteurRepository, DriverRepository driverRepository) {
         this.bordoreauRepository = bordoreauRepository;
         this.packetRepository = packetRepository;
         this.clientRepository = clientRepository;
-        this.senderRepository = senderRepository;
         this.secteurRepository = secteurRepository;
         this.driverRepository = driverRepository;
     }
-
     @Override
     public List<Bordoreau> getAllBordoreaux() {
         return bordoreauRepository.findAll();
     }
-
     @Override
     public Optional<Bordoreau> getBordoreauById(Long id) {
         return bordoreauRepository.findById(id);
     }
-
-
     @Override
     public Bordoreau createBordoreau(Bordoreau bordoreau) {
         return bordoreauRepository.save(bordoreau);
     }
-
     @Override
     public void updateStringLivreur(Long id, String newStringLivreur) {
         Bordoreau bordoreau = bordoreauRepository.findById(id)
@@ -64,7 +56,6 @@ public class BordoreauServiceImpl implements BordoreauService {
         bordoreau.setLivreur(driver.get());
         bordoreauRepository.save(bordoreau);}
     }
-
     @Override
     public Bordoreau updateBordoreau(Long id, Bordoreau bordoreauDetails) {
         Bordoreau existingBordoreau = bordoreauRepository.findById(id)
@@ -78,7 +69,6 @@ public class BordoreauServiceImpl implements BordoreauService {
 
         return bordoreauRepository.save(existingBordoreau);
     }
-
     @Override
     public void deleteBordoreau(Long id) {
         if (!bordoreauRepository.existsById(id)) {
@@ -113,35 +103,19 @@ public class BordoreauServiceImpl implements BordoreauService {
     public Bordoreau updateBordoreau1(Long id, UpdateBordoreauRequest updateRequest) {
         Bordoreau bordoreau = bordoreauRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Bordoreau not found with id: " + id));
-
-        /*try {
-            bordoreau.setDate(LocalDateTime.parse(updateRequest.getDate()));
-        } catch (DateTimeParseException e) {
-            throw new RuntimeException("Invalid date format: " + updateRequest.getDate());
-        }*/
-
         bordoreau.setStatus(updateRequest.getStatus());
-
         Set<Packet> updatedPackets = updateRequest.getPackets().stream().map(packetRequest -> {
             Packet packet = packetRepository.findById(packetRequest.getIdPacket())
                     .orElseThrow(() -> new RuntimeException("Packet not found with id: " + packetRequest.getIdPacket()));
-            packet.setColis(packetRequest.getColis());
-            packet.setSachets(packetRequest.getSachets());
             packet.setStatus(packetRequest.getStatus());
             return packet;
         }).collect(Collectors.toSet());
-
         bordoreau.setPacketsBordoreau(updatedPackets);
-
         // Save the Bordoreau and its Packets
         packetRepository.saveAll(updatedPackets);
         bordoreau = bordoreauRepository.save(bordoreau);
-
-
             return bordoreau;
     }
-
-
     @Override
     public void processBordoreau(String bordereauData) {
         try {
@@ -180,6 +154,33 @@ public class BordoreauServiceImpl implements BordoreauService {
 
             LocalDateTime date = LocalDateTime.of(year, month, day, 0, 0); // Assuming time is not available in the QR code
 
+            // Save the Bordoreau first---------------
+            Bordoreau bordoreau = new Bordoreau();
+            bordoreau.setBordoreau(idBordoreau);
+            bordoreau.setDate(date);
+
+            Optional<Driver> driver = driverRepository.findById(codeLibreur);
+            if (driver.isPresent()) {
+                bordoreau.setLivreur(driver.get()); // Assuming you have a Driver constructor with codeLibreur
+                System.out.println("Driver found: " + driver.get().getCinDriver());
+            } else {
+                System.out.println("Driver not found for code: " + codeLibreur);
+                return null;
+            }
+            Secteur secteur = new Secteur();
+            secteur.setIdSecteur(Long.parseLong(codeSecteur));
+            Secteur secteur1 = secteurRepository.findById(Long.parseLong(codeSecteur)).orElseGet(() -> secteurRepository.save(secteur));
+            bordoreau.setSecteur(secteur1); // Assuming you have a Secteur constructor with codeSecteur
+            System.out.println("Secteur found or created: " + secteur1.getIdSecteur());
+            bordoreau.setSender(secteur1.getIdSender());
+            bordoreau.setStatus(PacketStatus.INITIALIZED);
+            bordoreau = bordoreauRepository.save(bordoreau);
+
+
+
+
+            //-------------------------------------------------
+
             List<Packet> packets = new ArrayList<>();
             for (int i = 4; i < parts.length; i = i + 4) {
                 try {
@@ -201,7 +202,7 @@ public class BordoreauServiceImpl implements BordoreauService {
                     packet.setSachets(sachets);
                     packet.setStatus(PacketStatus.INITIALIZED); // Adjust as needed
                     packet.setBordoreau(null); // To be set later
-                    packets.add(packet);
+                    packets.add(packetRepository.save(packet));
                 } catch (Exception e) {
                     System.out.println("Error parsing packet at index " + i + ": " + e.getMessage());
                     e.printStackTrace();
@@ -209,23 +210,7 @@ public class BordoreauServiceImpl implements BordoreauService {
             }
             System.out.println("Parsed packets: " + packets.size());
 
-            Bordoreau bordoreau = new Bordoreau();
-            bordoreau.setBordoreau(idBordoreau);
-            bordoreau.setDate(date);
 
-            Optional<Driver> driver = driverRepository.findById(codeLibreur);
-            if (driver.isPresent()) {
-                bordoreau.setLivreur(driver.get()); // Assuming you have a Driver constructor with codeLibreur
-                System.out.println("Driver found: " + driver.get().getCinDriver());
-            } else {
-                System.out.println("Driver not found for code: " + codeLibreur);
-            }
-
-            Secteur secteur = new Secteur();
-            secteur.setIdSecteur(Long.parseLong(codeSecteur));
-            Secteur secteur1 = secteurRepository.findById(Long.parseLong(codeSecteur)).orElseGet(() -> secteurRepository.save(secteur));
-            bordoreau.setSecteur(secteur1); // Assuming you have a Secteur constructor with codeSecteur
-            System.out.println("Secteur found or created: " + secteur1.getIdSecteur());
 
             bordoreau.setPacketsBordoreau(new HashSet<>(packets)); // Add packets to Bordoreau
 
@@ -243,7 +228,6 @@ public class BordoreauServiceImpl implements BordoreauService {
         }
     }
 
-
     public String getAllBordoreauxAsJson() {
         try {
             // Retrieve all Bordoreau objects from the database or repository
@@ -256,5 +240,10 @@ public class BordoreauServiceImpl implements BordoreauService {
             e.printStackTrace(); // Handle the exception as needed
             return null;
         }
+    }
+
+    @Override
+    public List<Bordoreau> getBordereauxByDriver(Driver driver) {
+        return bordoreauRepository.findByLivreur(driver);
     }
 }

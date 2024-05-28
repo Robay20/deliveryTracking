@@ -1,7 +1,10 @@
 package com.example.packettracerbase.service;
 
 import com.example.packettracerbase.dto.PacketDTO;
+import com.example.packettracerbase.model.Bordoreau;
 import com.example.packettracerbase.model.Packet;
+import com.example.packettracerbase.model.PacketStatus;
+import com.example.packettracerbase.repository.BordoreauRepository;
 import com.example.packettracerbase.repository.PacketRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,10 +20,13 @@ import java.util.stream.Collectors;
 public class PacketServiceImpl implements PacketService {
 
     private final PacketRepository packetRepository;
+    private final BordoreauRepository bordoreauRepository;
+
 
     @Autowired
-    public PacketServiceImpl(PacketRepository packetRepository) {
+    public PacketServiceImpl(PacketRepository packetRepository, BordoreauRepository bordoreauRepository) {
         this.packetRepository = packetRepository;
+        this.bordoreauRepository = bordoreauRepository;
     }
 
     @Override
@@ -52,6 +58,18 @@ public class PacketServiceImpl implements PacketService {
         // Assuming transferts are to be handled separately or are updated through a different mechanism,
         // as directly setting a complex relationship collection can be problematic.
         existingPacket.setTransferts(packetDetails.getTransferts());
+
+        boolean p =false;
+         for(Packet packet : packetDetails.getBordoreau().getPacketsBordoreau()){
+             if (packet.getStatus()!=PacketStatus.DONE)
+                 p=true;
+         }
+         if (!p){
+             Bordoreau bordoreau = packetDetails.getBordoreau();
+             bordoreau.setStatus(PacketStatus.DONE);
+
+             bordoreauRepository.save(bordoreau);
+         }
 
         return packetRepository.save(existingPacket);
     }
