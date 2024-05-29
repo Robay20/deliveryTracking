@@ -1,6 +1,7 @@
 package com.example.packettracer;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -169,7 +170,7 @@ public class Dashboard extends AppCompatActivity {
         String newStringLivreur = currentDriverId;
 
         // Base URL of your backend server
-        String baseUrl = "http://192.168.43.207:8080/";
+        String baseUrl = "http://192.168.1.109:8080/";
 
         // Create Retrofit instance
         Retrofit retrofit = RetrofitClient.getClient(baseUrl);
@@ -207,7 +208,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void fetchBordoreauData(Long bordoreauId) {
-        String url = "http://192.168.43.207:8080/api/bordoreaux" + bordoreauId + "/qr";
+        String url = "http://192.168.1.109:8080/api/bordoreaux" + bordoreauId + "/qr";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
 
@@ -306,7 +307,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void synchronizeWithServer() {
-        String url = "http://192.168.43.207:8080/api/bordoreaux/Dashboard";
+        String url = "http://192.168.1.109:8080/api/bordoreaux/Dashboard";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
 
@@ -348,5 +349,19 @@ public class Dashboard extends AppCompatActivity {
         super.onResume();
         synchronizeWithServer();
     }
+    private void logout() {
+        SharedPreferences sharedPreferences = getSharedPreferences("login_prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear(); // Clear all stored data
+        editor.apply();
+
+        Intent intent = new Intent(Dashboard.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    public void logout(View view) {
+        logout();
+    }
+
 
 }

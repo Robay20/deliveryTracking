@@ -1,3 +1,27 @@
+POST http://localhost:8080/api/drivers/json
+Content-Type: application/json
+Content-Length: 218
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "cinDriver": "aa",
+  "firstName": "aa",
+  "lastName": "aa",
+  "email": "aa",
+  "dateOfBirth": "1999-10-10",
+  "licenseNumber": "11",
+  "licensePlate": "11",
+  "brand": "11",
+  "username": "aa",
+  "password": "aa"
+}
+
+<> 2024-05-28T002708.201.json
+
+###
+
 GET http://localhost:8080/api/drivers/100001/mobile
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
@@ -2131,33 +2155,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 }
 
 <> 2024-05-07T222752.200.json
-
-###
-
-PUT http://localhost:8080/api/drivers
-Content-Type: application/json
-Content-Length: 323
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "username": "ye",
-  "password": "y",
-  "cinDriver": "100001",
-  "brand": "Toyota",
-  "licenseNumber": "DL-2024-XYZ-1234",
-  "licensePlate": "XYZ-1234",
-  "dateOfBirth": "1985-07-20",
-  "email": "ye@example.com",
-  "firstName": "Ye",
-  "lastName": "West",
-  "role": "Driver",
-  "bordoreausDriver": [],
-  "active": true
-}
-
-<> 2024-05-07T222400.405.json
 
 ###
 
