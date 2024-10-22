@@ -1,5 +1,6 @@
 package com.example.packettracer.utils;
 
+import com.example.packettracer.model.Bordoreau;
 import com.example.packettracer.model.BordoreauQRDTO;
 import com.example.packettracer.model.PacketStatus;
 import com.example.packettracer.model.TransfertRequest;
@@ -23,5 +24,8 @@ public interface BordoreauApi {
 
     @PUT("api/packets/{id}/status")
     Call<Void> updatePacketStatus(@Path("id") Long packetId, @Body PacketStatus status);
+
+    @PUT("api/bordoreaux/{id}/livreur/{newDriverId}")
+    Call<Bordoreau> updateBordoreauDriver(@Path("id") Long id, @Path("newDriverId") String newDriverId);
 
 }

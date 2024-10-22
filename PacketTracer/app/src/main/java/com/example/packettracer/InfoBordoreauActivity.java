@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -136,6 +137,10 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
         PacketDetailDTO packetDetail = bordoreau.getPackets().get(position);
         if(packetDetail.getStatus()!=PacketStatus.DONE)
             showPacketDialog(position);
+        else if (packetDetail.getStatus()==PacketStatus.DONE) {
+            Toast.makeText(InfoBordoreauActivity.this, "Packet is already DONE", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
     private void showPacketDialog(int position) {
@@ -152,6 +157,11 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
             PacketDetailDTO packetDetail = bordoreau.getPackets().get(position);
             createTransfert(packetDetail.getCodeClient(),currentDriverId,Collections.singleton(packetDetail.getNumeroBL()));
             updatePacketStatus(bordoreau.getPackets().get(position).getNumeroBL(), PacketStatus.DONE);
+
+            packetDetail.setStatus(PacketStatus.DONE);
+
+            adapter.notifyItemChanged(position);
+
             dialog.dismiss();
                 });
 
@@ -186,7 +196,7 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
         // Ensure the status is set to IN_TRANSIT
 
         // Base URL of your backend server
-        String baseUrl = "http://192.168.43.207:8080/";
+        String baseUrl = "http://192.168.1.106:8080/";
 
         // Create Retrofit instance
         Retrofit retrofit = RetrofitClient.getClient(baseUrl);
@@ -222,7 +232,7 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
     }
 
     private void createTransfert(String currentDriverId, String codeSecteur, Set<Long> ids) {
-        String baseUrl = "http://192.168.43.207:8080/";
+        String baseUrl = "http://192.168.1.106:8080/";
 
         Retrofit retrofit = RetrofitClient.getClient(baseUrl);
         BordoreauApi service = retrofit.create(BordoreauApi.class);
@@ -251,7 +261,7 @@ public class InfoBordoreauActivity extends AppCompatActivity implements PacketDe
     }
 
     private void updatePacketStatus(Long packetId, PacketStatus status) {
-        String baseUrl = "http://192.168.43.207:8080/";
+        String baseUrl = "http://192.168.1.106:8080/";
 
         Retrofit retrofit = RetrofitClient.getClient(baseUrl);
         BordoreauApi service = retrofit.create(BordoreauApi.class);

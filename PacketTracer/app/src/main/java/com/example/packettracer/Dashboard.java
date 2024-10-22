@@ -16,6 +16,7 @@ import retrofit2.Callback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.packettracer.model.Bordoreau;
 import com.example.packettracer.model.BordoreauQRDTO;
 import com.example.packettracer.model.PacketDetailDTO;
 import com.example.packettracer.model.PacketStatus;
@@ -48,6 +49,7 @@ import com.example.packettracer.model.BordoreauDao;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Dashboard extends AppCompatActivity {
     private BordoreauDao bordoreauDao;
@@ -98,6 +100,12 @@ public class Dashboard extends AppCompatActivity {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             BordoreauQRDTO selectedBordoreau = adapter.getItem(position);
             if (selectedBordoreau != null) {
+                // Log the packets of the selected Bordoreau
+                List<PacketDetailDTO> packets = selectedBordoreau.getPackets();
+                for (PacketDetailDTO packet : packets) {
+                    Log.d("Dashboard", "Packet Details: " + packet.toString());
+                }
+
                 Intent intent = new Intent(Dashboard.this, InfoBordoreauActivity.class);
                 intent.putExtra("BordoreauData", selectedBordoreau.toJson());  // Serialize the object
                 intent.putExtra("cinDriver", currentDriverId);
@@ -105,11 +113,12 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
+
         // Initialize and set the delete all button
         btnDeleteAll = findViewById(R.id.btn_delete_all);
         btnDeleteAll.setOnClickListener(view -> deleteAllBordoreaux());
 
-        loadBordoreauData();
+        //logAllBordoreaux();
     }
 
     private void deleteAllBordoreaux() {
@@ -123,18 +132,6 @@ public class Dashboard extends AppCompatActivity {
         });
     }
 
-    private void loadBordoreauData() {
-        executorService.execute(() -> {
-            List<BordoreauQRDTO> bordoreaus = bordoreauDao.getAll();
-            mainHandler.post(() -> {
-                bordoreauSet.addAll(bordoreaus);
-                updateListView();
-                for (BordoreauQRDTO bordoreau : bordoreaus) {
-                    Log.d("LoadData", "Loaded Bordoreau: " + bordoreau.toString());
-                }
-            });
-        });
-    }
 
     private void saveBordoreauData(BordoreauQRDTO bordoreau) {
         executorService.execute(() -> {
@@ -175,6 +172,9 @@ public class Dashboard extends AppCompatActivity {
             }
 
             createTransfert(currentDriverId, oldoo, ids);
+            updateBordoreauDriver(bordoreau.getNumeroBordoreau(), currentDriverId);
+
+
 
         }
 
@@ -185,6 +185,36 @@ public class Dashboard extends AppCompatActivity {
             Toast.makeText(Dashboard.this, errorMessage, Toast.LENGTH_SHORT).show();
         }
     };
+
+
+    private void updateBordoreauDriver(Long bordoreauId, String newDriverId) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.106:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        BordoreauApi bordoreauApi = retrofit.create(BordoreauApi.class);
+        Call<Bordoreau> call = bordoreauApi.updateBordoreauDriver(bordoreauId, newDriverId);
+
+        call.enqueue(new retrofit2.Callback<Bordoreau>() {
+            @Override
+            public void onResponse(Call<Bordoreau> call, retrofit2.Response<Bordoreau> response) {
+                if (response.isSuccessful()) {
+                    // Handle success
+                    System.out.println("Driver updated successfully: " + response.body());
+                } else {
+                    // Handle unsuccessful response
+                    System.err.println("Failed to update driver: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Bordoreau> call, Throwable t) {
+                // Handle failure
+                t.printStackTrace();
+            }
+        });
+    }
 
     private void processScannedData(String data) {
         try {
@@ -254,7 +284,7 @@ public class Dashboard extends AppCompatActivity {
         String newStringLivreur = currentDriverId;
 
         // Base URL of your backend server
-        String baseUrl = "http://192.168.43.207:8080/";
+        String baseUrl = "http://192.168.1.106:8080/";
 
         // Create Retrofit instance
         Retrofit retrofit = RetrofitClient.getClient(baseUrl);
@@ -295,7 +325,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void fetchBordoreauData(Long bordoreauId) {
-        String url = "http://192.168.43.207:8080/api/bordoreaux/" + bordoreauId + "/qr";
+        String url = "http://192.168.1.106:8080/api/bordoreaux/" + bordoreauId + "/qr";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
 
@@ -327,7 +357,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void fetchBordoreau(Long bordoreauId, BordoreauCallback callback,String oldoo) {
-        String url = "http://192.168.43.207:8080/api/bordoreaux/" + bordoreauId + "/qr";
+        String url = "http://192.168.1.106:8080/api/bordoreaux/" + bordoreauId + "/qr";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
         executorService.execute(() -> {
@@ -383,9 +413,10 @@ public class Dashboard extends AppCompatActivity {
             String codeClient = packetObject.getString("codeClient");
             int nbrColis = packetObject.getInt("nbrColis");
             int nbrSachets = packetObject.getInt("nbrSachets");
+            PacketStatus packetStatus = PacketStatus.fromString(packetObject.getString("status")); // Parse the packet status
 
 
-            packets.add(new PacketDetailDTO(numeroBL, codeClient, nbrColis, nbrSachets,PacketStatus.INITIALIZED));
+            packets.add(new PacketDetailDTO(numeroBL, codeClient, nbrColis, nbrSachets,packetStatus));
         }
 
         return new BordoreauQRDTO(numeroBordoreau,status, date, stringLivreur, codeSecteur, packets);
@@ -436,7 +467,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     private void synchronizeWithServer() {
-        String url = "http://192.168.43.207:8080/api/bordoreaux/Dashboard/"+currentDriverId;
+        String url = "http://192.168.1.106:8080/api/bordoreaux/Dashboard/" + currentDriverId;
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
 
@@ -449,20 +480,27 @@ public class Dashboard extends AppCompatActivity {
                     List<BordoreauQRDTO> bordereaux = new ArrayList<>();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        BordoreauQRDTO bordoreau = parseJSONToBordoreau(jsonObject);
-                        if (bordoreau != null) {
-                            bordereaux.add(bordoreau);
-                            logAllBordoreaux();
+                        BordoreauQRDTO bordereau = parseJSONToBordoreau(jsonObject);
+                        if (bordereau != null) {
+                            bordereaux.add(bordereau);
 
+                            // Log the details of the bordereau and its packets
+                            Log.d("Dashboard", "Bordoreau Details: " + bordereau.toString());
+                            List<PacketDetailDTO> packets = bordereau.getPackets();
+                            for (PacketDetailDTO packet : packets) {
+                                Log.d("Dashboard", "Packet Details: " + packet.toString());
+                            }
                         }
                     }
 
                     // Update the local database and UI
-                    bordoreauDao.insertAll(bordereaux);
-                    mainHandler.post(() -> {
-                        bordoreauSet.clear();
-                        bordoreauSet.addAll(bordereaux);
-                        updateListView();
+                    executorService.execute(() -> {
+                        bordoreauDao.insertAll(bordereaux); // Ensure this method updates existing entries
+                        mainHandler.post(() -> {
+                            bordoreauSet.clear();
+                            bordoreauSet.addAll(bordereaux);
+                            updateListView();
+                        });
                     });
                 } else {
                     mainHandler.post(() -> Toast.makeText(Dashboard.this, "Error fetching data from server", Toast.LENGTH_SHORT).show());
@@ -470,13 +508,13 @@ public class Dashboard extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
                 mainHandler.post(() -> Toast.makeText(Dashboard.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG).show());
-                Log.e("ERROR", "synchronizeWithServer: "+e.getMessage() );
+                Log.e("ERROR", "synchronizeWithServer: " + e.getMessage());
             }
         });
     }
 
     private void createTransfert(String currentDriverId, String codeSecteur, Set<Long> ids) {
-        String baseUrl = "http://192.168.43.207:8080/";
+        String baseUrl = "http://192.168.1.106:8080/";
 
         Retrofit retrofit = RetrofitClient.getClient(baseUrl);
         BordoreauApi service = retrofit.create(BordoreauApi.class);

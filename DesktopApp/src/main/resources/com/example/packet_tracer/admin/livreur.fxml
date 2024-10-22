@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -37,6 +38,7 @@
                </font>
             </Button>
             <Button layoutX="10.0" layoutY="26.0" mnemonicParsing="false" onAction="#openAddDriverWindow" text="Add Driver" />
+            <Button fx:id="deleteButton" disable="true" layoutX="113.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleDeleteButton" text="delete" />
          </children>
       </Pane>
       <Pane layoutX="755.0" prefHeight="620.0" prefWidth="325.0" style="-fx-background-color: #9EF2E4;">

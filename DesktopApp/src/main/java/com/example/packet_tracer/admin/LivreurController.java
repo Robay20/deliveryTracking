@@ -3,6 +3,7 @@ package com.example.packet_tracer.admin;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,10 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -152,6 +150,14 @@ public class LivreurController {
 
         tableView.setItems(driverList);
         getalldriver(null); // Trigger data loading automatically on initialize
+
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                deleteButton.setDisable(false);
+            } else {
+                deleteButton.setDisable(true);
+            }
+        });
     }
 
     private void showSuggestions() {
@@ -211,6 +217,8 @@ public class LivreurController {
     private TableColumn<Driver, String> colLastName;
     @FXML
     private TableColumn<Driver, String> colDateOfBirth;
+    @FXML
+    private Button deleteButton;
 
     private ObservableList<Driver> driverList = FXCollections.observableArrayList();
 
@@ -276,6 +284,61 @@ public class LivreurController {
     @FXML
     private void handleRefreshButton(ActionEvent event) {
         getalldriver(null);
+    }
+    @FXML
+    private void handleRowSelect(MouseEvent event) {
+        // This method is linked to the onMouseClicked event of the TableView in the FXML
+        Driver selectedDriver = tableView.getSelectionModel().getSelectedItem();
+        if (selectedDriver != null) {
+            deleteButton.setDisable(false); // Enable the delete button when a row is selected
+        }
+    }
+    @FXML
+    private void handleDeleteButton(ActionEvent event) {
+        Driver selectedDriver = tableView.getSelectionModel().getSelectedItem();
+        if (selectedDriver != null) {
+            String cinDriver = selectedDriver.getCinDriver();
+            String endpointUrl = "http://localhost:8080/api/drivers/" + cinDriver;
+
+            HttpClient client = HttpClient.newBuilder()
+                    .version(HttpClient.Version.HTTP_2)
+                    .followRedirects(HttpClient.Redirect.NORMAL)
+                    .connectTimeout(Duration.ofSeconds(20))
+                    .build();
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(endpointUrl))
+                    .timeout(Duration.ofMinutes(1))
+                    .header("Content-Type", "application/json")
+                    .DELETE()
+                    .build();
+
+            client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                    .thenAccept(response -> {
+                        if (response.statusCode() == 200) {
+                            // Remove the driver from the TableView and the ObservableList
+                            driverList.remove(selectedDriver);
+                            tableView.refresh();
+                            showAlert("driver deleted successfully  !");
+                        } else {
+                            // Handle the error appropriately (e.g., show an error message to the user)
+                        }
+                    })
+                    .exceptionally(e -> {
+                        e.printStackTrace();
+                        // Handle the exception appropriately (e.g., show an error message to the user)
+                        return null;
+                    });
+        }
+    }
+    private void showAlert(String message) {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
+        });
     }
 
 
