@@ -97,7 +97,7 @@ public class DriverServiceImpl implements DriverService {
 
             BordoreauQRDTO qrDTO = new BordoreauQRDTO();
             qrDTO.setNumeroBordoreau(bordoreau.getBordoreau());
-            qrDTO.setDate(bordoreau.getDate().toString());
+            qrDTO.setDate(bordoreau.getDate());
             qrDTO.setStringLivreur(bordoreau.getLivreur().getCinDriver());
             qrDTO.setCodeSecteur(bordoreau.getSecteur().getIdSecteur());
             qrDTO.setStatus(bordoreau.getStatus());

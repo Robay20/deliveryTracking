@@ -2,6 +2,7 @@ package com.example.packettracerbase.controller;
 
 import com.example.packettracerbase.dto.BordoreauMapper;
 import com.example.packettracerbase.dto.BordoreauQRDTO;
+import com.example.packettracerbase.dto.PacketDetailDTO;
 import com.example.packettracerbase.dto.UpdateBordoreauRequest;
 import com.example.packettracerbase.model.Bordoreau;
 import com.example.packettracerbase.model.Driver;
@@ -13,16 +14,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/bordoreaux")
 public class BordoreauController {
+
 
     private final BordoreauService bordoreauService;
     private final DriverRepository driverRepository;
@@ -48,22 +46,29 @@ public class BordoreauController {
     }
 
     @GetMapping("/Dashboard/{id}")
-    public ResponseEntity<List<BordoreauQRDTO>> getAllBordoreaux1(@PathVariable String id) {
-        System.out.println('l');
+    public ResponseEntity<List<BordoreauQRDTO>> getAllBordereaux1(@PathVariable String id) {
+
         Optional<Driver> driver = driverRepository.findById(id);
         if (driver.isPresent()) {
             List<Bordoreau> bordereaux = bordoreauService.getBordereauxByDriver(driver.get());
             List<BordoreauQRDTO> bordereauQRDTOs = bordereaux.stream()
                     .map(bordoreauMapper::toBordoreauQRDTO)
                     .collect(Collectors.toList());
-            logger.debug("Bordereaux details: {}", bordereaux);
+
+            // Print packets of each BordoreauQRDTO
+            for (BordoreauQRDTO bordereauQRDTO : bordereauQRDTOs) {
+                System.out.println("Packets for Bordoreau " + bordereauQRDTO.getNumeroBordoreau() + ":");
+                for (PacketDetailDTO packet : bordereauQRDTO.getPackets()) {
+                    System.out.println(packet);
+                }
+            }
 
             return new ResponseEntity<>(bordereauQRDTOs, HttpStatus.OK);
         } else {
-            logger.warn("Driver with ID {} not found", id);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Bordoreau> getBordoreauById(@PathVariable Long id) {
@@ -80,11 +85,9 @@ public class BordoreauController {
 
 
 
-    private static final Logger logger = LoggerFactory.getLogger(BordoreauController.class);
 
     @PutMapping("/{id}/mobile")
     public ResponseEntity<?> updateBordoreau(@PathVariable Long id, @RequestBody UpdateBordoreauRequest updateRequest) {
-        logger.info("Received update request: {}", updateRequest);
         try {
             Bordoreau updatedBordoreau = bordoreauService.updateBordoreau1(id, updateRequest);
             return ResponseEntity.ok(updatedBordoreau);
@@ -134,4 +137,11 @@ public class BordoreauController {
         }
     }
 
+    @PutMapping("/{bordoreauId}/livreur/{newDriverId}")
+    public ResponseEntity<Bordoreau> updateLivreur(
+            @PathVariable Long bordoreauId,
+            @PathVariable String newDriverId) {
+        Bordoreau updatedBordoreau = bordoreauService.updateLivreur(bordoreauId, newDriverId);
+        return ResponseEntity.ok(updatedBordoreau);
+    }
 }

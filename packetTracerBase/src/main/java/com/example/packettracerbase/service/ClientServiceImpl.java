@@ -26,7 +26,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Optional<Client> getClientById(String id) {
-        return clientRepository.findById(id);
+        return Optional.ofNullable(clientRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Client not found with id: " + id)));
     }
 
     @Override

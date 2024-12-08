@@ -26,8 +26,10 @@ public class SecteurServiceImpl implements SecteurService {
 
     @Override
     public Optional<Secteur> getSecteurById(Long id) {
-        return secteurRepository.findById(id);
+        return Optional.ofNullable(secteurRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Client not found with id: " + id)));
     }
+
 
     @Override
     public Secteur createSecteur(Secteur secteur) {

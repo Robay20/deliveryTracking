@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 public class BordoreauQRDTO {
     private Long numeroBordoreau;
-    private String date;
+    private LocalDateTime date;
     private String stringLivreur;
     private Long codeSecteur;
     private List<PacketDetailDTO> packets;

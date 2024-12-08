@@ -1,6 +1,5 @@
 package com.example.packettracerbase.dto;
 
-import com.example.packettracerbase.dto.BordoreauQRDTO;
 import lombok.*;
 
 import java.util.Set;

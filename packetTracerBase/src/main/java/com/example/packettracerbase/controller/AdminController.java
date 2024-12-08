@@ -1,7 +1,7 @@
 package com.example.packettracerbase.controller;
 
-import com.example.packettracerbase.model.AuthenticationRequest;
 import com.example.packettracerbase.model.Admin;
+import com.example.packettracerbase.model.AuthenticationRequest;
 import com.example.packettracerbase.service.AdminService;
 import com.example.packettracerbase.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
 package com.example.packettracerbase.controller;
 
-import com.example.packettracerbase.dto.PacketDetailDTO;
 import com.example.packettracerbase.dto.TransfertDesktop;
 import com.example.packettracerbase.dto.TransfertRequest;
 import com.example.packettracerbase.model.Packet;

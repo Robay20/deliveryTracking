@@ -6,7 +6,6 @@ import com.example.packettracerbase.model.Bordoreau;
 import com.example.packettracerbase.model.Driver;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public interface BordoreauService {
@@ -19,6 +18,8 @@ public interface BordoreauService {
 
     Bordoreau updateBordoreau1(Long id, UpdateBordoreauRequest updateRequest);
     public void processBordoreau(String bordereauData);
+
+    Bordoreau updateLivreur(Long bordoreauId, String newDriverId);
 
     String getAllBordoreauxAsJson();
 

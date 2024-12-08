@@ -1,7 +1,13 @@
 package com.example.packettracerbase.service;
 
-import com.example.packettracerbase.model.*;
-import com.example.packettracerbase.repository.*;
+import com.example.packettracerbase.model.Admin;
+import com.example.packettracerbase.model.Client;
+import com.example.packettracerbase.model.Driver;
+import com.example.packettracerbase.model.Sender;
+import com.example.packettracerbase.repository.AdminRepository;
+import com.example.packettracerbase.repository.ClientRepository;
+import com.example.packettracerbase.repository.DriverRepository;
+import com.example.packettracerbase.repository.SenderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

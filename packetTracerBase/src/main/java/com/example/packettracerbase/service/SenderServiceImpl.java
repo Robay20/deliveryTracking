@@ -26,19 +26,21 @@ public class SenderServiceImpl implements SenderService {
 
     @Override
     public Optional<Sender> getSenderById(String id) {
-        return senderRepository.findById(id);
+        return Optional.ofNullable(senderRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Sender not found with id: " + id)));
     }
 
     @Override
     public Sender createSender(Sender sender) {
         return senderRepository.save(sender);
     }
+
     @Override
     public Sender updateSender(String id, Sender senderDetails) {
-        Sender existingSender = senderRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Sender not found with id: " + id));
+        Optional<Sender> existingOptionalSender = getSenderById(id);
+        Sender existingSender = existingOptionalSender.get();
 
-        // Update inherited fields from Person
+        // Update fields
         existingSender.setUsername(senderDetails.getUsername());
         existingSender.setPassword(senderDetails.getPassword());
         existingSender.setActive(senderDetails.isActive());
@@ -47,11 +49,8 @@ public class SenderServiceImpl implements SenderService {
         existingSender.setEmail(senderDetails.getEmail());
         existingSender.setDateOfBirth(senderDetails.getDateOfBirth());
 
-        // Relationships - we handle relationships carefully
-        // The relationship with Bordoreau might need to be managed differently if it involves changing the collection
+        // Update relationships
         existingSender.setBordoreausSender(senderDetails.getBordoreausSender());
-
-        // Since idSecteur is a one-to-one relationship and might not often change, we update it directly if needed
         existingSender.setSecteur(senderDetails.getSecteur());
 
         return senderRepository.save(existingSender);

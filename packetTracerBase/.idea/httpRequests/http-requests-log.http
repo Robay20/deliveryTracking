@@ -1,3 +1,37 @@
+GET http://localhost:8080/api/senders
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 30
+
+Content-Type: application/json
+
+<> 2024-06-20T223801.200.json
+
+###
+
+GET http://localhost:8080/api/admins
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-06-20T223447.200.json
+
+###
+
+GET http://localhost:8080/api/admins/
+Content-Type: application/json
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2024.1.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+<> 2024-06-20T223432.404.json
+
+###
+
 POST http://localhost:8080/api/senders
 Content-Type: application/json
 Content-Length: 166
@@ -2097,57 +2131,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 }
 
 <> 2024-05-07T224539.500.json
-
-###
-
-POST http://localhost:8080/api/senders
-Content-Type: application/json
-Content-Length: 223
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "role": "Sender",
-  "lastName": "hm",
-  "firstName": "hm",
-  "email": "hm@.com",
-  "dateOfBirth": "220824",
-  "password": "hm",
-  "username": "hm",
-  "cinSender": "200001",
-  "bordoreausSender": [],
-  "secteur": {
-  }
-}
-
-<> 2024-05-07T224344.400.json
-
-###
-
-POST http://localhost:8080/api/secteurs
-Content-Type: application/json
-Content-Length: 63
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "city": "AGADIR",
-  "idSecteur": 200001,
-  "idSender": {}
-}
-
-<> 2024-05-07T223635.500.json
-
-###
-
-GET http://localhost:8080/api/drivers/100001
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.10)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2024-05-07T222829.200.json
 
 ###
 

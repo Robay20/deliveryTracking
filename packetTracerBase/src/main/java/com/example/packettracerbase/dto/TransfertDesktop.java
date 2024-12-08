@@ -1,7 +1,8 @@
 package com.example.packettracerbase.dto;
 
-import com.example.packettracerbase.model.Packet;
-import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.time.LocalDateTime;

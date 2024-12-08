@@ -1,10 +1,7 @@
 package com.example.packettracerbase.dto;
 
 import com.example.packettracerbase.model.PacketStatus;
-import com.example.packettracerbase.model.Transfert;
 import lombok.*;
-
-import java.util.Set;
 
 @Data
 @NoArgsConstructor

@@ -1,17 +1,21 @@
 package com.example.packettracerbase.model;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -35,6 +39,7 @@ public class Driver extends Person{
     @OneToMany(mappedBy = "livreur")
     //@JsonManagedReference
     private Set<Bordoreau> bordoreausDriver;
+
 
     @Override
     public int hashCode() {

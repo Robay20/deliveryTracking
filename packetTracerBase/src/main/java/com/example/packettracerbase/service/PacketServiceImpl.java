@@ -15,18 +15,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 @Service
 public class PacketServiceImpl implements PacketService {
 
     private final PacketRepository packetRepository;
     private final BordoreauRepository bordoreauRepository;
-
+    private final PacketHelper packetHelper;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public PacketServiceImpl(PacketRepository packetRepository, BordoreauRepository bordoreauRepository) {
+    public PacketServiceImpl(PacketRepository packetRepository,
+                             BordoreauRepository bordoreauRepository,
+                             PacketHelper packetHelper,
+                             ObjectMapper objectMapper) {
         this.packetRepository = packetRepository;
         this.bordoreauRepository = bordoreauRepository;
+        this.packetHelper = packetHelper;
+        this.objectMapper = objectMapper;
     }
 
     @Override
@@ -43,34 +48,12 @@ public class PacketServiceImpl implements PacketService {
     public Packet createPacket(Packet packet) {
         return packetRepository.save(packet);
     }
+
     @Override
     public Packet updatePacket(Long id, Packet packetDetails) {
-        Packet existingPacket = packetRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Packet not found with id: " + id));
-
-        // Update packet details here based on the attributes in the Packet model
-        existingPacket.setClient(packetDetails.getClient());       // Update the client
-        existingPacket.setColis(packetDetails.getColis());         // Update the number of colis
-        existingPacket.setSachets(packetDetails.getSachets());     // Update the number of sachets
-        existingPacket.setStatus(packetDetails.getStatus());       // Update the status
-        existingPacket.setBordoreau(packetDetails.getBordoreau()); // Update the bordoreau
-
-        // Assuming transferts are to be handled separately or are updated through a different mechanism,
-        // as directly setting a complex relationship collection can be problematic.
-        existingPacket.setTransferts(packetDetails.getTransferts());
-
-        boolean p =false;
-         for(Packet packet : packetDetails.getBordoreau().getPacketsBordoreau()){
-             if (packet.getStatus()!=PacketStatus.DONE)
-                 p=true;
-         }
-         if (!p){
-             Bordoreau bordoreau = packetDetails.getBordoreau();
-             bordoreau.setStatus(PacketStatus.DONE);
-
-             bordoreauRepository.save(bordoreau);
-         }
-
+        Packet existingPacket = packetHelper.findPacketById(packetRepository, id);
+        packetHelper.updatePacketDetails(existingPacket, packetDetails);
+        packetHelper.updateBordoreauStatusIfNeeded(packetDetails.getBordoreau(), bordoreauRepository);
         return packetRepository.save(existingPacket);
     }
 
@@ -82,6 +65,20 @@ public class PacketServiceImpl implements PacketService {
         packetRepository.deleteById(id);
     }
 
+    @Override
+    public String getAllPacketsAsJson() {
+        try {
+            List<PacketDTO> packetDTOs = packetRepository.findAll()
+                    .stream()
+                    .map(this::convertToDTO)
+                    .collect(Collectors.toList());
+            return objectMapper.writeValueAsString(packetDTOs);
+        } catch (JsonProcessingException e) {
+            packetHelper.logError("Error converting packets to JSON", e);
+            return null;
+        }
+    }
+
     private PacketDTO convertToDTO(Packet packet) {
         PacketDTO dto = new PacketDTO();
         dto.setIdPacket(packet.getIdPacket());
@@ -91,25 +88,5 @@ public class PacketServiceImpl implements PacketService {
         dto.setStatus(packet.getStatus());
         dto.setBordoreau(packet.getBordoreau().getBordoreau());
         return dto;
-    }
-
-    @Override
-    public String getAllPacketsAsJson() {
-        try {
-            // Retrieve all Packet objects from the database or repository
-            List<Packet> packets = packetRepository.findAll();
-
-            // Convert Packet entities to PacketDTO instances
-            List<PacketDTO> packetDTOs = packets.stream()
-                    .map(this::convertToDTO)
-                    .collect(Collectors.toList());
-
-            // Serialize the PacketDTO objects to JSON array
-            ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.writeValueAsString(packetDTOs);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace(); // Handle the exception as needed
-            return null;
-        }
     }
 }

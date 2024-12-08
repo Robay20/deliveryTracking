@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="lkjsdlkjasdlkjasdlkjasdlkjasd">
-      <change afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/dialog_packet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/ExpediterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DesktopApp/src/main/java/com/example/packet_tracer/expediteur/ExpediterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoBordoreauActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoProfileActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/InfoProfileActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/AppDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/AppDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/BordoreauDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/BordoreauDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/BordoreauQRDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/BordoreauQRDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/PacketDetailDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/PacketDetailDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/TransfertRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/model/TransfertRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/utils/BordoreauApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/java/com/example/packettracer/utils/BordoreauApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_dashboard.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_dashboard.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_info_bordoreau.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/layout/activity_info_bordoreau.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PacketTracer/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
-    </list>
+    <list default="true" id="537ad5f2-6ba6-4a1b-a777-f11a41dcc87b" name="Changes" comment="using sonar" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +15,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -54,6 +38,10 @@
     &quot;url&quot;: &quot;https://github.com/Robay20/deliveryTracking&quot;,
     &quot;accountId&quot;: &quot;ffaa5539-b22f-4df9-af42-3267aa9073b3&quot;
   }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
 }</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -81,6 +69,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.MatrixPartition.executor": "Run",
     "HTTP Request.generated-requests | #1.executor": "Run",
     "HTTP Request.generated-requests | #10.executor": "Run",
     "HTTP Request.generated-requests | #11.executor": "Run",
@@ -104,8 +94,34 @@
     "HTTP Request.generated-requests | #6.executor": "Run",
     "HTTP Request.generated-requests | #7.executor": "Run",
     "HTTP Request.generated-requests | #8.executor": "Run",
+    "JUnit.AdminServiceImplTest.executor": "Run",
+    "JUnit.AuthenticationServiceImplTest.executor": "Run",
+    "JUnit.BordoreauHelperTest.executor": "Run",
+    "JUnit.BordoreauHelperTest.generateBordoreauQR_ShouldReturnQRDTO.executor": "Run",
+    "JUnit.BordoreauHelperTest.updateBordoreauFields_ShouldUpdateFieldsAndSave.executor": "Run",
+    "JUnit.BordoreauServiceImplTest.executor": "Run",
+    "JUnit.BordoreauServiceImplTest.getBordoreauForQR.executor": "Run",
+    "JUnit.BordoreauServiceImplTest.processBordoreau.executor": "Run",
+    "JUnit.BordoreauServiceImplTest.updateBordoreau1.executor": "Run",
+    "JUnit.ClientServiceImplTest.executor": "Run",
+    "JUnit.DriverHelperTest.executor": "Run",
+    "JUnit.DriverServiceImplTest.executor": "Run",
+    "JUnit.PacketHelperTest.executor": "Run",
+    "JUnit.PacketServiceImplTest.executor": "Run",
+    "JUnit.PacketServiceImplTest.getAllPacketsAsJson_ShouldLogError_WhenConversionFails.executor": "Run",
+    "JUnit.PacketServiceImplTest.getAllPacketsAsJson_ShouldReturnJsonString_WhenConversionSucceeds.executor": "Run",
+    "JUnit.SecteurServiceImplTest.executor": "Run",
+    "JUnit.SenderServiceImplTest.executor": "Run",
+    "JUnit.TransfertServiceImplTest.executor": "Run",
+    "Maven.packetTracerBase [clean,test].executor": "Run",
+    "Maven.packetTracerBase [clean,verify...].executor": "Run",
+    "Maven.packetTracerBase [clean,verify].executor": "Run",
     "Maven.packetTracerBase [clean].executor": "Run",
+    "Maven.packetTracerBase [dependency:tree...].executor": "Run",
     "Maven.packetTracerBase [install].executor": "Run",
+    "Maven.packetTracerBase [org.jacoco:jacoco-maven-plugin:0.8.12:check].executor": "Run",
+    "Maven.packetTracerBase [org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar].executor": "Run",
+    "Maven.packetTracerBase [verify].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -113,7 +129,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.PacketTracerBaseApplication.executor": "Run",
-    "git-widget-placeholder": "#3 on all-project",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "sonar__branch",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/growu/IdeaProjects/deliveryTracking/packetTracerBase/src/main/java/com/example/packettracerbase/dto",
     "node.js.detected.package.eslint": "true",
@@ -121,6 +140,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -136,6 +158,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.packettracerbase.service" />
+      <recent name="com.example.packettracerbase.dto" />
       <recent name="com.example.packettracerbase.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -145,25 +169,109 @@
       <recent name="C:\Users\growu\IdeaProjects\packetTracerBase\src\main\java\com\example\packettracerbase\repository" />
       <recent name="C:\Users\growu\IdeaProjects\packetTracerBase\src\main\java\com\example\packettracerbase" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.packettracerbase.service" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.packettracerbase.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.PacketTracerBaseApplication">
-    <configuration name="generated-requests | #10" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="10" requestIdentifier="#10" runType="Run single request">
-      <method v="2" />
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean verify sonar:sonar -Dsonar.projectKey=Delivery-Tracking -Dsonar.projectName='Delivery Tracking' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_5d8c7273e462d3adb1b60ef272612f5a8be91fe1 " />
+      <command value="mvn clean verify sonar:sonar \   -Dsonar.projectKey=Delivery-Tracking \   -Dsonar.projectName='Delivery Tracking' \   -Dsonar.host.url=http://localhost:9000 \   -Dsonar.token=sqp_5d8c7273e462d3adb1b60ef272612f5a8be91fe1" />
+      <command value="mvn clean test" />
+      <command value="mvn clean verify sonar:sonar -Dsonar.projectKey=Delivery-Tracking -Dsonar.projectName=&quot;Delivery Tracking&quot; -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_5d8c7273e462d3adb1b60ef272612f5a8be91fe1 " />
+      <command value="mvn clean verify sonar:sonar -Dsonar.projectKey=Delivery-Tracking -Dsonar.projectName=&quot;Delivery Tracking&quot; -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqb_5f0de8c60a826fd9b4eced6129c986e5f90d9bc2" />
+      <command value="mvn clean verify sonar:sonar \   -Dsonar.projectKey=Delivery-Tracking \   -Dsonar.projectName='Delivery Tracking' \   -Dsonar.host.url=http://localhost:9000 \   -Dsonar.token=sqp_e9e2b1b8f523a7800eb094ebab2b5f0b75859d0a" />
+      <command value="mvn clean test " />
+      <command value="mvn clean verify sonar:sonar" />
+      <command value="mvn dependency:tree -Dverbose " />
+      <command value="mvn clean verify sonar:sonar -X " />
+      <command value="mvn clean verify" />
+      <command value="mvn clean verify sonar:sonar " />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.BordoreauServiceImplTest">
+    <configuration name="BordoreauHelperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="packetTracerBase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.packettracerbase.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.packettracerbase.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.packettracerbase.service.BordoreauHelperTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="generated-requests | #11" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="11" requestIdentifier="#11" runType="Run single request">
-      <method v="2" />
+    <configuration name="BordoreauHelperTest.generateBordoreauQR_ShouldReturnQRDTO" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="packetTracerBase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.packettracerbase.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.packettracerbase.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.packettracerbase.service.BordoreauHelperTest" />
+      <option name="METHOD_NAME" value="generateBordoreauQR_ShouldReturnQRDTO" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="generated-requests | #15" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="15" requestIdentifier="#15" runType="Run single request">
-      <method v="2" />
+    <configuration name="BordoreauHelperTest.updateBordoreauFields_ShouldUpdateFieldsAndSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="packetTracerBase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.packettracerbase.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.packettracerbase.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.packettracerbase.service.BordoreauHelperTest" />
+      <option name="METHOD_NAME" value="updateBordoreauFields_ShouldUpdateFieldsAndSave" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="generated-requests | #16" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="16" requestIdentifier="#16" runType="Run single request">
-      <method v="2" />
+    <configuration name="BordoreauServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="packetTracerBase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.packettracerbase.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.packettracerbase.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.packettracerbase.service.BordoreauServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <configuration name="generated-requests | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="6" requestIdentifier="#6" runType="Run single request">
-      <method v="2" />
+    <configuration name="DriverHelperTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="packetTracerBase" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.packettracerbase.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.packettracerbase.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.packettracerbase.service.DriverHelperTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="PacketTracerBaseApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="packetTracerBase" />
@@ -174,19 +282,19 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.generated-requests | #16" />
-        <item itemvalue="HTTP Request.generated-requests | #15" />
-        <item itemvalue="HTTP Request.generated-requests | #11" />
-        <item itemvalue="HTTP Request.generated-requests | #10" />
-        <item itemvalue="HTTP Request.generated-requests | #6" />
+        <item itemvalue="JUnit.BordoreauServiceImplTest" />
+        <item itemvalue="JUnit.BordoreauHelperTest.generateBordoreauQR_ShouldReturnQRDTO" />
+        <item itemvalue="JUnit.BordoreauHelperTest.updateBordoreauFields_ShouldUpdateFieldsAndSave" />
+        <item itemvalue="JUnit.BordoreauHelperTest" />
+        <item itemvalue="JUnit.DriverHelperTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.19416.15" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.19416.15" />
       </set>
     </attachedChunks>
   </component>
@@ -214,7 +322,29 @@
       <workItem from="1716628062296" duration="3810000" />
       <workItem from="1716811327833" duration="27630000" />
       <workItem from="1716855021676" duration="656000" />
-      <workItem from="1716884691030" duration="5539000" />
+      <workItem from="1716884691030" duration="6170000" />
+      <workItem from="1716952757494" duration="12244000" />
+      <workItem from="1717138207958" duration="3928000" />
+      <workItem from="1717275916541" duration="7784000" />
+      <workItem from="1717319460089" duration="4739000" />
+      <workItem from="1718662422866" duration="232000" />
+      <workItem from="1718723098731" duration="926000" />
+      <workItem from="1718819479102" duration="531000" />
+      <workItem from="1718918885503" duration="1238000" />
+      <workItem from="1719149984345" duration="115000" />
+      <workItem from="1722278647142" duration="28000" />
+      <workItem from="1729072965962" duration="1477000" />
+      <workItem from="1729076622216" duration="5777000" />
+      <workItem from="1729180433767" duration="127000" />
+      <workItem from="1729615450934" duration="12619000" />
+      <workItem from="1729677326162" duration="4978000" />
+      <workItem from="1729788844243" duration="3433000" />
+      <workItem from="1729850285325" duration="52000" />
+      <workItem from="1733243125818" duration="8020000" />
+      <workItem from="1733387652195" duration="62000" />
+      <workItem from="1733413806035" duration="8327000" />
+      <workItem from="1733471870922" duration="5668000" />
+      <workItem from="1733497345821" duration="21381000" />
     </task>
     <task id="LOCAL-00001" summary="push it">
       <option name="closed" value="true" />
@@ -344,7 +474,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716628153363</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="using sonar">
+      <option name="closed" value="true" />
+      <created>1729627416995</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1729627416995</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,21 +524,7 @@
     <MESSAGE value="vvvvvvvvvvvvvvvvvvvvvHGCVGHChhhhhhhhhhhhhhhh" />
     <MESSAGE value="gggggggggggggggggggrhhhhhhhhhh" />
     <MESSAGE value="lkjsdlkjasdlkjasdlkjasdlkjasd" />
-    <option name="LAST_COMMIT_MESSAGE" value="lkjsdlkjasdlkjasdlkjasdlkjasd" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/packettracerbase/controller/BordoreauController.java</url>
-          <line>50</line>
-          <properties class="com.example.packettracerbase.controller.BordoreauController" method="getAllBordoreaux1">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="using sonar" />
+    <option name="LAST_COMMIT_MESSAGE" value="using sonar" />
   </component>
 </project>
